@@ -1,77 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Search, Pill, AlertCircle } from 'lucide-react';
+import { Search, Pill, Loader2 } from 'lucide-react';
 import './index.css';
 
 const App = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [status, setStatus] = useState('Loading database...');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // এখানে আপনার GitHub-এর ফাইল নামগুলো হুবহু (ছোট হাতের অক্ষর) হতে হবে
-    const files = ['bd-medicines.csv', 'indian-medicines.csv'];
-    let allData = [];
-    let successCount = 0;
+    // ফাইলগুলো /public ফোল্ডারে থাকলে শুধু নাম লিখলেই হয়
+    const files = ['/indian-medicines.csv', '/bd-medicines.csv'];
+    let loadedData = [];
+    let completed = 0;
 
-    files.forEach(fileName => {
-      Papa.parse(`${window.location.origin}/${fileName}`, {
+    files.forEach(file => {
+      Papa.parse(file, {
         download: true,
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
-          console.log(`Loaded ${fileName}:`, results.data.length);
-          allData = [...allData, ...results.data];
-          successCount++;
-          setData([...allData]);
-          if (successCount === files.length) setStatus('');
+          if (results.data && results.data.length > 0) {
+            loadedData = [...loadedData, ...results.data];
+          }
+          completed++;
+          if (completed === files.length) {
+            setData(loadedData);
+            setLoading(false);
+          }
         },
         error: (err) => {
-          console.error(`Failed to load ${fileName}`, err);
-          setStatus(`Error loading ${fileName}. Check file names in GitHub.`);
+          console.error("Error loading file:", file);
+          setError(`Could not load ${file}. Please check public folder.`);
+          completed++;
+          if (completed === files.length) setLoading(false);
         }
       });
     });
   }, []);
 
   const filteredData = data.filter(item => {
-    // আপনার CSV-তে কলামের নাম 'name' বা 'brand' যাই হোক, এটি সব চেক করবে
-    const name = (item.name || item.brand || item.Medicine || "").toLowerCase();
-    const generic = (item.generic || item.Generic || "").toLowerCase();
-    const search = searchTerm.toLowerCase();
-    return name.includes(search) || generic.includes(search);
-  });
+    const name = item.name || item.Name || '';
+    const generic = item.generic || item.Generic || '';
+    return name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           generic.toLowerCase().includes(searchTerm.toLowerCase());
+  }).slice(0, 50); // শুরুতে শুধু প্রথম ৫০টি দেখাবে যাতে অ্যাপ ফাস্ট থাকে
 
   return (
     <div className="container">
       <header>
-        <h1><Pill size={32} color="#3498db" /> Medi-Directory</h1>
+        <h1><Pill size={32} /> Medi-Directory</h1>
         <div className="search-box">
           <Search className="icon" />
           <input 
             type="text" 
-            placeholder="Search Napa or Generic..." 
+            placeholder="Search Napa or Generic name..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        {status && <p style={{color: 'orange', fontSize: '12px'}}><AlertCircle size={14} /> {status}</p>}
+        {error && <p className="error-msg">{error}</p>}
       </header>
 
       <main>
-        {filteredData.length > 0 ? (
-          filteredData.slice(0, 50).map((med, index) => (
+        {loading ? (
+          <div className="loading"><Loader2 className="spinner" /> Loading Database...</div>
+        ) : filteredData.length > 0 ? (
+          filteredData.map((med, index) => (
             <div key={index} className="card">
-              <h3>{med.name || med.brand || med.Medicine || "No Name"}</h3>
-              <p><strong>Generic:</strong> {med.generic || med.Generic || "N/A"}</p>
-              <p><strong>Company:</strong> {med.company || med.Manufacturer || "N/A"}</p>
+              <h3>{med.name || med.Name}</h3>
+              <p><strong>Generic:</strong> {med.generic || med.Generic || 'N/A'}</p>
+              <p><strong>Company:</strong> {med.company || med.Company || 'N/A'}</p>
             </div>
           ))
         ) : (
-          <div style={{textAlign: 'center', marginTop: '40px', color: '#888'}}>
-            {searchTerm ? "No results found." : "Waiting for data..."}
-          </div>
+          <div className="no-results">No medicines found matching "{searchTerm}"</div>
         )}
       </main>
     </div>
@@ -79,7 +84,5 @@ const App = () => {
 };
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <React.StrictMode><App /></React.StrictMode>
 );
