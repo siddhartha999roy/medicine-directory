@@ -1,5 +1,17 @@
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import "./index.css";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
 
-createRoot(document.getElementById("root")!).render(<App />);
+// সরাসরি এখানে একটি ছোট মেসেজ দেখাবে যাতে বুঝতে পারি সাইট কাজ করছে
+const App = () => (
+  <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
+    <h1>Medi-Directory is Loading...</h1>
+    <p>Siddhartha, your site is almost ready!</p>
+  </div>
+)
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
