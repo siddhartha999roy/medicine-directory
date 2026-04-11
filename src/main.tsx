@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Search, Pill, Loader2, X } from 'lucide-react';
+import { Search, Pill, Loader2, X, AlertCircle } from 'lucide-react';
 import './index.css';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('BD');
-  const [selectedMed, setSelectedMed] = useState(null); // যে ওষুধে ক্লিক করবেন সেটি এখানে জমা হবে
+  const [selectedMed, setSelectedMed] = useState(null);
 
   useEffect(() => {
     const loadFile = (path, setter) => {
@@ -51,43 +51,62 @@ const App = () => {
           />
         </div>
         <div className="tab-container">
-          <button className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`} onClick={() => setActiveTab('BD')}>🇧🇩 BD</button>
+          <button className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`} onClick={() => setActiveTab('BD')}>🇧🇩 Bangladesh</button>
           <button className={`tab-btn ${activeTab === 'India' ? 'active' : ''}`} onClick={() => setActiveTab('India')}>🇮🇳 India</button>
         </div>
       </header>
 
       <main>
         {loading ? (
-          <div className="loading"><Loader2 className="spinner" /> Loading...</div>
+          <div className="loading"><Loader2 className="spinner" /> Loading Database...</div>
         ) : (
-          <div className="med-list">
+          <div className="med-grid">
             {filteredData.map((med, index) => (
               <div key={index} className="card clickable" onClick={() => setSelectedMed(med)}>
+                <div className="card-accent"></div>
                 <h3>{med.name || med.Name}</h3>
-                <p className="generic-short">{med.generic || med.Generic}</p>
-                <small>Click for details →</small>
+                <p className="generic-text">{med.generic || med.Generic}</p>
+                {med.indication && <span className="indication-tag">{med.indication}</span>}
               </div>
             ))}
           </div>
         )}
       </main>
 
-      {/* ওষুধে ক্লিক করলে এই পপ-আপ বা Modal টি আসবে */}
       {selectedMed && (
         <div className="modal-overlay" onClick={() => setSelectedMed(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <button className="close-btn" onClick={() => setSelectedMed(null)}><X /></button>
+            
             <div className="modal-header">
-              <Pill size={40} color="#1a73e8" />
+              <div className="pill-icon-bg"><Pill size={30} color="#1a73e8" /></div>
               <h2>{selectedMed.name || selectedMed.Name}</h2>
             </div>
-            <hr />
+
             <div className="modal-body">
-              <p><strong>Generic Name:</strong> {selectedMed.generic || selectedMed.Generic}</p>
-              <p><strong>Manufacturer:</strong> {selectedMed.company || selectedMed.Company}</p>
-              <p><strong>Country:</strong> {activeTab === 'BD' ? 'Bangladesh' : 'India'}</p>
-              <div className="disclaimer">
-                * This information is for educational purposes. Consult a doctor before use.
+              <div className="info-row">
+                <strong>Generic Name:</strong>
+                <span>{selectedMed.generic || selectedMed.Generic}</span>
+              </div>
+              <div className="info-row">
+                <strong>Manufacturer:</strong>
+                <span>{selectedMed.company || selectedMed.Company}</span>
+              </div>
+              <div className="info-row">
+                <strong>Main Use:</strong>
+                <span className="indication-highlight">{selectedMed.indication || 'General Health'}</span>
+              </div>
+
+              <div className="disclaimer-box">
+                <AlertCircle size={18} className="alert-icon" />
+                <div className="disclaimer-text">
+                  <p>* This information is for educational purposes. Consult a doctor before use.</p>
+                  {activeTab === 'BD' ? (
+                    <p className="native-lang">* এই তথ্যটি শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে। ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।</p>
+                  ) : (
+                    <p className="native-lang">* यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। उपयोग करने से पहले डॉक्टर से सलाह लें।</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
