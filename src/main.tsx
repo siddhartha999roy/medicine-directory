@@ -21,21 +21,23 @@ const App = () => {
         complete: (results) => {
           if (results.data) setter(results.data);
         },
+        error: (err) => console.error("Error loading CSV:", err)
       });
     };
-    loadFile('/bd-medicines.csv', setBdData);
-    loadFile('/indian-medicines.csv', setIndiaData);
-    setTimeout(() => setLoading(false), 1000);
+    // নিশ্চিত করুন এই ফাইলগুলো আপনার public ফোল্ডারে আছে
+    loadFile('bd-medicines.csv', setBdData);
+    loadFile('indian-medicines.csv', setIndiaData);
+    setTimeout(() => setLoading(false), 1500);
   }, []);
 
   const currentData = activeTab === 'BD' ? bdData : indiaData;
 
   const filteredData = currentData.filter(item => {
-    const name = item.name || item.Name || '';
-    const generic = item.generic || item.Generic || '';
-    return name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           generic.toLowerCase().includes(searchTerm.toLowerCase());
-  }).slice(0, 100);
+    const name = (item.name || item.Name || '').toString().toLowerCase();
+    const generic = (item.generic || item.Generic || '').toString().toLowerCase();
+    const target = searchTerm.toLowerCase();
+    return name.includes(target) || generic.includes(target);
+  }).slice(0, 50);
 
   return (
     <div className="container">
@@ -65,13 +67,16 @@ const App = () => {
         ) : (
           <div className="med-grid">
             {filteredData.length > 0 ? filteredData.map((med, index) => (
-              <div key={index} className="card clickable" onClick={() => setSelectedMed(med)}>
+              <div key={index} className="card clickable" onClick={() => {
+                console.log("Medicine clicked:", med); // চেক করার জন্য
+                setSelectedMed(med);
+              }}>
                 <div className="card-accent"></div>
                 <h3>{med.name || med.Name}</h3>
                 <p className="generic-text">{med.generic || med.Generic}</p>
                 {med.indication && <span className="indication-tag">{med.indication}</span>}
               </div>
-            )) : <div className="no-results">No medicines found.</div>}
+            )) : <div className="no-results">No medicines found. Please check your CSV file.</div>}
           </div>
         )}
       </main>
@@ -80,27 +85,15 @@ const App = () => {
       {selectedMed && (
         <div className="modal-overlay" onClick={() => setSelectedMed(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setSelectedMed(null)}><X /></button>
-            
+            <button className="close-btn" onClick={() => setSelectedMed(null)}><X size={24} /></button>
             <div className="modal-header">
               <div className="pill-icon-bg"><Pill size={30} color="#1a73e8" /></div>
               <h2>{selectedMed.name || selectedMed.Name}</h2>
             </div>
-
             <div className="modal-body">
-              <div className="info-row">
-                <strong>Generic:</strong>
-                <span>{selectedMed.generic || selectedMed.Generic}</span>
-              </div>
-              <div className="info-row">
-                <strong>Company:</strong>
-                <span>{selectedMed.company || selectedMed.Company}</span>
-              </div>
-              <div className="info-row">
-                <strong>Main Use:</strong>
-                <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span>
-              </div>
-
+              <div className="info-row"><strong>Generic:</strong> <span>{selectedMed.generic || selectedMed.Generic}</span></div>
+              <div className="info-row"><strong>Company:</strong> <span>{selectedMed.company || selectedMed.Company}</span></div>
+              <div className="info-row"><strong>Main Use:</strong> <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span></div>
               <div className="disclaimer-box">
                 <AlertCircle size={20} className="alert-icon" />
                 <div className="disclaimer-text">
@@ -120,6 +113,4 @@ const App = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode><App /></React.StrictMode>
-);
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
