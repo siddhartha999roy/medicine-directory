@@ -2,7 +2,7 @@
 body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
 .container { max-width: 800px; margin: 0 auto; padding: 20px; position: relative; }
 
-/* Nearby Pharmacy Button */
+/* Nearby Pharmacy Button Styling */
 .nearby-btn {
   position: fixed;
   top: 20px;
@@ -17,7 +17,7 @@ body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); co
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 1000;
   transition: 0.3s;
 }
@@ -42,10 +42,9 @@ header { text-align: center; margin-bottom: 40px; margin-top: 40px; }
 .card-accent { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--primary); }
 .indication-tag { display: inline-block; margin-top: 10px; background: #e8f0fe; color: var(--primary); padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 600; }
 
-/* Modal Styles */
 .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
 .modal-content { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 450px; position: relative; }
-.close-btn { position: absolute; top: 15px; right: 15px; border: none; background: none; cursor: pointer; color: #5f6368; }
+.close-btn { position: absolute; top: 15px; right: 15px; border: none; background: none; cursor: pointer; }
 .modal-header { text-align: center; margin-bottom: 25px; }
 .pill-icon-bg { background: #e8f0fe; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
 .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
