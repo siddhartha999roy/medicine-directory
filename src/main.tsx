@@ -8,10 +8,9 @@ const App = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // ফাইলগুলো /public ফোল্ডারে থাকলে শুধু নাম লিখলেই হয়
+    // ফাইলগুলো /public ফোল্ডারে থাকলে এভাবে এক্সেস করা যায়
     const files = ['/indian-medicines.csv', '/bd-medicines.csv'];
     let loadedData = [];
     let completed = 0;
@@ -22,18 +21,14 @@ const App = () => {
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
-          if (results.data && results.data.length > 0) {
-            loadedData = [...loadedData, ...results.data];
-          }
+          if (results.data) loadedData = [...loadedData, ...results.data];
           completed++;
           if (completed === files.length) {
             setData(loadedData);
             setLoading(false);
           }
         },
-        error: (err) => {
-          console.error("Error loading file:", file);
-          setError(`Could not load ${file}. Please check public folder.`);
+        error: () => {
           completed++;
           if (completed === files.length) setLoading(false);
         }
@@ -46,7 +41,7 @@ const App = () => {
     const generic = item.generic || item.Generic || '';
     return name.toLowerCase().includes(searchTerm.toLowerCase()) ||
            generic.toLowerCase().includes(searchTerm.toLowerCase());
-  }).slice(0, 50); // শুরুতে শুধু প্রথম ৫০টি দেখাবে যাতে অ্যাপ ফাস্ট থাকে
+  }).slice(0, 100);
 
   return (
     <div className="container">
@@ -56,28 +51,22 @@ const App = () => {
           <Search className="icon" />
           <input 
             type="text" 
-            placeholder="Search Napa or Generic name..." 
+            placeholder="Search Napa or Generic..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        {error && <p className="error-msg">{error}</p>}
       </header>
-
       <main>
-        {loading ? (
-          <div className="loading"><Loader2 className="spinner" /> Loading Database...</div>
-        ) : filteredData.length > 0 ? (
-          filteredData.map((med, index) => (
-            <div key={index} className="card">
-              <h3>{med.name || med.Name}</h3>
-              <p><strong>Generic:</strong> {med.generic || med.Generic || 'N/A'}</p>
-              <p><strong>Company:</strong> {med.company || med.Company || 'N/A'}</p>
-            </div>
-          ))
-        ) : (
-          <div className="no-results">No medicines found matching "{searchTerm}"</div>
-        )}
+        {loading ? <div className="loading"><Loader2 className="spinner" /> Loading Data...</div> : null}
+        {filteredData.map((med, index) => (
+          <div key={index} className="card">
+            <h3>{med.name || med.Name}</h3>
+            <p><strong>Generic:</strong> {med.generic || med.Generic || 'N/A'}</p>
+            <p><strong>Company:</strong> {med.company || med.Company || 'N/A'}</p>
+          </div>
+        ))}
+        {!loading && filteredData.length === 0 && <p className="no-results">No medicines found.</p>}
       </main>
     </div>
   );
