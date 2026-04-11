@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Search, Pill, Loader2, X, AlertCircle } from 'lucide-react';
+import { Search, Pill, Loader2, X, AlertCircle, MapPin, Phone } from 'lucide-react';
 import './index.css';
 
 const App = () => {
@@ -13,21 +13,19 @@ const App = () => {
   const [selectedMed, setSelectedMed] = useState(null);
 
   useEffect(() => {
-    const loadFile = (path, setter) => {
-      Papa.parse(path, {
+    const loadFile = (fileName, setter) => {
+      Papa.parse(`/${fileName}`, {
         download: true,
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
           if (results.data) setter(results.data);
         },
-        error: (err) => console.error("Error loading CSV:", err)
       });
     };
-    // নিশ্চিত করুন এই ফাইলগুলো আপনার public ফোল্ডারে আছে
     loadFile('bd-medicines.csv', setBdData);
     loadFile('indian-medicines.csv', setIndiaData);
-    setTimeout(() => setLoading(false), 1500);
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   const currentData = activeTab === 'BD' ? bdData : indiaData;
@@ -35,12 +33,23 @@ const App = () => {
   const filteredData = currentData.filter(item => {
     const name = (item.name || item.Name || '').toString().toLowerCase();
     const generic = (item.generic || item.Generic || '').toString().toLowerCase();
-    const target = searchTerm.toLowerCase();
-    return name.includes(target) || generic.includes(target);
-  }).slice(0, 50);
+    return name.includes(searchTerm.toLowerCase()) || generic.includes(searchTerm.toLowerCase());
+  }).slice(0, 100);
+
+  // Nearby Pharmacy সার্চ করার ফাংশন
+  const findNearbyPharmacy = () => {
+    const url = "https://www.google.com/maps/search/pharmacy+near+me/";
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="container">
+      {/* Nearby Pharmacy Floating Button - Right Top Corner */}
+      <button className="nearby-btn" onClick={findNearbyPharmacy}>
+        <MapPin size={18} />
+        <span>Nearby Pharmacy</span>
+      </button>
+
       <header>
         <div className="brand">
           <Pill size={32} className="logo-icon" />
@@ -56,27 +65,24 @@ const App = () => {
           />
         </div>
         <div className="tab-container">
-          <button className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`} onClick={() => setActiveTab('BD')}>🇧🇩 Bangladesh</button>
+          <button className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`} onClick={() => setActiveTab('BD')}>🇧🇩 BD</button>
           <button className={`tab-btn ${activeTab === 'India' ? 'active' : ''}`} onClick={() => setActiveTab('India')}>🇮🇳 India</button>
         </div>
       </header>
 
       <main>
         {loading ? (
-          <div className="loading"><Loader2 className="spinner" /> Loading Database...</div>
+          <div className="loading"><Loader2 className="spinner" /> Loading...</div>
         ) : (
           <div className="med-grid">
-            {filteredData.length > 0 ? filteredData.map((med, index) => (
-              <div key={index} className="card clickable" onClick={() => {
-                console.log("Medicine clicked:", med); // চেক করার জন্য
-                setSelectedMed(med);
-              }}>
+            {filteredData.map((med, index) => (
+              <div key={index} className="card clickable" onClick={() => setSelectedMed(med)}>
                 <div className="card-accent"></div>
                 <h3>{med.name || med.Name}</h3>
                 <p className="generic-text">{med.generic || med.Generic}</p>
                 {med.indication && <span className="indication-tag">{med.indication}</span>}
               </div>
-            )) : <div className="no-results">No medicines found. Please check your CSV file.</div>}
+            ))}
           </div>
         )}
       </main>
@@ -97,12 +103,10 @@ const App = () => {
               <div className="disclaimer-box">
                 <AlertCircle size={20} className="alert-icon" />
                 <div className="disclaimer-text">
-                  <p>* This information is for educational purposes. Consult a doctor before use.</p>
-                  {activeTab === 'BD' ? (
-                    <p className="native-lang">* এই তথ্যটি শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে। ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।</p>
-                  ) : (
-                    <p className="native-lang">* यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। उपयोग करने से पहले डॉक्टर से सलाह लें।</p>
-                  )}
+                  <p>* Consult a doctor before use.</p>
+                  <p className="native-lang">
+                    {activeTab === 'BD' ? '* ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* डॉक्टर से सलाह लें।'}
+                  </p>
                 </div>
               </div>
             </div>
