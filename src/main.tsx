@@ -40,7 +40,10 @@ const App = () => {
   return (
     <div className="container">
       <header>
-        <h1><Pill size={32} /> Medi-Directory</h1>
+        <div className="brand">
+          <Pill size={32} className="logo-icon" />
+          <h1>Medi-Directory</h1>
+        </div>
         <div className="search-box">
           <Search className="icon" />
           <input 
@@ -61,18 +64,19 @@ const App = () => {
           <div className="loading"><Loader2 className="spinner" /> Loading Database...</div>
         ) : (
           <div className="med-grid">
-            {filteredData.map((med, index) => (
+            {filteredData.length > 0 ? filteredData.map((med, index) => (
               <div key={index} className="card clickable" onClick={() => setSelectedMed(med)}>
                 <div className="card-accent"></div>
                 <h3>{med.name || med.Name}</h3>
                 <p className="generic-text">{med.generic || med.Generic}</p>
                 {med.indication && <span className="indication-tag">{med.indication}</span>}
               </div>
-            ))}
+            )) : <div className="no-results">No medicines found.</div>}
           </div>
         )}
       </main>
 
+      {/* Pop-up Modal */}
       {selectedMed && (
         <div className="modal-overlay" onClick={() => setSelectedMed(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -85,20 +89,20 @@ const App = () => {
 
             <div className="modal-body">
               <div className="info-row">
-                <strong>Generic Name:</strong>
+                <strong>Generic:</strong>
                 <span>{selectedMed.generic || selectedMed.Generic}</span>
               </div>
               <div className="info-row">
-                <strong>Manufacturer:</strong>
+                <strong>Company:</strong>
                 <span>{selectedMed.company || selectedMed.Company}</span>
               </div>
               <div className="info-row">
                 <strong>Main Use:</strong>
-                <span className="indication-highlight">{selectedMed.indication || 'General Health'}</span>
+                <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span>
               </div>
 
               <div className="disclaimer-box">
-                <AlertCircle size={18} className="alert-icon" />
+                <AlertCircle size={20} className="alert-icon" />
                 <div className="disclaimer-text">
                   <p>* This information is for educational purposes. Consult a doctor before use.</p>
                   {activeTab === 'BD' ? (
