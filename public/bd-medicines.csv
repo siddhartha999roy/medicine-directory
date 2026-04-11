@@ -1,85 +1,98 @@
-name,generic,company
-Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals
-Napa Extend,Paracetamol 665mg,Beximco Pharmaceuticals
-Napa Extra,Paracetamol & Caffeine,Beximco Pharmaceuticals
-Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals
-Ace Plus,Paracetamol & Caffeine,Square Pharmaceuticals
-Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals
-Seclo 40mg,Omeprazole 40mg,Square Pharmaceuticals
-Sergel 20mg,Esomeprazole 20mg,Healthcare Pharmaceuticals
-Sergel 40mg,Esomeprazole 40mg,Healthcare Pharmaceuticals
-Maxpro 20mg,Esomeprazole 20mg,Renata Limited
-Maxpro 40mg,Esomeprazole 40mg,Renata Limited
-Fexo 120mg,Fexofenadine 120mg,Healthcare Pharmaceuticals
-Fexo 180mg,Fexofenadine 180mg,Healthcare Pharmaceuticals
-Fenadin 120mg,Fexofenadine 120mg,Renata Limited
-Alatrol 10mg,Cetirizine 10mg,Square Pharmaceuticals
-Histacin,Chlorpheniramine,ACI Limited
-Monas 10mg,Montelukast 10mg,ACME Laboratories
-Monas 5mg,Montelukast 5mg,ACME Laboratories
-Zithrin 500mg,Azithromycin 500mg,Square Pharmaceuticals
-Azithrocin 500mg,Azithromycin 500mg,Beximco Pharmaceuticals
-Ciprocin 500mg,Ciprofloxacin 500mg,Square Pharmaceuticals
-Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals
-Pantonix 40mg,Pantoprazole 40mg,Incepta Pharmaceuticals
-Esolok 20mg,Esomeprazole 20mg,Incepta Pharmaceuticals
-Losectil 20mg,Omeprazole 20mg,SK+F
-Nexum 20mg,Esomeprazole 20mg,SK+F
-Deslor 5mg,Desloratadine 5mg,Aristopharma
-Tofen 1mg,Ketotifen,Incepta Pharmaceuticals
-Antacid,Aluminum + Magnesium,Any Company
-Gavisol,Sodium Alginate,SK+F
-Entacyd,Antacid,Square Pharmaceuticals
-Amodis 400mg,Metronidazole 400mg,Square Pharmaceuticals
-Flagyl 400mg,Metronidazole 400mg,Sanofi
-Filmet 400mg,Metronidazole 400mg,Beximco Pharmaceuticals
-Rivotril 0.5mg,Clonazepam 0.5mg,Radiant Pharmaceuticals
-Pase 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals
-Disopan 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals
-Xeldrin 20mg,Esomeprazole 20mg,Aristopharma
-Odmon 10mg,Montelukast 10mg,Aristopharma
-Bizoran 5/20,Amlodipine + Olmesartan,Square Pharmaceuticals
-Camlosart 5/20,Amlodipine + Olmesartan,Incepta Pharmaceuticals
-Angilock 50mg,Losartan Potassium,Square Pharmaceuticals
-Osartil 50mg,Losartan Potassium,Incepta Pharmaceuticals
-Ecoriv 10mg,Rivaroxaban,Incepta Pharmaceuticals
-Xarelto 10mg,Rivaroxaban,Radiant Pharmaceuticals
-Avolac Syrup,Lactulose,Incepta Pharmaceuticals
-Osmo-Lax,Polyethylene Glycol,Beximco Pharmaceuticals
-Dextrim,Dextromethorphan,Square Pharmaceuticals
-Tusca,Guaifenesin,Incepta Pharmaceuticals
-Adryl,Diphenhydramine,Square Pharmaceuticals
-Fenofill 200mg,Fenofibrate,Incepta Pharmaceuticals
-Lipirex 10mg,Atorvastatin,Incepta Pharmaceuticals
-Atova 10mg,Atorvastatin,Beximco Pharmaceuticals
-Rovista 10mg,Rosuvastatin,Incepta Pharmaceuticals
-Sustac 2.6mg,Nitroglycerin,Square Pharmaceuticals
-Cardit 5mg,Isosorbide Mononitrate,Square Pharmaceuticals
-Concor 5mg,Bisoprolol Fumarate,Radiant Pharmaceuticals
-Bisonl 5mg,Bisoprolol Fumarate,Incepta Pharmaceuticals
-Amlopin 5mg,Amlodipine Besylate,Square Pharmaceuticals
-Camlodin 5mg,Amlodipine Besylate,Beximco Pharmaceuticals
-Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals
-Pantonix 40mg,Pantoprazole 40mg,Incepta Pharmaceuticals
-Esolok 20mg,Esomeprazole 20mg,Incepta Pharmaceuticals
-Losectil 20mg,Omeprazole 20mg,SK+F
-Nexum 20mg,Esomeprazole 20mg,SK+F
-Deslor 5mg,Desloratadine 5mg,Aristopharma
-Tofen 1mg,Ketotifen,Incepta Pharmaceuticals
-Antacid,Aluminum + Magnesium,Any Company
-Gavisol,Sodium Alginate,SK+F
-Entacyd,Antacid,Square Pharmaceuticals
-Amodis 400mg,Metronidazole 400mg,Square Pharmaceuticals
-Flagyl 400mg,Metronidazole 400mg,Sanofi
-Filmet 400mg,Metronidazole 400mg,Beximco Pharmaceuticals
-Rivotril 0.5mg,Clonazepam 0.5mg,Radiant Pharmaceuticals
-Pase 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals
-Disopan 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals
-Xeldrin 20mg,Esomeprazole 20mg,Aristopharma
-Odmon 10mg,Montelukast 10mg,Aristopharma
-Bizoran 5/20,Amlodipine + Olmesartan,Square Pharmaceuticals
-Camlosart 5/20,Amlodipine + Olmesartan,Incepta Pharmaceuticals
-Angilock 50mg,Losartan Potassium,Square Pharmaceuticals
-Osartil 50mg,Losartan Potassium,Incepta Pharmaceuticals
-Ecoriv 10mg,Rivaroxaban,Incepta Pharmaceuticals
-Xarelto 10mg,Rivaroxaban,Radiant Pharmaceuticals
+name,generic,company,indication
+Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals,Fever & Pain
+Napa Extend,Paracetamol 665mg,Beximco Pharmaceuticals,Chronic Pain
+Napa Extra,Paracetamol & Caffeine,Beximco Pharmaceuticals,Severe Headache
+Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals,Fever & Body Ache
+Ace Plus,Paracetamol & Caffeine,Square Pharmaceuticals,Migraine & Pain
+Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals,Gastric & Heartburn
+Seclo 40mg,Omeprazole 40mg,Square Pharmaceuticals,Acid Reflux
+Sergel 20mg,Esomeprazole 20mg,Healthcare Pharmaceuticals,Gastritis
+Sergel 40mg,Esomeprazole 40mg,Healthcare Pharmaceuticals,Peptic Ulcer
+Maxpro 20mg,Esomeprazole 20mg,Renata Limited,Gastric Acidity
+Maxpro 40mg,Esomeprazole 40mg,Renata Limited,Stomach Ulcer
+Fexo 120mg,Fexofenadine 120mg,Healthcare Pharmaceuticals,Allergy & Sneezing
+Fexo 180mg,Fexofenadine 180mg,Healthcare Pharmaceuticals,Severe Allergy
+Fenadin 120mg,Fexofenadine 120mg,Renata Limited,Running Nose
+Alatrol 10mg,Cetirizine 10mg,Square Pharmaceuticals,Skin Allergy
+Histacin,Chlorpheniramine,ACI Limited,Common Cold
+Monas 10mg,Montelukast 10mg,ACME Laboratories,Asthma & Breathing
+Monas 5mg,Montelukast 5mg,ACME Laboratories,Childhood Asthma
+Zithrin 500mg,Azithromycin 500mg,Square Pharmaceuticals,Bacterial Infection
+Azithrocin 500mg,Azithromycin 500mg,Beximco Pharmaceuticals,Antibiotic
+Ciprocin 500mg,Ciprofloxacin 500mg,Square Pharmaceuticals,Typhoid & Infection
+Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals,Acidity Control
+Pantonix 40mg,Pantoprazole 40mg,Incepta Pharmaceuticals,Severe Gastric
+Esolok 20mg,Esomeprazole 20mg,Incepta Pharmaceuticals,Gastric Problems
+Losectil 20mg,Omeprazole 20mg,SK+F,Stomach Pain
+Nexum 20mg,Esomeprazole 20mg,SK+F,Acid Neutralizer
+Deslor 5mg,Desloratadine 5mg,Aristopharma,Allergic Rhinitis
+Tofen 1mg,Ketotifen,Incepta Pharmaceuticals,Cough & Cold
+Antacid,Aluminum + Magnesium,Any Company,Indigestion
+Gavisol,Sodium Alginate,SK+F,Heartburn Relief
+Entacyd,Antacid,Square Pharmaceuticals,Gas Relief
+Amodis 400mg,Metronidazole 400mg,Square Pharmaceuticals,Diarrhoea
+Flagyl 400mg,Metronidazole 400mg,Sanofi,Loose Motion
+Filmet 400mg,Metronidazole 400mg,Beximco Pharmaceuticals,Infection
+Rivotril 0.5mg,Clonazepam 0.5mg,Radiant Pharmaceuticals,Anxiety & Sleep
+Pase 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals,Tension Relief
+Disopan 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals,Sleep Aid
+Xeldrin 20mg,Esomeprazole 20mg,Aristopharma,Acidity
+Odmon 10mg,Montelukast 10mg,Aristopharma,Chest Tightness
+Bizoran 5/20,Amlodipine + Olmesartan,Square Pharmaceuticals,High Blood Pressure
+Camlosart 5/20,Amlodipine + Olmesartan,Incepta Pharmaceuticals,Hypertension
+Angilock 50mg,Losartan Potassium,Square Pharmaceuticals,Blood Pressure
+Osartil 50mg,Losartan Potassium,Incepta Pharmaceuticals,BP Control
+Ecoriv 10mg,Rivaroxaban,Incepta Pharmaceuticals,Blood Thinner
+Xarelto 10mg,Rivaroxaban,Radiant Pharmaceuticals,Clot Prevention
+Avolac Syrup,Lactulose,Incepta Pharmaceuticals,Constipation
+Osmo-Lax,Polyethylene Glycol,Beximco Pharmaceuticals,Stool Softener
+Dextrim,Dextromethorphan,Square Pharmaceuticals,Dry Cough
+Tusca,Guaifenesin,Incepta Pharmaceuticals,Chest Congestion
+Adryl,Diphenhydramine,Square Pharmaceuticals,Cough Relief
+Fenofill 200mg,Fenofibrate,Incepta Pharmaceuticals,Cholesterol
+Lipirex 10mg,Atorvastatin,Incepta Pharmaceuticals,Heart Health
+Atova 10mg,Atorvastatin,Beximco Pharmaceuticals,High Fat
+Rovista 10mg,Rosuvastatin,Incepta Pharmaceuticals,Cholesterol Control
+Sustac 2.6mg,Nitroglycerin,Square Pharmaceuticals,Chest Pain
+Cardit 5mg,Isosorbide Mononitrate,Square Pharmaceuticals,Angina
+Concor 5mg,Bisoprolol Fumarate,Radiant Pharmaceuticals,Heart Beat Control
+Bisonl 5mg,Bisoprolol Fumarate,Incepta Pharmaceuticals,Heart Medicine
+Amlopin 5mg,Amlodipine Besylate,Square Pharmaceuticals,Blood Pressure Relief
+Camlodin 5mg,Amlodipine Besylate,Beximco Pharmaceuticals,Hypertension Control
+Zimax 500mg,Azithromycin 500mg,Square Pharmaceuticals,Bacterial Infection
+Cef-3 200mg,Cefixime 200mg,SEARLE,Pneumonia & Fever
+Fix-A 200mg,Cefixime 200mg,Incepta Pharmaceuticals,Severe Infection
+Vercef 250mg,Cefuroxime Axetil,Incepta Pharmaceuticals,Sore Throat
+Xith 500mg,Azithromycin 500mg,Incepta Pharmaceuticals,Bacterial Cold
+Provair 10mg,Montelukast 10mg,Incepta Pharmaceuticals,Breathing Problem
+Monocast 10mg,Montelukast 10mg,Beximco Pharmaceuticals,Asthma Control
+Toma 10mg,Montelukast 10mg,Incepta Pharmaceuticals,Allergy Relief
+B-50 Forte,Vitamin B-Complex,Square Pharmaceuticals,Vitamin Deficiency
+Aristovit-B,Vitamin B-Complex,Aristopharma,Nerve Weakness
+Neuro-B,Vitamin B1 B6 B12,Square Pharmaceuticals,Nerve Pain
+Ceevit 250mg,Vitamin C,Square Pharmaceuticals,Immunity Booster
+Calbo-D,Calcium + Vitamin D3,Square Pharmaceuticals,Bone Health
+Coralcal-D,Calcium + Vitamin D3,Incepta Pharmaceuticals,Calcium Supplement
+Ostocal-D,Calcium + Vitamin D3,SK+F,Strong Bones
+Filwel Gold,Multivitamin & Multimineral,Square Pharmaceuticals,General Weakness
+Gynavit,Multivitamin for Women,Square Pharmaceuticals,Female Health
+Revital,Multivitamin,Incepta Pharmaceuticals,Energy Booster
+Anaprox 250mg,Naproxen Sodium,Incepta Pharmaceuticals,Muscle Pain
+Napryn 250mg,Naproxen Sodium,Square Pharmaceuticals,Joint Pain
+Xeron 90mg,Etoricoxib 90mg,Square Pharmaceuticals,Bone Pain
+Eto 90mg,Etoricoxib 90mg,Incepta Pharmaceuticals,Arthritis Pain
+Flamigel,Diclofenac Sodium,Square Pharmaceuticals,Pain Relief Gel
+Viodin 10%,Povidone Iodine,Square Pharmaceuticals,Antiseptic Solution
+Savlon,Antiseptic,ACI Limited,Wound Cleaning
+Dettol,Antiseptic,Reckitt Benckiser,Disinfectant
+Burnsil,Silver Sulfadiazine,Square Pharmaceuticals,Burn Wound
+Clovate,Clobetasol Propionate,Square Pharmaceuticals,Eczema
+Econate,Econazole Nitrate,Square Pharmaceuticals,Fungal Infection
+Pevisone,Econazole + Triamcinolone,Janssen,Itching & Fungus
+Betnovate-N,Betamethasone + Neomycin,GSK,Skin Rashes
+Nystat,Nystatin,Square Pharmaceuticals,Mouth Infection
+Oralon,Miconazole,Incepta Pharmaceuticals,Oral Thrush
+Solas 100mg,Albendazole 400mg,Square Pharmaceuticals,Worm Infection
+Almex 400mg,Albendazole 400mg,Beximco Pharmaceuticals,Deworming
+Lomotil,Diphenoxylate,RPG Life Sciences,Severe Diarrhoea
+ORS-Saline,Oral Rehydration Salt,SMC,Dehydration
