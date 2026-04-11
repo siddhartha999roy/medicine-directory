@@ -1,42 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Search, Pill, Loader2 } from 'lucide-react';
+import { Search, Pill, Loader2, Globe } from 'lucide-react';
 import './index.css';
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [bdData, setBdData] = useState([]);
+  const [indiaData, setIndiaData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('BD'); // 'BD' অথবা 'India'
 
   useEffect(() => {
-    // ফাইলগুলো /public ফোল্ডারে থাকলে এভাবে এক্সেস করা যায়
-    const files = ['/indian-medicines.csv', '/bd-medicines.csv'];
-    let loadedData = [];
-    let completed = 0;
-
-    files.forEach(file => {
-      Papa.parse(file, {
+    // ফাইল লোড করার লজিক
+    const loadFile = (path, setter) => {
+      Papa.parse(path, {
         download: true,
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
-          if (results.data) loadedData = [...loadedData, ...results.data];
-          completed++;
-          if (completed === files.length) {
-            setData(loadedData);
-            setLoading(false);
-          }
+          if (results.data) setter(results.data);
         },
-        error: () => {
-          completed++;
-          if (completed === files.length) setLoading(false);
-        }
       });
-    });
+    };
+
+    // আপনার public ফোল্ডার থেকে ফাইল দুটি লোড হবে
+    loadFile('/bd-medicines.csv', setBdData);
+    loadFile('/indian-medicines.csv', setIndiaData);
+
+    // ছোট ডিলে দিয়ে লোডিং শেষ করা
+    setTimeout(() => setLoading(false), 1500);
   }, []);
 
-  const filteredData = data.filter(item => {
+  // বর্তমানে কোন ডাটা দেখাবে তা নির্ধারণ
+  const currentData = activeTab === 'BD' ? bdData : indiaData;
+
+  const filteredData = currentData.filter(item => {
     const name = item.name || item.Name || '';
     const generic = item.generic || item.Generic || '';
     return name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -47,26 +46,49 @@ const App = () => {
     <div className="container">
       <header>
         <h1><Pill size={32} /> Medi-Directory</h1>
+        
+        {/* সার্চ বক্স */}
         <div className="search-box">
           <Search className="icon" />
           <input 
             type="text" 
-            placeholder="Search Napa or Generic..." 
+            placeholder={`Search ${activeTab === 'BD' ? 'Bangladeshi' : 'Indian'} medicine...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
+
+        {/* দেশ পরিবর্তনের ট্যাব */}
+        <div className="tab-container">
+          <button 
+            className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`}
+            onClick={() => setActiveTab('BD')}
+          >
+            🇧🇩 Bangladesh
+          </button>
+          <button 
+            className={`tab-btn ${activeTab === 'India' ? 'active' : ''}`}
+            onClick={() => setActiveTab('India')}
+          >
+            🇮🇳 India
+          </button>
+        </div>
       </header>
+
       <main>
-        {loading ? <div className="loading"><Loader2 className="spinner" /> Loading Data...</div> : null}
-        {filteredData.map((med, index) => (
-          <div key={index} className="card">
-            <h3>{med.name || med.Name}</h3>
-            <p><strong>Generic:</strong> {med.generic || med.Generic || 'N/A'}</p>
-            <p><strong>Company:</strong> {med.company || med.Company || 'N/A'}</p>
-          </div>
-        ))}
-        {!loading && filteredData.length === 0 && <p className="no-results">No medicines found.</p>}
+        {loading ? (
+          <div className="loading"><Loader2 className="spinner" /> Updating Database...</div>
+        ) : filteredData.length > 0 ? (
+          filteredData.map((med, index) => (
+            <div key={index} className="card">
+              <h3>{med.name || med.Name}</h3>
+              <p><strong>Generic:</strong> {med.generic || med.Generic || 'N/A'}</p>
+              <p><strong>Company:</strong> {med.company || med.Company || 'N/A'}</p>
+            </div>
+          ))
+        ) : (
+          <div className="no-results">No medicines found in {activeTab} list.</div>
+        )}
       </main>
     </div>
   );
