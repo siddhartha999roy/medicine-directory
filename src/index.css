@@ -1,29 +1,22 @@
-.tab-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
+.clickable { cursor: pointer; transition: transform 0.2s; }
+.clickable:hover { transform: translateY(-5px); border-color: #1a73e8; }
+.generic-short { color: #5f6368; font-style: italic; }
 
-.tab-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #e0e0e0;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px;
 }
-
-.tab-btn.active {
-  background: #1a73e8;
-  color: white;
+.modal-content {
+  background: white; padding: 30px;
+  border-radius: 20px; width: 100%; max-width: 500px;
+  position: relative; animation: slideIn 0.3s ease;
 }
-
-.tab-btn:hover {
-  background: #d0d0d0;
-}
-
-.tab-btn.active:hover {
-  background: #1557b0;
-}
+.close-btn { position: absolute; top: 15px; right: 15px; border: none; background: none; cursor: pointer; }
+.modal-header { text-align: center; margin-bottom: 20px; }
+.modal-body p { margin: 15px 0; font-size: 18px; }
+.disclaimer { margin-top: 30px; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
+@keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
