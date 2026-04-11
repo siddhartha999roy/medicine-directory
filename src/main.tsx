@@ -25,7 +25,7 @@ const App = () => {
     };
     loadFile('bd-medicines.csv', setBdData);
     loadFile('indian-medicines.csv', setIndiaData);
-    setTimeout(() => setLoading(false), 1200);
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   const currentData = activeTab === 'BD' ? bdData : indiaData;
@@ -37,13 +37,33 @@ const App = () => {
   }).slice(0, 100);
 
   const findNearbyPharmacy = () => {
-    const query = activeTab === 'BD' ? "pharmacy near me" : "chemist near me";
-    window.open(`https://www.google.com/maps/search/${query}`, '_blank');
+    window.open("https://www.google.com/maps/search/pharmacy+near+me", '_blank');
   };
 
   return (
-    <div className="container">
-      <button className="nearby-btn" onClick={findNearbyPharmacy}>
+    <div className="container" style={{ position: 'relative', minHeight: '100vh' }}>
+      {/* Nearby Pharmacy Button - Fixed at Top Right */}
+      <button 
+        className="nearby-btn" 
+        onClick={findNearbyPharmacy}
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          zIndex: 9999,
+          backgroundColor: '#34a853',
+          color: 'white',
+          border: 'none',
+          padding: '12px 20px',
+          borderRadius: '50px',
+          fontWeight: 'bold',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          cursor: 'pointer',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+        }}
+      >
         <MapPin size={18} />
         <span>Nearby Pharmacy</span>
       </button>
@@ -96,13 +116,13 @@ const App = () => {
             <div className="modal-body">
               <div className="info-row"><strong>Generic:</strong> <span>{selectedMed.generic || selectedMed.Generic}</span></div>
               <div className="info-row"><strong>Company:</strong> <span>{selectedMed.company || selectedMed.Company}</span></div>
-              <div className="info-row"><strong>Indication:</strong> <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span></div>
+              <div className="info-row"><strong>Main Use:</strong> <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span></div>
               <div className="disclaimer-box">
                 <AlertCircle size={20} className="alert-icon" />
                 <div className="disclaimer-text">
-                  <p>* Consult a doctor before use.</p>
+                  <p>* This information is for educational purposes. Consult a doctor before use.</p>
                   <p className="native-lang">
-                    {activeTab === 'BD' ? '* ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* उपयोग से पहले डॉक्टर से सलाह लें।'}
+                    {activeTab === 'BD' ? '* এই তথ্যটি শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে। ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। उपयोग करने से पहले डॉक्टर से सलाह लें।'}
                   </p>
                 </div>
               </div>
