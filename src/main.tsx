@@ -34,43 +34,19 @@ const App = () => {
     const name = (item.name || item.Name || '').toString().toLowerCase();
     const generic = (item.generic || item.Generic || '').toString().toLowerCase();
     return name.includes(searchTerm.toLowerCase()) || generic.includes(searchTerm.toLowerCase());
-  }).slice(0, 100);
-
-  const findNearbyPharmacy = () => {
-    window.open("https://www.google.com/maps/search/pharmacy+near+me", '_blank');
-  };
+  }).slice(0, 50);
 
   return (
-    <div className="container" style={{ position: 'relative', minHeight: '100vh' }}>
-      {/* Nearby Pharmacy Button - Fixed at Top Right */}
-      <button 
-        className="nearby-btn" 
-        onClick={findNearbyPharmacy}
-        style={{
-          position: 'fixed',
-          top: '20px',
-          right: '20px',
-          zIndex: 9999,
-          backgroundColor: '#34a853',
-          color: 'white',
-          border: 'none',
-          padding: '12px 20px',
-          borderRadius: '50px',
-          fontWeight: 'bold',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          cursor: 'pointer',
-          boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
-        }}
-      >
+    <div className="container">
+      {/* Nearby Pharmacy Button */}
+      <button className="nearby-btn" onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me', '_blank')}>
         <MapPin size={18} />
         <span>Nearby Pharmacy</span>
       </button>
 
       <header>
         <div className="brand">
-          <Pill size={36} className="logo-icon" />
+          <Pill size={32} className="logo-icon" />
           <h1>Medi-Directory</h1>
         </div>
         <div className="search-box">
@@ -105,6 +81,7 @@ const App = () => {
         )}
       </main>
 
+      {/* Pop-up Modal */}
       {selectedMed && (
         <div className="modal-overlay" onClick={() => setSelectedMed(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -120,9 +97,9 @@ const App = () => {
               <div className="disclaimer-box">
                 <AlertCircle size={20} className="alert-icon" />
                 <div className="disclaimer-text">
-                  <p>* This information is for educational purposes. Consult a doctor before use.</p>
+                  <p>* Consult a doctor before use.</p>
                   <p className="native-lang">
-                    {activeTab === 'BD' ? '* এই তথ্যটি শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে। ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है। उपयोग करने से पहले डॉक्टर से सलाह लें।'}
+                    {activeTab === 'BD' ? '* ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* उपयोग से पहले डॉक्टर से सलाह लें।'}
                   </p>
                 </div>
               </div>
