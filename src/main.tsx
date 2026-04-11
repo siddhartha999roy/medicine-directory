@@ -7,25 +7,37 @@ import './index.css';
 const App = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // এটি ইন্ডিয়ান এবং বাংলাদেশি দুই ডাটাই লোড করার চেষ্টা করবে
     const files = ['/indian-medicines.csv', '/bd-medicines.csv'];
+    let loadedCount = 0;
+
     files.forEach(file => {
       Papa.parse(file, {
         download: true,
         header: true,
+        skipEmptyLines: true,
         complete: (results) => {
-          setData(prev => [...prev, ...results.data]);
+          if (results.data) {
+            setData(prev => [...prev, ...results.data]);
+          }
+          loadedCount++;
+          if (loadedCount === files.length) setLoading(false);
         },
+        error: () => {
+          loadedCount++;
+          if (loadedCount === files.length) setLoading(false);
+        }
       });
     });
   }, []);
 
-  const filteredData = data.filter(item => 
-    item.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.generic?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = data.filter(item => {
+    if (!item.name) return false;
+    return item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+           (item.generic && item.generic.toLowerCase().includes(searchTerm.toLowerCase()));
+  });
 
   return (
     <div className="container">
@@ -35,17 +47,20 @@ const App = () => {
           <Search className="icon" />
           <input 
             type="text" 
-            placeholder="Search medicine or generic..." 
+            placeholder="Search Napa or Any Medicine..." 
+            value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </header>
       <main>
+        {loading ? <p style={{textAlign: 'center'}}>Loading medicines...</p> : null}
+        {!loading && filteredData.length === 0 ? <p style={{textAlign: 'center'}}>No medicines found.</p> : null}
         {filteredData.map((med, index) => (
           <div key={index} className="card">
-            <h3>{med.name}</h3>
-            <p><strong>Generic:</strong> {med.generic}</p>
-            <p><strong>Company:</strong> {med.company}</p>
+            <h3>{med.name || 'Unknown Name'}</h3>
+            <p><strong>Generic:</strong> {med.generic || 'N/A'}</p>
+            <p><strong>Company:</strong> {med.company || 'N/A'}</p>
           </div>
         ))}
       </main>
