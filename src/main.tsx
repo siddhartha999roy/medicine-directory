@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Search, Pill } from 'lucide-react';
+import { Search, Pill, Activity } from 'lucide-react';
 import './index.css';
 
 const App = () => {
@@ -10,59 +10,83 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const files = ['/indian-medicines.csv', '/bd-medicines.csv'];
-    let loadedCount = 0;
+    // এখানে আপনার গিটহাবের ফাইলগুলোর নাম হুবহু মিলতে হবে
+    const files = ['bd-medicines.csv', 'indian-medicines.csv'];
+    let loadedData = [];
+    let processedFiles = 0;
 
     files.forEach(file => {
-      Papa.parse(file, {
+      Papa.parse(`/${file}`, {
         download: true,
         header: true,
         skipEmptyLines: true,
         complete: (results) => {
-          if (results.data) {
-            setData(prev => [...prev, ...results.data]);
+          console.log(`Loaded ${file}:`, results.data.length);
+          loadedData = [...loadedData, ...results.data];
+          processedFiles++;
+          if (processedFiles === files.length) {
+            setData(loadedData);
+            setLoading(false);
           }
-          loadedCount++;
-          if (loadedCount === files.length) setLoading(false);
         },
-        error: () => {
-          loadedCount++;
-          if (loadedCount === files.length) setLoading(false);
+        error: (err) => {
+          console.error(`Error loading ${file}:`, err);
+          processedFiles++;
+          if (processedFiles === files.length) setLoading(false);
         }
       });
     });
   }, []);
 
+  // সার্চ লজিক
   const filteredData = data.filter(item => {
-    if (!item.name) return false;
-    return item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           (item.generic && item.generic.toLowerCase().includes(searchTerm.toLowerCase()));
+    const search = searchTerm.toLowerCase();
+    return (
+      item.name?.toLowerCase().includes(search) ||
+      item.generic?.toLowerCase().includes(search) ||
+      item.brand?.toLowerCase().includes(search)
+    );
   });
 
   return (
     <div className="container">
       <header>
-        <h1><Pill size={32} /> Medi-Directory</h1>
+        <h1 style={{color: '#2c3e50', display: 'flex', alignItems: 'center', gap: '10px'}}>
+          <Pill color="#3498db" size={35} /> Medi-Directory
+        </h1>
+        <p style={{fontSize: '14px', color: '#7f8c8d', marginBottom: '20px'}}>Siddhartha's Medicine Database</p>
         <div className="search-box">
           <Search className="icon" />
           <input 
             type="text" 
-            placeholder="Search Napa or Any Medicine..." 
+            placeholder="Search Napa, Paracetamol or any medicine..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </header>
+
       <main>
-        {loading ? <p style={{textAlign: 'center'}}>Loading medicines...</p> : null}
-        {!loading && filteredData.length === 0 ? <p style={{textAlign: 'center'}}>No medicines found.</p> : null}
-        {filteredData.map((med, index) => (
-          <div key={index} className="card">
-            <h3>{med.name || 'Unknown Name'}</h3>
-            <p><strong>Generic:</strong> {med.generic || 'N/A'}</p>
-            <p><strong>Company:</strong> {med.company || 'N/A'}</p>
+        {loading ? (
+          <div style={{textAlign: 'center', padding: '50px'}}>
+             <Activity className="animate-spin" />
+             <p>Loading database... Please wait</p>
           </div>
-        ))}
+        ) : filteredData.length > 0 ? (
+          <div className="grid">
+            {filteredData.slice(0, 100).map((med, index) => (
+              <div key={index} className="card">
+                <h3>{med.name || med.brand || 'No Name'}</h3>
+                <p><strong>Generic:</strong> {med.generic || 'N/A'}</p>
+                <p><strong>Company:</strong> {med.company || 'N/A'}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{textAlign: 'center', padding: '50px', color: '#95a5a6'}}>
+            {searchTerm ? "No medicines found!" : "Start typing to search..."}
+          </div>
+        )}
       </main>
     </div>
   );
