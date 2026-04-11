@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div className="container">
-      {/* Nearby Pharmacy Button */}
+      {/* Nearby Pharmacy Button - Right Corner */}
       <button className="nearby-btn" onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me', '_blank')}>
         <MapPin size={18} />
         <span>Nearby Pharmacy</span>
