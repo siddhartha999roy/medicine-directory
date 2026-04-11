@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Search, Pill, Loader2, X, AlertCircle, MapPin, Phone } from 'lucide-react';
+import { Search, Pill, Loader2, X, AlertCircle, MapPin } from 'lucide-react';
 import './index.css';
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
     };
     loadFile('bd-medicines.csv', setBdData);
     loadFile('indian-medicines.csv', setIndiaData);
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), 1200);
   }, []);
 
   const currentData = activeTab === 'BD' ? bdData : indiaData;
@@ -36,15 +36,13 @@ const App = () => {
     return name.includes(searchTerm.toLowerCase()) || generic.includes(searchTerm.toLowerCase());
   }).slice(0, 100);
 
-  // Nearby Pharmacy সার্চ করার ফাংশন
   const findNearbyPharmacy = () => {
-    const url = "https://www.google.com/maps/search/pharmacy+near+me/";
-    window.open(url, '_blank');
+    const query = activeTab === 'BD' ? "pharmacy near me" : "chemist near me";
+    window.open(`https://www.google.com/maps/search/${query}`, '_blank');
   };
 
   return (
     <div className="container">
-      {/* Nearby Pharmacy Floating Button - Right Top Corner */}
       <button className="nearby-btn" onClick={findNearbyPharmacy}>
         <MapPin size={18} />
         <span>Nearby Pharmacy</span>
@@ -52,7 +50,7 @@ const App = () => {
 
       <header>
         <div className="brand">
-          <Pill size={32} className="logo-icon" />
+          <Pill size={36} className="logo-icon" />
           <h1>Medi-Directory</h1>
         </div>
         <div className="search-box">
@@ -65,14 +63,14 @@ const App = () => {
           />
         </div>
         <div className="tab-container">
-          <button className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`} onClick={() => setActiveTab('BD')}>🇧🇩 BD</button>
+          <button className={`tab-btn ${activeTab === 'BD' ? 'active' : ''}`} onClick={() => setActiveTab('BD')}>🇧🇩 Bangladesh</button>
           <button className={`tab-btn ${activeTab === 'India' ? 'active' : ''}`} onClick={() => setActiveTab('India')}>🇮🇳 India</button>
         </div>
       </header>
 
       <main>
         {loading ? (
-          <div className="loading"><Loader2 className="spinner" /> Loading...</div>
+          <div className="loading"><Loader2 className="spinner" /> Loading Database...</div>
         ) : (
           <div className="med-grid">
             {filteredData.map((med, index) => (
@@ -87,7 +85,6 @@ const App = () => {
         )}
       </main>
 
-      {/* Pop-up Modal */}
       {selectedMed && (
         <div className="modal-overlay" onClick={() => setSelectedMed(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -99,13 +96,13 @@ const App = () => {
             <div className="modal-body">
               <div className="info-row"><strong>Generic:</strong> <span>{selectedMed.generic || selectedMed.Generic}</span></div>
               <div className="info-row"><strong>Company:</strong> <span>{selectedMed.company || selectedMed.Company}</span></div>
-              <div className="info-row"><strong>Main Use:</strong> <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span></div>
+              <div className="info-row"><strong>Indication:</strong> <span className="indication-highlight">{selectedMed.indication || 'General Use'}</span></div>
               <div className="disclaimer-box">
                 <AlertCircle size={20} className="alert-icon" />
                 <div className="disclaimer-text">
                   <p>* Consult a doctor before use.</p>
                   <p className="native-lang">
-                    {activeTab === 'BD' ? '* ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* डॉक्टर से सलाह लें।'}
+                    {activeTab === 'BD' ? '* ব্যবহারের আগে অবশ্যই ডাক্তারের পরামর্শ নিন।' : '* उपयोग से पहले डॉक्टर से सलाह लें।'}
                   </p>
                 </div>
               </div>
