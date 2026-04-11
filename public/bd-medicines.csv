@@ -1,16 +1,61 @@
-Name,Generic,Company,Indications
-Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals,Fever and mild to moderate pain relief
-Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals,Gastric acidity and stomach ulcer
-Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals,Fever and body pain
-Maxpro 20mg,Esomeprazole 20mg,Renata Limited,Gastritis and acid reflux relief
-Sergel 20mg,Esomeprazole 20mg,Healthcare Pharmaceuticals,Heartburn and acid indigestion
-Fexo 120mg,Fexofenadine 120mg,Square Pharmaceuticals,Allergy and cold symptoms
-Monas 10mg,Montelukast 10mg,ACME Laboratories,Asthma and allergic rhinitis
-Alatrol 10mg,Cetirizine 10mg,Square Pharmaceuticals,Allergies and sneezing
-Finix 20mg,Rabeprazole 20mg,Opsonin Pharma,Gastric and peptic ulcer
-Entacyd Plus,Magnesium + Aluminum Hydroxide,Square Pharmaceuticals,Acidity and gas
-Losectil 20mg,Omeprazole 20mg,SK+F (Skaef),Stomach acid and heartburn
-Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals,Gastric ulcer and acidity
-Rivotril 0.5mg,Clonazepam 0.5mg,Radiant Pharmaceuticals,Anxiety and sleep disorders
-Xeldrin 20mg,Esomeprazole 20mg,Aristopharma,Acid reflux and heartburn
-Bizoran 5/20,Amlodipine + Olmesartan,Square Pharmaceuticals,High blood pressure
+name,generic,company
+Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals
+Napa Extend,Paracetamol 665mg,Beximco Pharmaceuticals
+Napa Extra,Paracetamol & Caffeine,Beximco Pharmaceuticals
+Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals
+Ace Plus,Paracetamol & Caffeine,Square Pharmaceuticals
+Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals
+Seclo 40mg,Omeprazole 40mg,Square Pharmaceuticals
+Sergel 20mg,Esomeprazole 20mg,Healthcare Pharmaceuticals
+Sergel 40mg,Esomeprazole 40mg,Healthcare Pharmaceuticals
+Maxpro 20mg,Esomeprazole 20mg,Renata Limited
+Maxpro 40mg,Esomeprazole 40mg,Renata Limited
+Fexo 120mg,Fexofenadine 120mg,Healthcare Pharmaceuticals
+Fexo 180mg,Fexofenadine 180mg,Healthcare Pharmaceuticals
+Fenadin 120mg,Fexofenadine 120mg,Renata Limited
+Alatrol 10mg,Cetirizine 10mg,Square Pharmaceuticals
+Histacin,Chlorpheniramine,ACI Limited
+Monas 10mg,Montelukast 10mg,ACME Laboratories
+Monas 5mg,Montelukast 5mg,ACME Laboratories
+Zithrin 500mg,Azithromycin 500mg,Square Pharmaceuticals
+Azithrocin 500mg,Azithromycin 500mg,Beximco Pharmaceuticals
+Ciprocin 500mg,Ciprofloxacin 500mg,Square Pharmaceuticals
+Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals
+Pantonix 40mg,Pantoprazole 40mg,Incepta Pharmaceuticals
+Esolok 20mg,Esomeprazole 20mg,Incepta Pharmaceuticals
+Losectil 20mg,Omeprazole 20mg,SK+F
+Nexum 20mg,Esomeprazole 20mg,SK+F
+Deslor 5mg,Desloratadine 5mg,Aristopharma
+Tofen 1mg,Ketotifen,Incepta Pharmaceuticals
+Antacid,Aluminum + Magnesium,Any Company
+Gavisol,Sodium Alginate,SK+F
+Entacyd,Antacid,Square Pharmaceuticals
+Amodis 400mg,Metronidazole 400mg,Square Pharmaceuticals
+Flagyl 400mg,Metronidazole 400mg,Sanofi
+Filmet 400mg,Metronidazole 400mg,Beximco Pharmaceuticals
+Rivotril 0.5mg,Clonazepam 0.5mg,Radiant Pharmaceuticals
+Pase 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals
+Disopan 0.5mg,Clonazepam 0.5mg,Incepta Pharmaceuticals
+Xeldrin 20mg,Esomeprazole 20mg,Aristopharma
+Odmon 10mg,Montelukast 10mg,Aristopharma
+Bizoran 5/20,Amlodipine + Olmesartan,Square Pharmaceuticals
+Camlosart 5/20,Amlodipine + Olmesartan,Incepta Pharmaceuticals
+Angilock 50mg,Losartan Potassium,Square Pharmaceuticals
+Osartil 50mg,Losartan Potassium,Incepta Pharmaceuticals
+Ecoriv 10mg,Rivaroxaban,Incepta Pharmaceuticals
+Xarelto 10mg,Rivaroxaban,Radiant Pharmaceuticals
+Avolac Syrup,Lactulose,Incepta Pharmaceuticals
+Osmo-Lax,Polyethylene Glycol,Beximco Pharmaceuticals
+Dextrim,Dextromethorphan,Square Pharmaceuticals
+Tusca,Guaifenesin,Incepta Pharmaceuticals
+Adryl,Diphenhydramine,Square Pharmaceuticals
+Fenofill 200mg,Fenofibrate,Incepta Pharmaceuticals
+Lipirex 10mg,Atorvastatin,Incepta Pharmaceuticals
+Atova 10mg,Atorvastatin,Beximco Pharmaceuticals
+Rovista 10mg,Rosuvastatin,Incepta Pharmaceuticals
+Sustac 2.6mg,Nitroglycerin,Square Pharmaceuticals
+Cardit 5mg,Isosorbide Mononitrate,Square Pharmaceuticals
+Concor 5mg,Bisoprolol Fumarate,Radiant Pharmaceuticals
+Bisonl 5mg,Bisoprolol Fumarate,Incepta Pharmaceuticals
+Amlopin 5mg,Amlodipine Besylate,Square Pharmaceuticals
+Camlodin 5mg,Amlodipine Besylate,Beximco Pharmaceuticals
