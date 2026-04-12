@@ -1,31 +1,16 @@
 name,generic,company,indication,image
-Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals,Fever & Pain,
-Napa Extend,Paracetamol 665mg,Beximco Pharmaceuticals,Chronic Pain,
-Napa Extra,Paracetamol & Caffeine,Beximco Pharmaceuticals,Severe Headache,
-Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals,Fever & Body Ache,
-Ace Plus,Paracetamol & Caffeine,Square Pharmaceuticals,Migraine & Pain,
-Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals,Gastric & Heartburn,
-Seclo 40mg,Omeprazole 40mg,Square Pharmaceuticals,Acid Reflux,
-Sergel 20mg,Esomeprazole 20mg,Healthcare Pharmaceuticals,Gastritis,
-Sergel 40mg,Esomeprazole 40mg,Healthcare Pharmaceuticals,Peptic Ulcer,
-Maxpro 20mg,Esomeprazole 20mg,Renata Limited,Gastric Acidity,
-Maxpro 40mg,Esomeprazole 40mg,Renata Limited,Stomach Ulcer,
-Fexo 120mg,Fexofenadine 120mg,Healthcare Pharmaceuticals,Allergy & Sneezing,
-Fexo 180mg,Fexofenadine 180mg,Healthcare Pharmaceuticals,Severe Allergy,
-Fenadin 120mg,Fexofenadine 120mg,Renata Limited,Running Nose,
-Alatrol 10mg,Cetirizine 10mg,Square Pharmaceuticals,Skin Allergy,
-Histacin,Chlorpheniramine,ACI Limited,Common Cold,
-Monas 10mg,Montelukast 10mg,ACME Laboratories,Asthma & Breathing,
-Monas 5mg,Montelukast 5mg,ACME Laboratories,Childhood Asthma,
-Zithrin 500mg,Azithromycin 500mg,Square Pharmaceuticals,Bacterial Infection,
-Azithrocin 500mg,Azithromycin 500mg,Beximco Pharmaceuticals,Antibiotic,
-Ciprocin 500mg,Ciprofloxacin 500mg,Square Pharmaceuticals,Typhoid & Infection,
-Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals,Acidity Control,
-Pantonix 40mg,Pantoprazole 40mg,Incepta Pharmaceuticals,Severe Gastric,
-Esolok 20mg,Esomeprazole 20mg,Incepta Pharmaceuticals,Gastric Problems,
-Losectil 20mg,Omeprazole 20mg,SK+F,Stomach Pain,
-Nexum 20mg,Esomeprazole 20mg,SK+F,Acid Neutralizer,
-Deslor 5mg,Desloratadine 5mg,Aristopharma,Allergic Rhinitis,
-Tofen 1mg,Ketotifen,Incepta Pharmaceuticals,Cough & Cold,
-Antacid,Aluminum + Magnesium,Any Company,Indigestion,
-Gavisol,Sodium Alginate,SK+F,Heartburn Relief,
+Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals,Fever & Pain,https://www.beximcopharma.com/images/stories/virtuemart/product/Napa-500mg-tablet.png
+Napa Extend,Paracetamol 665mg,Beximco Pharmaceuticals,Chronic Pain,https://www.beximcopharma.com/images/stories/virtuemart/product/Napa-Extend-tablet.png
+Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals,Fever & Body Ache,https://www.squarepharma.com.bd/products/Ace-500.jpg
+Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals,Gastric & Heartburn,https://www.squarepharma.com.bd/products/Seclo-20.jpg
+Sergel 20mg,Esomeprazole 20mg,Healthcare Pharmaceuticals,Gastritis,https://hplbd.com/images/products/Sergel-20.png
+Maxpro 20mg,Esomeprazole 20mg,Renata Limited,Gastric Acidity,https://renata-ltd.com/wp-content/uploads/2021/02/Maxpro-20.jpg
+Fexo 120mg,Fexofenadine 120mg,Healthcare Pharmaceuticals,Allergy,https://hplbd.com/images/products/Fexo-120.png
+Alatrol 10mg,Cetirizine 10mg,Square Pharmaceuticals,Skin Allergy,https://www.squarepharma.com.bd/products/Alatrol.jpg
+Monas 10mg,Montelukast 10mg,ACME Laboratories,Asthma,https://acmeglobal.com/wp-content/uploads/2019/01/Monas-10.jpg
+Zithrin 500mg,Azithromycin 500mg,Square Pharmaceuticals,Bacterial Infection,https://www.squarepharma.com.bd/products/Zithrin-500.jpg
+Pantonix 20mg,Pantoprazole 20mg,Incepta Pharmaceuticals,Acidity Control,https://www.inceptapharma.com/images/products/pantonix-20.jpg
+Esolok 20mg,Esomeprazole 20mg,Incepta Pharmaceuticals,Gastric Problems,https://www.inceptapharma.com/images/products/esolok-20.jpg
+Losectil 20mg,Omeprazole 20mg,SK+F,Stomach Pain,https://www.skfbd.com/images/products/losectil.jpg
+Nexum 20mg,Esomeprazole 20mg,SK+F,Acid Neutralizer,https://www.skfbd.com/images/products/nexum.jpg
+Deslor 5mg,Desloratadine 5mg,Aristopharma,Allergic Rhinitis,https://aristopharma.com/images/products/Deslor.jpg
