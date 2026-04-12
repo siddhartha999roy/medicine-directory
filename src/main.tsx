@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Pill, Search, Loader2, AlertCircle, X, MapPin, Mic, Heart } from 'lucide-react';
+import { Pill, Search, Loader2, AlertCircle, X, MapPin } from 'lucide-react';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -9,116 +9,115 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState('BD');
   const [selected, setSelected] = useState(null);
-  const [favorites, setFavorites] = useState(() => JSON.parse(localStorage.getItem('medFavs') || '[]'));
 
-  // ডাটা লোড করার লজিক (আগের মতোই)
   useEffect(() => {
     setLoading(true);
     const file = tab === 'BD' ? '/bd-medicines.csv' : '/indian-medicines.csv';
     Papa.parse(file, {
-      download: true, header: true, skipEmptyLines: true,
-      complete: (r) => { setData(r.data); setLoading(false); },
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        setData(results.data);
+        setLoading(false);
+      },
       error: () => setLoading(false)
     });
   }, [tab]);
 
-  // ফেভারিট সেভ করার লজিক
-  useEffect(() => {
-    localStorage.setItem('medFavs', JSON.stringify(favorites));
-  }, [favorites]);
-
-  const toggleFav = (m) => {
-    const isFav = favorites.some(f => (f.name || f.Name) === (m.name || m.Name));
-    if (isFav) setFavorites(favorites.filter(f => (f.name || f.Name) !== (m.name || m.Name)));
-    else setFavorites([...favorites, m]);
-  };
-
-  // ২. ভয়েস সার্চ লজিক
-  const startVoiceSearch = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return alert("Browser does not support voice search");
-    const recognition = new SpeechRecognition();
-    recognition.onresult = (event) => setSearchTerm(event.results[0][0].transcript);
-    recognition.start();
-  };
-
-  const filtered = data.filter(i => (i.name || i.Name || '').toLowerCase().includes(searchTerm.toLowerCase())).slice(0, 50);
+  const filteredData = data.filter(item => 
+    (item.name || item.Name || '').toLowerCase().includes(searchTerm.toLowerCase())
+  ).slice(0, 50);
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '15px', fontFamily: 'sans-serif' }}>
       
-      {/* 🟢 ৩. ফেভারিট ফিল্টার ও ৪. ম্যাপ বাটন */}
-      <div style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 100 }}>
-        <button onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me')} style={{ background: '#10b981', color: 'white', padding: '15px', borderRadius: '50px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', cursor: 'pointer' }}><MapPin /></button>
-        <button onClick={() => setSearchTerm(favorites.length > 0 ? favorites[0].name : '')} style={{ background: '#ec4899', color: 'white', padding: '15px', borderRadius: '50px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', cursor: 'pointer' }}><Heart fill="white" size={24} /></button>
+      {/* 🟢 Nearby Pharmacy Button */}
+      <div 
+        onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me', '_blank')}
+        style={{ position: 'fixed', bottom: '30px', right: '20px', backgroundColor: '#10b981', color: 'white', padding: '14px 22px', borderRadius: '50px', zIndex: 100, cursor: 'pointer', boxShadow: '0 10px 25px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
+        <MapPin size={22} />
+        <span>Nearby Pharmacy</span>
       </div>
 
-      <header style={{ textAlign: 'center', marginBottom: '20px' }}>
+      <header style={{ textAlign: 'center', marginBottom: '25px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
           <Pill size={35} color="#2563eb" />
-          <h1 style={{ fontSize: '28px', fontWeight: 'bold', margin: 0, color: '#1e293b' }}>Medi-Directory Plus</h1>
+          <h1 style={{ fontSize: '28px', fontWeight: 'bold', margin: 0, color: '#1e293b' }}>Medi-Directory</h1>
         </div>
         
-        {/* সার্চ বার ও ভয়েস সার্চ */}
         <div style={{ position: 'relative', maxWidth: '500px', margin: '0 auto' }}>
-          <Search style={{ position: 'absolute', left: '15px', top: '14px' }} size={20} color="#64748b" />
+          <Search size={20} color="#64748b" style={{ position: 'absolute', left: '15px', top: '15px' }} />
           <input 
-            style={{ width: '100%', padding: '14px 80px 14px 45px', borderRadius: '15px', border: '2px solid #e2e8f0', fontSize: '16px', outline: 'none', background: 'white' }}
-            placeholder={tab === 'BD' ? "ওষুধের নাম..." : "Search medicine..."} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ width: '100%', padding: '14px 20px 14px 45px', borderRadius: '15px', border: '2px solid #e2e8f0', fontSize: '16px', outline: 'none', background: 'white' }}
+            placeholder={tab === 'BD' ? "ওষুধের নাম লিখুন..." : "Search medicine name..."}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Mic onClick={startVoiceSearch} style={{ position: 'absolute', right: '15px', top: '14px', cursor: 'pointer', color: '#2563eb' }} size={22} />
         </div>
 
-        {/* BD/India ট্যাব */}
         <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '12px' }}>
-          <button onClick={() => setTab('BD')} style={{ padding: '10px 25px', borderRadius: '10px', border: 'none', background: tab === 'BD' ? '#2563eb' : 'white', color: tab === 'BD' ? 'white' : '#64748b', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>🇧🇩 BD</button>
+          <button onClick={() => setTab('BD')} style={{ padding: '10px 25px', borderRadius: '10px', border: 'none', background: tab === 'BD' ? '#2563eb' : 'white', color: tab === 'BD' ? 'white' : '#64748b', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>🇧🇩 Bangladesh</button>
           <button onClick={() => setTab('India')} style={{ padding: '10px 25px', borderRadius: '10px', border: 'none', background: tab === 'India' ? '#2563eb' : 'white', color: tab === 'India' ? 'white' : '#64748b', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>🇮🇳 India</button>
         </div>
       </header>
 
-      <main style={{ maxWidth: '600px', margin: '0 auto', paddingBottom: '100px' }}>
-        {loading ? <div style={{ textAlign: 'center' }}><Loader2 className="animate-spin" size={40} style={{ margin: 'auto' }} /></div> : (
+      <main style={{ maxWidth: '600px', margin: '0 auto', paddingBottom: '80px' }}>
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '50px' }}><Loader2 className="animate-spin" style={{ margin: '0 auto' }} /></div>
+        ) : (
           <div style={{ display: 'grid', gap: '12px' }}>
-            {filtered.map((m, idx) => (
-              <div key={idx} onClick={() => setSelected(m)} style={{ background: 'white', padding: '18px', borderRadius: '15px', borderLeft: '6px solid #2563eb', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  <h3 style={{ margin: '0 0 5px 0' }}>{m.name || m.Name}</h3>
-                  <p style={{ margin: 0, fontSize: '14px', color: '#64748b' }}>{m.generic || m.Generic}</p>
-                </div>
-                <Heart onClick={(e) => { e.stopPropagation(); toggleFav(m); }} fill={favorites.some(f => (f.name || f.Name) === (m.name || m.Name)) ? "#ef4444" : "none"} color="#ef4444" size={24} />
+            {filteredData.map((m, idx) => (
+              <div key={idx} onClick={() => setSelected(m)} style={{ background: 'white', padding: '18px', borderRadius: '15px', borderLeft: '6px solid #2563eb', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', cursor: 'pointer' }}>
+                <h3 style={{ margin: '0 0 5px 0', fontSize: '18px' }}>{m.name || m.Name}</h3>
+                <p style={{ margin: 0, fontSize: '14px', color: '#64748b' }}>{m.generic || m.Generic}</p>
               </div>
             ))}
           </div>
         )}
       </main>
 
-      {/* ৫. আধুনিক পপ-আপ (ছবিসহ) */}
+      {/* 🔴 Detailed Pop-up with Image Support */}
       {selected && (
         <div onClick={() => setSelected(null)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
-          <div onClick={e => e.stopPropagation()} style={{ background: 'white', borderRadius: '30px', width: '100%', maxWidth: '450px', overflow: 'hidden', position: 'relative' }}>
-            <div style={{ height: '160px', background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #e2e8f0' }}>
-               <Pill size={70} color="#cbd5e1" />
-               <p style={{ position: 'absolute', color: '#94a3b8', fontSize: '12px', bottom: '170px' }}>[Medicine Image Preview]</p>
-            </div>
-            <div style={{ padding: '25px' }}>
-              <X onClick={() => setSelected(null)} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer', background: 'white', borderRadius: '50%', padding: '5px' }} />
-              <h2 style={{ margin: 0, color: '#1e293b' }}>{selected.name || selected.Name}</h2>
-              <p style={{ color: '#2563eb', fontWeight: 'bold', margin: '5px 0 15px 0' }}>{selected.generic || selected.Generic}</p>
-              <p style={{ fontSize: '14px' }}><strong>Company:</strong> {selected.company || selected.Company}</p>
-              
-              {/* ১. সেই আগের সতর্কবার্তা (Save আছে) */}
-              <div style={{ background: '#fff1f2', padding: '15px', borderRadius: '15px', borderLeft: '5px solid #e11d48', marginTop: '15px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#e11d48', fontWeight: 'bold', marginBottom: '8px' }}>
-                  <AlertCircle size={18} /> <span>সতর্কতা / Important</span>
+          <div onClick={e => e.stopPropagation()} style={{ background: 'white', padding: '30px', borderRadius: '25px', width: '100%', maxWidth: '450px', position: 'relative', overflowY: 'auto', maxHeight: '90vh' }}>
+            <X onClick={() => setSelected(null)} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer' }} />
+            
+            {/* 📸 Medicine Image Display */}
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+              {(selected.image || selected.Image) ? (
+                <img 
+                  src={selected.image || selected.Image} 
+                  alt="Medicine" 
+                  style={{ width: '120px', height: '120px', objectFit: 'contain', borderRadius: '15px', border: '1px solid #e2e8f0', padding: '5px' }} 
+                />
+              ) : (
+                <div style={{ width: '100px', height: '100px', background: '#f1f5f9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+                  <Pill size={50} color="#cbd5e1" />
                 </div>
-                {tab === 'BD' ? (
-                  <p style={{ fontSize: '13px', margin: 0, color: '#881337' }}>ডাক্তারের পরামর্শ ছাড়া সেবন করবেন না। (Consult a doctor before use)</p>
-                ) : (
-                  <p style={{ fontSize: '13px', margin: 0, color: '#881337' }}>बिना डॉक्टर की सलाह के इसे न लें। (Do not take without advice)</p>
-                )}
-              </div>
-              <button onClick={() => setSelected(null)} style={{ width: '100%', marginTop: '20px', padding: '14px', background: '#2563eb', color: 'white', borderRadius: '12px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>Close / বন্ধ করুন</button>
+              )}
             </div>
+
+            <h2 style={{ marginTop: 0, color: '#1e293b', textAlign: 'center' }}>{selected.name || selected.Name}</h2>
+            <div style={{ margin: '15px 0' }}>
+               <p style={{ marginBottom: '8px' }}><strong>Generic:</strong> {selected.generic || selected.Generic}</p>
+               <p style={{ marginBottom: '8px' }}><strong>Company:</strong> {selected.company || selected.Company}</p>
+            </div>
+
+            {/* ⚠️ Warning Section */}
+            <div style={{ marginTop: '20px', padding: '15px', background: '#fff1f2', borderRadius: '12px', borderLeft: '4px solid #e11d48' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#e11d48', fontWeight: 'bold', marginBottom: '10px' }}>
+                <AlertCircle size={18} />
+                <span>সতর্কতা / Important</span>
+              </div>
+              
+              <div style={{ fontSize: '14px', lineHeight: '1.6', color: '#881337' }}>
+                 <p style={{ margin: '0 0 5px 0' }}>• ডাক্তারের পরামর্শ ছাড়া সেবন করবেন না।</p>
+                 <p style={{ margin: 0 }}>• Consult a doctor before use.</p>
+              </div>
+            </div>
+
+            <button onClick={() => setSelected(null)} style={{ width: '100%', marginTop: '25px', padding: '14px', background: '#2563eb', color: 'white', border: 'none', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}>Close / বন্ধ করুন</button>
           </div>
         </div>
       )}
@@ -126,4 +125,5 @@ const App = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<React.StrictMode><App /></React.StrictMode>);
