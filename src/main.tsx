@@ -1,115 +1,104 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-import Papa from 'papaparse';
-import { Pill, Search, Loader2, AlertCircle, X, MapPin, Volume2 } from 'lucide-react';
+import './App.css';
 
-const App = () => {
-  const [data, setData] = useState([]);
+function App() {
+  const [medicines, setMedicines] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState('BD');
-  const [selected, setSelected] = useState(null);
+  const [category, setCategory] = useState('bd'); // 'bd', 'ind', or 'hospitals'
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    const file = tab === 'BD' ? '/bd-medicines.csv' : '/indian-medicines.csv';
-    Papa.parse(file, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        setData(results.data);
-        setLoading(false);
-      },
-      error: () => setLoading(false)
-    });
-  }, [tab]);
+    // লোড হচ্ছে সব ডাটাবেস
+    const loadData = async () => {
+      const bdRes = await fetch('/bd-medicines.csv');
+      const indRes = await fetch('/indian-medicines.csv');
+      const hospRes = await fetch('/hospitals.csv');
+      
+      const bdText = await bdRes.text();
+      const indText = await indRes.text();
+      const hospText = await hospRes.text();
+
+      const parseCSV = (text, type) => {
+        const lines = text.split('\n').filter(line => line.trim() !== '');
+        return lines.slice(1).map(line => {
+          const parts = line.split(',');
+          return type === 'hospital' 
+            ? { name: parts[0], location: parts[1], phone: parts[2], category: parts[3], type: 'hospital' }
+            : { name: parts[0], generic: parts[1], company: parts[2], indication: parts[3], image: parts[4], type: 'medicine' };
+        });
+      };
+
+      setMedicines([...parseCSV(bdText, 'bd'), ...parseCSV(indText, 'ind')]);
+      setHospitals(parseCSV(hospText, 'hospital'));
+    };
+
+    loadData();
+  }, []);
 
   const speak = (text) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      window.speechSynthesis.speak(utterance);
-    }
+    const value = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(value);
   };
 
-  const filteredData = data.filter(item => 
-    (item.name || '').toLowerCase().includes(searchTerm.toLowerCase())
-  ).slice(0, 100);
+  const filteredData = category === 'hospitals' 
+    ? hospitals.filter(h => h.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    : medicines.filter(m => 
+        (category === 'bd' ? m.company !== 'Cipla Ltd' && m.company !== 'Sun Pharma' : m.company === 'Cipla Ltd' || m.company === 'Sun Pharma') &&
+        m.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '15px', fontFamily: 'sans-serif' }}>
-      
-      {/* 📍 Nearby Pharmacy */}
-      <div onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me', '_blank')}
-        style={{ position: 'fixed', bottom: '20px', right: '20px', backgroundColor: '#10b981', color: 'white', padding: '12px 20px', borderRadius: '50px', zIndex: 100, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
-        <MapPin size={20} /> <span>Pharmacy Near Me</span>
-      </div>
-
-      <header style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '15px' }}>
-          <Pill size={32} color="#2563eb" />
-          <h1 style={{ fontSize: '24px', margin: 0 }}>Medi-Directory</h1>
-        </div>
-        
-        <div style={{ position: 'relative', maxWidth: '500px', margin: '0 auto' }}>
-          <Search size={18} color="#64748b" style={{ position: 'absolute', left: '15px', top: '13px' }} />
-          <input style={{ width: '100%', padding: '12px 15px 12px 45px', borderRadius: '12px', border: '1px solid #e2e8f0' }}
-            placeholder="Search medicine..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        </div>
-
-        <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
-          <button onClick={() => setTab('BD')} style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', background: tab === 'BD' ? '#2563eb' : '#fff', color: tab === 'BD' ? '#fff' : '#64748b' }}>🇧🇩 BD Medicine</button>
-          <button onClick={() => setTab('India')} style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', background: tab === 'India' ? '#2563eb' : '#fff', color: tab === 'India' ? '#fff' : '#64748b' }}>🇮🇳 Indian Medicine</button>
+    <div className="App">
+      <header>
+        <h1>Medicine & Hospital Directory</h1>
+        <input 
+          type="text" 
+          placeholder="Search name..." 
+          onChange={(e) => setSearchTerm(e.target.value)} 
+        />
+        <div className="tabs">
+          <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicines</button>
+          <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian Medicines</button>
+          <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
         </div>
       </header>
 
-      <main style={{ maxWidth: '600px', margin: '0 auto' }}>
-        {loading ? <div style={{ textAlign: 'center' }}><Loader2 className="animate-spin" style={{ margin: '0 auto' }} /></div> : (
-          <div style={{ display: 'grid', gap: '10px' }}>
-            {filteredData.map((m, i) => (
-              <div key={i} onClick={() => setSelected(m)} style={{ background: '#fff', padding: '15px', borderRadius: '12px', borderLeft: '5px solid #2563eb', cursor: 'pointer' }}>
-                <h3 style={{ margin: 0 }}>{m.name}</h3>
-                <p style={{ margin: 0, color: '#64748b', fontSize: '14px' }}>{m.generic}</p>
-              </div>
-            ))}
+      <main className="grid">
+        {filteredData.map((item, idx) => (
+          <div key={idx} className="card" onClick={() => setSelectedItem(item)}>
+            <h3>{item.name}</h3>
+            <p>{item.type === 'hospital' ? `📍 ${item.location}` : item.generic}</p>
+            {item.type === 'hospital' ? (
+               <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 Call: {item.phone}</a>
+            ) : (
+               <button className="voice-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }}>🔊 Voice</button>
+            )}
           </div>
-        )}
+        ))}
       </main>
 
-      {/* 🔴 Modal with Voice & Image */}
-      {selected && (
-        <div onClick={() => setSelected(null)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
-          <div onClick={e => e.stopPropagation()} style={{ background: '#fff', padding: '25px', borderRadius: '20px', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
-            <div style={{ marginBottom: '15px' }}>
-              {selected.image ? (
-                <img src={selected.image} alt="Medicine" style={{ width: '120px', height: '120px', objectFit: 'contain' }} 
-                     onError={(e) => { e.target.src = 'https://cdn-icons-png.flaticon.com/512/1040/1040238.png'; }} />
-              ) : <Pill size={60} color="#cbd5e1" style={{ margin: '0 auto' }} />}
-            </div>
-            
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '10px' }}>
-              <h2 style={{ margin: 0 }}>{selected.name}</h2>
-              <Volume2 size={20} color="#2563eb" style={{ cursor: 'pointer' }} onClick={() => speak(selected.name)} />
-            </div>
-            
-            <div style={{ textAlign: 'left', background: '#f8fafc', padding: '15px', borderRadius: '12px', marginBottom: '15px' }}>
-              <p><strong>Generic:</strong> {selected.generic}</p>
-              <p><strong>Company:</strong> {selected.company}</p>
-              <p><strong>Indication:</strong> {selected.indication}</p>
-            </div>
-
-            <div style={{ padding: '10px', background: '#fff1f2', borderRadius: '10px', color: '#e11d48', fontSize: '13px', marginBottom: '15px' }}>
-              <AlertCircle size={16} style={{ marginBottom: '5px' }} />
-              <p style={{ margin: 0 }}>ডাক্তারের পরামর্শ ছাড়া ওষুধ সেবন করবেন না।</p>
-            </div>
-            <button onClick={() => setSelected(null)} style={{ width: '100%', padding: '12px', background: '#2563eb', color: '#fff', border: 'none', borderRadius: '10px', fontWeight: 'bold' }}>Close / বন্ধ করুন</button>
+      {/* আগের পপআপ ফিচারটি এখানে */}
+      {selectedItem && selectedItem.type === 'medicine' && (
+        <div className="modal" onClick={() => setSelectedItem(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <img src={selectedItem.image} alt={selectedItem.name} />
+            <h2>{selectedItem.name}</h2>
+            <p><strong>Generic:</strong> {selectedItem.generic}</p>
+            <p><strong>Company:</strong> {selectedItem.company}</p>
+            <p><strong>Indication:</strong> {selectedItem.indication}</p>
+            <button onClick={() => setSelectedItem(null)}>Close</button>
           </div>
         </div>
       )}
+
+      {/* ম্যাপ বাটন */}
+      <footer className="footer-map">
+        <button onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me')}>📍 Find Pharmacy Near Me</button>
+        <button onClick={() => window.open('https://www.google.com/maps/search/hospitals+near+me')}>🏥 Find Hospitals Near Me</button>
+      </footer>
     </div>
   );
-};
+}
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
-root.render(<React.StrictMode><App /></React.StrictMode>);
+export default App;
