@@ -24,7 +24,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error(err); }
+      } catch (err) { console.error("Loading failed:", err); }
     };
     loadData();
   }, []);
@@ -48,6 +48,7 @@ function App() {
           <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
         </div>
       </header>
+
       <main className="grid-container">
         {displayData.map((item, idx) => (
           <div key={idx} className="card" onClick={() => item.type === 'm' && setSelectedItem(item)}>
@@ -61,11 +62,13 @@ function App() {
           </div>
         ))}
       </main>
+
+      {/* Pop-up Modal (Fixed Logic) */}
       {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="modal-body" onClick={e => e.stopPropagation()}>
-            <span className="close-x" onClick={() => setSelectedItem(null)}>&times;</span>
-            <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" onError={(e) => e.target.src='https://via.placeholder.com/150'} />
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)} style={{position:'fixed', top:0, left:0, width:'100%', height:'100%', background:'rgba(0,0,0,0.8)', display:'flex', justifyContent:'center', alignItems:'center', zIndex:10000}}>
+          <div className="modal-body" onClick={e => e.stopPropagation()} style={{background:'white', padding:'20px', borderRadius:'15px', width:'90%', maxWidth:'400px', textAlign:'center'}}>
+            <button onClick={() => setSelectedItem(null)} style={{float:'right', fontSize:'20px', border:'none', background:'none'}}>×</button>
+            <img src={selectedItem.image} alt={selectedItem.name} style={{width:'100%', maxHeight:'200px', objectFit:'contain'}} />
             <h2>{selectedItem.name}</h2>
             <p><strong>Generic:</strong> {selectedItem.generic}</p>
             <p><strong>Company:</strong> {selectedItem.company}</p>
