@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Papa from 'papaparse';
-import { Pill, Search, Loader2, AlertCircle, X, MapPin } from 'lucide-react';
+import { Pill, Search, Loader2, AlertCircle, X, MapPin, Volume2 } from 'lucide-react';
 
 const App = () => {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState('BD'); // ডিফল্ট ট্যাব বাংলাদেশ
+  const [tab, setTab] = useState('BD');
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    // ট্যাব অনুযায়ী আলাদা আলাদা ফাইল থেকে ডাটা লোড হবে
     const file = tab === 'BD' ? '/bd-medicines.csv' : '/indian-medicines.csv';
     Papa.parse(file, {
       download: true,
@@ -26,6 +25,17 @@ const App = () => {
     });
   }, [tab]);
 
+  // Voice Functionality
+  const speak = (text) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("Sorry, your browser doesn't support voice features.");
+    }
+  };
+
   const filteredData = data.filter(item => 
     (item.name || item.Name || '').toLowerCase().includes(searchTerm.toLowerCase())
   ).slice(0, 50);
@@ -33,7 +43,7 @@ const App = () => {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '15px', fontFamily: 'sans-serif' }}>
       
-      {/* 📍 Nearby Pharmacy Floating Button */}
+      {/* 📍 Nearby Pharmacy */}
       <div 
         onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me', '_blank')}
         style={{ position: 'fixed', bottom: '30px', right: '20px', backgroundColor: '#10b981', color: 'white', padding: '14px 22px', borderRadius: '50px', zIndex: 100, cursor: 'pointer', boxShadow: '0 10px 25px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
@@ -47,7 +57,6 @@ const App = () => {
           <h1 style={{ fontSize: '28px', fontWeight: 'bold', margin: 0, color: '#1e293b' }}>Medi-Directory</h1>
         </div>
         
-        {/* 🔍 Search Input */}
         <div style={{ position: 'relative', maxWidth: '500px', margin: '0 auto' }}>
           <Search size={20} color="#64748b" style={{ position: 'absolute', left: '15px', top: '15px' }} />
           <input 
@@ -58,14 +67,12 @@ const App = () => {
           />
         </div>
 
-        {/* 🇧🇩 🇮🇳 Tab Switcher */}
         <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '12px' }}>
           <button onClick={() => setTab('BD')} style={{ padding: '10px 25px', borderRadius: '10px', border: 'none', background: tab === 'BD' ? '#2563eb' : 'white', color: tab === 'BD' ? 'white' : '#64748b', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>🇧🇩 BD Medicine</button>
           <button onClick={() => setTab('India')} style={{ padding: '10px 25px', borderRadius: '10px', border: 'none', background: tab === 'India' ? '#2563eb' : 'white', color: tab === 'India' ? 'white' : '#64748b', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>🇮🇳 Indian Medicine</button>
         </div>
       </header>
 
-      {/* 💊 Medicine List */}
       <main style={{ maxWidth: '600px', margin: '0 auto', paddingBottom: '80px' }}>
         {loading ? (
           <div style={{ textAlign: 'center', padding: '50px' }}><Loader2 className="animate-spin" style={{ margin: '0 auto' }} color="#2563eb" size={40} /></div>
@@ -81,20 +88,19 @@ const App = () => {
         )}
       </main>
 
-      {/* 🔴 Detailed Pop-up (Modal) */}
+      {/* 🔴 Pop-up Modal (Includes Voice & Image) */}
       {selected && (
         <div onClick={() => setSelected(null)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
           <div onClick={e => e.stopPropagation()} style={{ background: 'white', padding: '30px', borderRadius: '25px', width: '100%', maxWidth: '450px', position: 'relative', overflowY: 'auto', maxHeight: '90vh' }}>
             <X onClick={() => setSelected(null)} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer', color: '#94a3b8' }} />
             
-            {/* 📸 Medicine Image support */}
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+            {/* 📸 Image Section */}
+            <div style={{ textAlign: 'center', marginBottom: '15px' }}>
               {(selected.image || selected.Image) ? (
                 <img 
                   src={selected.image || selected.Image} 
                   alt="Medicine" 
-                  style={{ width: '150px', height: '150px', objectFit: 'contain', borderRadius: '15px' }} 
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  style={{ width: '160px', height: '160px', objectFit: 'contain', borderRadius: '15px', border: '1px solid #e2e8f0', padding: '5px' }} 
                 />
               ) : (
                 <div style={{ width: '100px', height: '100px', background: '#f1f5f9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
@@ -103,28 +109,33 @@ const App = () => {
               )}
             </div>
 
-            <h2 style={{ marginTop: 0, color: '#1e293b', textAlign: 'center' }}>{selected.name || selected.Name}</h2>
+            {/* 🔊 Voice Button & Name */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '15px' }}>
+              <h2 style={{ margin: 0, color: '#1e293b' }}>{selected.name || selected.Name}</h2>
+              <button 
+                onClick={() => speak(`${selected.name || selected.Name}. Generic name: ${selected.generic || selected.Generic}`)}
+                style={{ background: '#f1f5f9', border: 'none', padding: '8px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+              >
+                <Volume2 size={20} color="#2563eb" />
+              </button>
+            </div>
             
-            <div style={{ margin: '20px 0', background: '#f8fafc', padding: '15px', borderRadius: '12px' }}>
+            <div style={{ margin: '15px 0', background: '#f8fafc', padding: '15px', borderRadius: '12px' }}>
               <p style={{ margin: '0 0 10px 0' }}><strong>Generic:</strong> {selected.generic || selected.Generic}</p>
               <p style={{ margin: '0 0 10px 0' }}><strong>Company:</strong> {selected.company || selected.Company}</p>
               <p style={{ margin: 0 }}><strong>Indication:</strong> {selected.indication || selected.Indication || 'N/A'}</p>
             </div>
 
-            {/* ⚠️ Warning Section */}
+            {/* ⚠️ Warning */}
             <div style={{ padding: '15px', background: '#fff1f2', borderRadius: '12px', borderLeft: '4px solid #e11d48' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#e11d48', fontWeight: 'bold', marginBottom: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#e11d48', fontWeight: 'bold', marginBottom: '8px' }}>
                 <AlertCircle size={18} />
-                <span>সতর্কতা / Important Notice</span>
+                <span>সতর্কতা / Warning</span>
               </div>
-              
-              <div style={{ fontSize: '14px', lineHeight: '1.6', color: '#881337' }}>
-                 <p style={{ margin: '0 0 5px 0' }}>• ডাক্তারের পরামর্শ ছাড়া এই ওষুধ সেবন করবেন না।</p>
-                 <p style={{ margin: 0 }}>• Do not take this medicine without a doctor's consultation.</p>
-              </div>
+              <p style={{ fontSize: '14px', color: '#881337', margin: 0 }}>ডাক্তারের পরামর্শ ছাড়া সেবন করবেন না। (Consult a doctor before use)</p>
             </div>
 
-            <button onClick={() => setSelected(null)} style={{ width: '100%', marginTop: '25px', padding: '14px', background: '#2563eb', color: 'white', border: 'none', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}>Close / বন্ধ করুন</button>
+            <button onClick={() => setSelected(null)} style={{ width: '100%', marginTop: '20px', padding: '14px', background: '#2563eb', color: 'white', border: 'none', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer' }}>Close / বন্ধ করুন</button>
           </div>
         </div>
       )}
