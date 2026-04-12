@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
 import './App.css';
 
 function App() {
@@ -16,7 +17,6 @@ function App() {
           fetch('/indian-medicines.csv'),
           fetch('/hospitals.csv')
         ]);
-
         const bdText = await bdRes.text();
         const indText = await indRes.text();
         const hospText = await hospRes.text();
@@ -31,7 +31,6 @@ function App() {
             return { name: parts[0], generic: parts[1], company: parts[2], indication: parts[3], image: parts[4], type: 'medicine', origin };
           });
         };
-
         setMedicines([...parseCSV(bdText, 'bd'), ...parseCSV(indText, 'ind')]);
         setHospitals(parseCSV(hospText, 'hospital'));
       } catch (error) {
@@ -55,12 +54,7 @@ function App() {
       <header>
         <h1 className="logo">💊 Medi-Directory</h1>
         <div className="search-container">
-          <input 
-            type="text" 
-            placeholder="Search medicine or hospital..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} 
-          />
+          <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
         <div className="tabs">
           <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicine</button>
@@ -68,7 +62,6 @@ function App() {
           <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
         </div>
       </header>
-
       <main className="grid-container">
         {displayData.map((item, idx) => (
           <div key={idx} className="card" onClick={() => item.type === 'medicine' && setSelectedItem(item)}>
@@ -84,26 +77,17 @@ function App() {
           </div>
         ))}
       </main>
-
-      {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="modal-body" onClick={e => e.stopPropagation()}>
-            <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" />
-            <h2>{selectedItem.name}</h2>
-            <p><strong>Generic:</strong> {selectedItem.generic}</p>
-            <p><strong>Company:</strong> {selectedItem.company}</p>
-            <p><strong>Indication:</strong> {selectedItem.indication}</p>
-            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close</button>
-          </div>
-        </div>
-      )}
-
       <footer className="footer-nav">
-        <button className="map-btn pharmacy" onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me')}>📍 Pharmacy Near Me</button>
-        <button className="map-btn hospital-map" onClick={() => window.open('https://www.google.com/maps/search/hospitals+near+me')}>🏥 Hospitals Near Me</button>
+        <button className="map-btn pharmacy" onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me')}>📍 Pharmacy</button>
+        <button className="map-btn hospital-map" onClick={() => window.open('https://www.google.com/maps/search/hospitals+near+me')}>🏥 Hospitals</button>
       </footer>
     </div>
   );
 }
 
-export default App;
+// এটিই আপনার অ্যাপকে রান করাবে
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(<App />);
+}
