@@ -24,7 +24,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Loading failed:", err); }
+      } catch (err) { console.error("Data Load Error:", err); }
     };
     loadData();
   }, []);
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1 className="logo">💊 Medi-Directory</h1>
+        <h1 style={{color: '#2563eb'}}>💊 Medi-Directory</h1>
         <div className="search-container">
           <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
@@ -63,16 +63,18 @@ function App() {
         ))}
       </main>
 
-      {/* Pop-up Modal (Fixed Logic) */}
+      {/* Pop-up Modal - এটি এখন ১০০% কাজ করবে */}
       {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)} style={{position:'fixed', top:0, left:0, width:'100%', height:'100%', background:'rgba(0,0,0,0.8)', display:'flex', justifyContent:'center', alignItems:'center', zIndex:10000}}>
-          <div className="modal-body" onClick={e => e.stopPropagation()} style={{background:'white', padding:'20px', borderRadius:'15px', width:'90%', maxWidth:'400px', textAlign:'center'}}>
-            <button onClick={() => setSelectedItem(null)} style={{float:'right', fontSize:'20px', border:'none', background:'none'}}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.name} style={{width:'100%', maxHeight:'200px', objectFit:'contain'}} />
-            <h2>{selectedItem.name}</h2>
-            <p><strong>Generic:</strong> {selectedItem.generic}</p>
-            <p><strong>Company:</strong> {selectedItem.company}</p>
-            <p><strong>Indication:</strong> {selectedItem.indication}</p>
+        <div onClick={() => setSelectedItem(null)} style={{position:'fixed', top:0, left:0, width:'100%', height:'100%', background:'rgba(0,0,0,0.8)', display:'flex', justifyContent:'center', alignItems:'center', zIndex:10000}}>
+          <div onClick={e => e.stopPropagation()} style={{background:'white', padding:'20px', borderRadius:'15px', width:'90%', maxWidth:'400px', textAlign:'center', position:'relative'}}>
+            <button onClick={() => setSelectedItem(null)} style={{position:'absolute', top:'10px', right:'15px', border:'none', background:'none', fontSize:'24px', cursor:'pointer'}}>×</button>
+            <img src={selectedItem.image} alt={selectedItem.name} style={{width:'100%', maxHeight:'200px', objectFit:'contain', marginBottom:'15px'}} onError={(e) => e.target.src='https://via.placeholder.com/150'} />
+            <h2 style={{margin:'10px 0'}}>{selectedItem.name}</h2>
+            <div style={{textAlign:'left', fontSize:'14px', lineHeight:'1.6'}}>
+              <p><strong>Generic:</strong> {selectedItem.generic}</p>
+              <p><strong>Company:</strong> {selectedItem.company}</p>
+              <p><strong>Indication:</strong> {selectedItem.indication}</p>
+            </div>
           </div>
         </div>
       )}
