@@ -1,5 +1,97 @@
 name,generic,company,indication,image
-Napa 500mg,Paracetamol 500mg,Beximco Pharmaceuticals,Fever & Pain,https://hplbd.com/images/products/Napa-500.png
-Napa Extra,Paracetamol & Caffeine,Beximco Pharmaceuticals,Headache,https://hplbd.com/images/products/Napa-Extra.png
-Ace 500mg,Paracetamol 500mg,Square Pharmaceuticals,Fever,https://www.squarepharma.com.bd/products/Ace-500.png
-Seclo 20mg,Omeprazole 20mg,Square Pharmaceuticals,Gastric,https://www.squarepharma.com.bd/products/Seclo-20.png
+Napa 500mg,Paracetamol,Beximco Pharmaceuticals,Fever & Pain,https://hplbd.com/images/products/Napa-500.png
+Napa Extend,Paracetamol,Beximco Pharmaceuticals,Chronic Pain,https://hplbd.com/images/products/Napa-500.png
+Napa Extra,Paracetamol + Caffeine,Beximco Pharmaceuticals,Headache,https://hplbd.com/images/products/Napa-500.png
+Ace 500mg,Paracetamol,Square Pharmaceuticals,Fever & Pain,https://hplbd.com/images/products/Napa-500.png
+Ace Plus,Paracetamol + Caffeine,Square Pharmaceuticals,Migraine,https://hplbd.com/images/products/Napa-500.png
+Ace Power,Paracetamol,Square Pharmaceuticals,Body Ache,https://hplbd.com/images/products/Napa-500.png
+Seclo 20mg,Omeprazole,Square Pharmaceuticals,Gastric,https://hplbd.com/images/products/Napa-500.png
+Seclo 40mg,Omeprazole,Square Pharmaceuticals,Acid Reflux,https://hplbd.com/images/products/Napa-500.png
+Sergel 20mg,Esomeprazole,Healthcare Pharmaceuticals,Gastritis,https://hplbd.com/images/products/Napa-500.png
+Sergel 40mg,Esomeprazole,Healthcare Pharmaceuticals,Stomach Ulcer,https://hplbd.com/images/products/Napa-500.png
+Maxpro 20mg,Esomeprazole,Renata Limited,Acidity,https://hplbd.com/images/products/Napa-500.png
+Maxpro 40mg,Esomeprazole,Renata Limited,Peptic Ulcer,https://hplbd.com/images/products/Napa-500.png
+Pantix 20mg,Pantoprazole,Incepta Pharmaceuticals,Gastric Pain,https://hplbd.com/images/products/Napa-500.png
+Esolok 20mg,Esomeprazole,Incepta Pharmaceuticals,Stomach Acidity,https://hplbd.com/images/products/Napa-500.png
+Nexum 20mg,Esomeprazole,SK+F,Heartburn,https://hplbd.com/images/products/Napa-500.png
+Finix 20mg,Rabeprazole,Opsonin Pharma,Acid Control,https://hplbd.com/images/products/Napa-500.png
+Losectil 20mg,Omeprazole,SK+F,Gastric,https://hplbd.com/images/products/Napa-500.png
+Alatrol 10mg,Cetirizine,Square Pharmaceuticals,Allergy,https://hplbd.com/images/products/Napa-500.png
+Fexo 120mg,Fexofenadine,Healthcare Pharmaceuticals,Sneezing,https://hplbd.com/images/products/Napa-500.png
+Fexo 180mg,Fexofenadine,Healthcare Pharmaceuticals,Severe Allergy,https://hplbd.com/images/products/Napa-500.png
+Fenadin 120mg,Fexofenadine,Renata Limited,Running Nose,https://hplbd.com/images/products/Napa-500.png
+Deslor 5mg,Desloratadine,Aristopharma,Allergic Rhinitis,https://hplbd.com/images/products/Napa-500.png
+Tofen 1mg,Ketotifen,Incepta Pharmaceuticals,Asthma & Cold,https://hplbd.com/images/products/Napa-500.png
+Histacin,Chlorpheniramine,ACI Limited,Common Cold,https://hplbd.com/images/products/Napa-500.png
+Monas 10mg,Montelukast,ACME Laboratories,Asthma,https://hplbd.com/images/products/Napa-500.png
+Provair 10mg,Montelukast,UniMed UniHealth,Breathing Problem,https://hplbd.com/images/products/Napa-500.png
+Zithrin 500mg,Azithromycin,Square Pharmaceuticals,Bacterial Infection,https://hplbd.com/images/products/Napa-500.png
+Azithrocin 500mg,Azithromycin,Beximco Pharmaceuticals,Antibiotic,https://hplbd.com/images/products/Napa-500.png
+Ciprocin 500mg,Ciprofloxacin,Square Pharmaceuticals,Typhoid,https://hplbd.com/images/products/Napa-500.png
+Fixit 200mg,Cefixime,Incepta Pharmaceuticals,Infection,https://hplbd.com/images/products/Napa-500.png
+Amodis 400mg,Metronidazole,Aristopharma,Diarrhea,https://hplbd.com/images/products/Napa-500.png
+Filmet 400mg,Metronidazole,Square Pharmaceuticals,Stomach Infection,https://hplbd.com/images/products/Napa-500.png
+Xeldrin,Domperidone,Incepta Pharmaceuticals,Nausea,https://hplbd.com/images/products/Napa-500.png
+Motigut,Domperidone,Square Pharmaceuticals,Vomiting,https://hplbd.com/images/products/Napa-500.png
+Entacyd,Antacid,Square Pharmaceuticals,Gas & Acidity,https://hplbd.com/images/products/Napa-500.png
+Osartil 50mg,Losartan Potassium,Incepta Pharmaceuticals,Blood Pressure,https://hplbd.com/images/products/Napa-500.png
+Angilock 50mg,Losartan Potassium,Square Pharmaceuticals,Hypertension,https://hplbd.com/images/products/Napa-500.png
+Camlosart 5/20,Amlodipine + Olmesartan,Incepta Pharmaceuticals,BP Control,https://hplbd.com/images/products/Napa-500.png
+Bizoran 5/20,Amlodipine + Olmesartan,Square Pharmaceuticals,High BP,https://hplbd.com/images/products/Napa-500.png
+Bextram Gold,Multivitamin,Beximco Pharmaceuticals,Weakness,https://hplbd.com/images/products/Napa-500.png
+Filwel Gold,Multivitamin,Square Pharmaceuticals,Vitamin Support,https://hplbd.com/images/products/Napa-500.png
+Calbo D,Calcium + Vitamin D3,Aristopharma,Bone Health,https://hplbd.com/images/products/Napa-500.png
+Coralcal D,Calcium + Vitamin D3,Incepta Pharmaceuticals,Calcium Deficiency,https://hplbd.com/images/products/Napa-500.png
+Neuro-B,Vitamin B1 B6 B12,Square Pharmaceuticals,Nerve Weakness,https://hplbd.com/images/products/Napa-500.png
+Ceevit 250mg,Vitamin C,Square Pharmaceuticals,Immunity,https://hplbd.com/images/products/Napa-500.png
+Rivotril 0.5mg,Clonazepam,Radiant Pharmaceuticals,Anxiety & Sleep,https://hplbd.com/images/products/Napa-500.png
+Disopan 0.5mg,Clonazepam,Incepta Pharmaceuticals,Sleep,https://hplbd.com/images/products/Napa-500.png
+Sedil 5mg,Diazepam,Square Pharmaceuticals,Relaxation,https://hplbd.com/images/products/Napa-500.png
+Pantonix 20mg,Pantoprazole,Incepta Pharmaceuticals,Acidity,https://hplbd.com/images/products/Napa-500.png
+Esonix 20mg,Esomeprazole,Incepta Pharmaceuticals,Heartburn,https://hplbd.com/images/products/Napa-500.png
+Vergel 20mg,Esomeprazole,SK+F,Peptic Ulcer,https://hplbd.com/images/products/Napa-500.png
+Fenat 120mg,Fexofenadine,ACME Laboratories,Allergy,https://hplbd.com/images/products/Napa-500.png
+Telfast 120mg,Fexofenadine,Sanofi Bangladesh,Sneezing,https://hplbd.com/images/products/Napa-500.png
+Atova 10mg,Atorvastatin,Square Pharmaceuticals,Cholesterol,https://hplbd.com/images/products/Napa-500.png
+Anclog 75mg,Clopidogrel,Square Pharmaceuticals,Heart Health,https://hplbd.com/images/products/Napa-500.png
+Glimed 2mg,Glimepiride,Square Pharmaceuticals,Diabetes,https://hplbd.com/images/products/Napa-500.png
+Comet 500mg,Metformin,Square Pharmaceuticals,Sugar Control,https://hplbd.com/images/products/Napa-500.png
+Secrin 2mg,Glimepiride,Incepta Pharmaceuticals,Diabetes,https://hplbd.com/images/products/Napa-500.png
+Glucomet 500,Metformin,Beximco Pharmaceuticals,Blood Sugar,https://hplbd.com/images/products/Napa-500.png
+Ambrox,Ambroxol,Square Pharmaceuticals,Cough & Cold,https://hplbd.com/images/products/Napa-500.png
+Adryl,Diphenhydramine,Square Pharmaceuticals,Dry Cough,https://hplbd.com/images/products/Napa-500.png
+Tusca,Cough Syrup,Square Pharmaceuticals,Cough Relief,https://hplbd.com/images/products/Napa-500.png
+Pevison,Cream,Square Pharmaceuticals,Skin Infection,https://hplbd.com/images/products/Napa-500.png
+Econate,Cream,Square Pharmaceuticals,Fungal Infection,https://hplbd.com/images/products/Napa-500.png
+Cloben G,Cream,Square Pharmaceuticals,Skin Rash,https://hplbd.com/images/products/Napa-500.png
+Nystat,Oral Drop,Square Pharmaceuticals,Mouth Ulcer,https://hplbd.com/images/products/Napa-500.png
+V-Gel,Antiseptic Gel,Himalaya,Skin Protection,https://hplbd.com/images/products/Napa-500.png
+Gastral,Syrup,Incepta Pharmaceuticals,Acidity,https://hplbd.com/images/products/Napa-500.png
+Omesil,Omeprazole,Incepta Pharmaceuticals,Stomach Pain,https://hplbd.com/images/products/Napa-500.png
+Avomine,Promethazine,Sanofi,Motion Sickness,https://hplbd.com/images/products/Napa-500.png
+Flagyl 400,Metronidazole,Sanofi,Stomach Infection,https://hplbd.com/images/products/Napa-500.png
+Cipro 500,Ciprofloxacin,Beximco Pharmaceuticals,Bacterial Infection,https://hplbd.com/images/products/Napa-500.png
+Az 500,Azithromycin,Incepta Pharmaceuticals,Antibiotic,https://hplbd.com/images/products/Napa-500.png
+Linaglip,Linagliptin,Square Pharmaceuticals,Type 2 Diabetes,https://hplbd.com/images/products/Napa-500.png
+Sitacrip,Sitagliptin,Incepta Pharmaceuticals,Diabetes Control,https://hplbd.com/images/products/Napa-500.png
+Thyrox 50mg,Levothyroxine,Square Pharmaceuticals,Thyroid,https://hplbd.com/images/products/Napa-500.png
+Sulpit,Sulpiride,Square Pharmaceuticals,Mental Health,https://hplbd.com/images/products/Napa-500.png
+Amantrex,Amantadine,Incepta Pharmaceuticals,Parkinson's,https://hplbd.com/images/products/Napa-500.png
+Epilim 200,Sodium Valproate,Sanofi,Epilepsy,https://hplbd.com/images/products/Napa-500.png
+Tryptin 10mg,Amitriptyline,Square Pharmaceuticals,Depression,https://hplbd.com/images/products/Napa-500.png
+Poxet 30,Dapoxetine,Incepta Pharmaceuticals,Men's Health,https://hplbd.com/images/products/Napa-500.png
+Vigorex 50,Sildenafil,Square Pharmaceuticals,Energy,https://hplbd.com/images/products/Napa-500.png
+Erecto 50,Sildenafil,Incepta Pharmaceuticals,Vitality,https://hplbd.com/images/products/Napa-500.png
+Modon,Domperidone,Incepta Pharmaceuticals,Vomiting,https://hplbd.com/images/products/Napa-500.png
+Dompi,Domperidone,Beximco Pharmaceuticals,Nausea,https://hplbd.com/images/products/Napa-500.png
+Fungidal,Fluconazole,Square Pharmaceuticals,Fungal Infection,https://hplbd.com/images/products/Napa-500.png
+Lucan 150,Fluconazole,Incepta Pharmaceuticals,Antifungal,https://hplbd.com/images/products/Napa-500.png
+Zoxin 500,Nitazoxanide,Square Pharmaceuticals,Amoebiasis,https://hplbd.com/images/products/Napa-500.png
+Nitarid,Nitazoxanide,Incepta Pharmaceuticals,Diarrhea,https://hplbd.com/images/products/Napa-500.png
+Rephre 20,Esomeprazole,Opsonin Pharma,Acidity,https://hplbd.com/images/products/Napa-500.png
+Pep 20,Famotidine,Square Pharmaceuticals,Gastric,https://hplbd.com/images/products/Napa-500.png
+Famotack 20,Famotidine,Incepta Pharmaceuticals,Heartburn,https://hplbd.com/images/products/Napa-500.png
+Rantech 150,Ranitidine,Incepta Pharmaceuticals,Stomach Ulcer,https://hplbd.com/images/products/Napa-500.png
+Xinc,Zinc Sulfate,Square Pharmaceuticals,Immunity Booster,https://hplbd.com/images/products/Napa-500.png
+Pep-2,Antacid,Square Pharmaceuticals,Stomach Gas,https://hplbd.com/images/products/Napa-500.png
+Flatameal,Antacid,Beximco Pharmaceuticals,Digestion,https://hplbd.com/images/products/Napa-500.png
