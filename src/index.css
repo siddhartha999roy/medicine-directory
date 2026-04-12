@@ -41,3 +41,8 @@
 .indication-tag { background: #e8f0fe; color: #1a73e8; padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: bold; display: inline-block; margin-top: 5px; }
 .modal-overlay { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; }
 .modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; }
+.tabs { display: flex; gap: 10px; justify-content: center; margin: 20px 0; }
+.tabs button { padding: 10px 20px; cursor: pointer; border-radius: 5px; border: 1px solid #ddd; }
+.tabs button.active { background: #007bff; color: white; border-color: #007bff; }
+.call-btn { display: block; margin-top: 10px; background: #28a745; color: white; text-decoration: none; padding: 8px; border-radius: 5px; text-align: center; }
+.voice-btn { margin-top: 10px; cursor: pointer; padding: 5px 10px; background: #e0e0e0; border: none; border-radius: 4px; }
