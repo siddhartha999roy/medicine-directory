@@ -46,3 +46,12 @@
 .tabs button.active { background: #007bff; color: white; border-color: #007bff; }
 .call-btn { display: block; margin-top: 10px; background: #28a745; color: white; text-decoration: none; padding: 8px; border-radius: 5px; text-align: center; }
 .voice-btn { margin-top: 10px; cursor: pointer; padding: 5px 10px; background: #e0e0e0; border: none; border-radius: 4px; }
+.tabs { display: flex; gap: 8px; justify-content: center; padding: 10px; flex-wrap: wrap; }
+.tabs button { padding: 8px 16px; border-radius: 20px; border: 1px solid #007bff; background: white; color: #007bff; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.tabs button.active { background: #007bff; color: white; }
+.call-btn { display: inline-block; background: #28a745; color: white; text-decoration: none; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 0.9rem; margin-top: 5px; }
+.voice-btn { border: none; background: #f0f0f0; color: #333; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+.footer-nav { position: fixed; bottom: 0; width: 100%; display: flex; gap: 10px; padding: 10px; background: white; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); justify-content: center; }
+.map-btn { border: none; padding: 10px 15px; border-radius: 25px; color: white; font-weight: bold; cursor: pointer; }
+.pharmacy { background: #10b981; }
+.hospital { background: #ef4444; }
