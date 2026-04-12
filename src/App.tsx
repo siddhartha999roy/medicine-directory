@@ -21,6 +21,7 @@ function App() {
         const parse = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
           const p = line.split(',');
           if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
+          // মডাল বা পপ-আপের জন্য সব ডেটা নিশ্চিত করা হয়েছে
           return { 
             name: p[0], generic: p[1], company: p[2], 
             indication: p[3], image: p[4], origin: type, type: 'm' 
@@ -29,7 +30,7 @@ function App() {
 
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("CSV loading error:", err); }
+      } catch (err) { console.error("Data error:", err); }
     };
     loadData();
   }, []);
@@ -78,12 +79,12 @@ function App() {
         ))}
       </main>
 
-      {/* পপ-আপ মোডাল (অক্ষুণ্ণ রাখা হয়েছে) */}
+      {/* Pop-up Modal (সব ফিচার অটুট) */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-body" onClick={e => e.stopPropagation()}>
             <button className="close-modal" onClick={() => setSelectedItem(null)}>&times;</button>
-            <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" />
+            <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" onError={(e) => e.target.src='https://via.placeholder.com/150'} />
             <h2>{selectedItem.name}</h2>
             <div className="modal-info">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
