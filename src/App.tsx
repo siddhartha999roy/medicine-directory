@@ -5,7 +5,7 @@ function App() {
   const [medicines, setMedicines] = useState([]);
   const [hospitals, setHospitals] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('bd'); // 'bd', 'ind', 'hospitals'
+  const [category, setCategory] = useState('bd'); // Categories: 'bd', 'ind', 'hospitals'
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function App() {
         <div className="search-container">
           <input 
             type="text" 
-            placeholder="Search here..." 
+            placeholder="Search medicine or hospital..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
