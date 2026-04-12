@@ -12,32 +12,24 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [bdText, indText, hospText] = await Promise.all([
+        const [bdT, indT, hospT] = await Promise.all([
           fetch('/bd-medicines.csv').then(res => res.text()),
           fetch('/indian-medicines.csv').then(res => res.text()),
           fetch('/hospitals.csv').then(res => res.text())
         ]);
-
-        const parse = (text, type) => {
-          const lines = text.split('\n').filter(l => l.trim() !== '');
-          return lines.slice(1).map(line => {
-            const p = line.split(',');
-            if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
-            return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
-          });
-        };
-
-        setMedicines([...parse(bdText, 'bd'), ...parse(indText, 'ind')]);
-        setHospitals(parse(hospText, 'h'));
-      } catch (error) { console.error("Data error:", error); }
+        const parse = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
+          const p = line.split(',');
+          if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
+          return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
+        });
+        setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
+        setHospitals(parse(hospT, 'h'));
+      } catch (err) { console.error(err); }
     };
     loadData();
   }, []);
 
-  const speak = (text) => {
-    const value = new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.speak(value);
-  };
+  const speak = (t) => window.speechSynthesis.speak(new SpeechSynthesisUtterance(t));
 
   const displayData = category === 'hospitals' 
     ? hospitals.filter(h => h.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -48,12 +40,7 @@ function App() {
       <header>
         <h1 className="logo">💊 Medi-Directory</h1>
         <div className="search-container">
-          <input 
-            type="text" 
-            placeholder="Search..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} 
-          />
+          <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
         <div className="tabs">
           <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicine</button>
@@ -82,6 +69,7 @@ function App() {
             <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" />
             <h2>{selectedItem.name}</h2>
             <p><strong>Generic:</strong> {selectedItem.generic}</p>
+            <p><strong>Company:</strong> {selectedItem.company}</p>
             <p><strong>Indication:</strong> {selectedItem.indication}</p>
             <button className="close-btn" onClick={() => setSelectedItem(null)}>Close</button>
           </div>
