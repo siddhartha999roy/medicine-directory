@@ -46,19 +46,18 @@ function App() {
     window.speechSynthesis.speak(value);
   };
 
-  // ফিল্টারিং লজিক
   const displayData = category === 'hospitals' 
     ? hospitals.filter(h => h.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : medicines.filter(m => m.origin === category && m.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <div className="App">
-      <header className="header-section">
+      <header>
         <h1 className="logo">💊 Medi-Directory</h1>
         <div className="search-container">
           <input 
             type="text" 
-            placeholder="Search medicine or hospital..." 
+            placeholder="Search here..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
@@ -77,7 +76,6 @@ function App() {
               <h3>{item.name}</h3>
               <p className="subtitle">{item.type === 'hospital' ? `📍 ${item.location}` : item.generic}</p>
             </div>
-            
             {item.type === 'hospital' ? (
                <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 Call: {item.phone}</a>
             ) : (
@@ -87,13 +85,11 @@ function App() {
         ))}
       </main>
 
-      {/* পপআপ/মোডাল */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-body" onClick={e => e.stopPropagation()}>
             <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" />
             <h2>{selectedItem.name}</h2>
-            <hr />
             <p><strong>Generic:</strong> {selectedItem.generic}</p>
             <p><strong>Company:</strong> {selectedItem.company}</p>
             <p><strong>Indication:</strong> {selectedItem.indication}</p>
@@ -104,7 +100,7 @@ function App() {
 
       <footer className="footer-nav">
         <button className="map-btn pharmacy" onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me')}>📍 Pharmacy Near Me</button>
-        <button className="map-btn hospital" onClick={() => window.open('https://www.google.com/maps/search/hospitals+near+me')}>🏥 Hospitals Near Me</button>
+        <button className="map-btn hospital-map" onClick={() => window.open('https://www.google.com/maps/search/hospitals+near+me')}>🏥 Hospitals Near Me</button>
       </footer>
     </div>
   );
