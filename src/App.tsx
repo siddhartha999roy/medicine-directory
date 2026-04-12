@@ -10,34 +10,28 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
-    const loadAllData = async () => {
+    const loadData = async () => {
       try {
-        const [bdRes, indRes, hospRes] = await Promise.all([
-          fetch('/bd-medicines.csv'),
-          fetch('/indian-medicines.csv'),
-          fetch('/hospitals.csv')
+        const [bdText, indText, hospText] = await Promise.all([
+          fetch('/bd-medicines.csv').then(res => res.text()),
+          fetch('/indian-medicines.csv').then(res => res.text()),
+          fetch('/hospitals.csv').then(res => res.text())
         ]);
-        const bdText = await bdRes.text();
-        const indText = await indRes.text();
-        const hospText = await hospRes.text();
 
-        const parseCSV = (text, origin) => {
-          const lines = text.split('\n').filter(line => line.trim() !== '');
+        const parse = (text, type) => {
+          const lines = text.split('\n').filter(l => l.trim() !== '');
           return lines.slice(1).map(line => {
-            const parts = line.split(',');
-            if (origin === 'hospital') {
-              return { name: parts[0], location: parts[1], phone: parts[2], category: parts[3], type: 'hospital' };
-            }
-            return { name: parts[0], generic: parts[1], company: parts[2], indication: parts[3], image: parts[4], type: 'medicine', origin };
+            const p = line.split(',');
+            if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
+            return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
           });
         };
-        setMedicines([...parseCSV(bdText, 'bd'), ...parseCSV(indText, 'ind')]);
-        setHospitals(parseCSV(hospText, 'hospital'));
-      } catch (error) {
-        console.error("Error loading CSV files:", error);
-      }
+
+        setMedicines([...parse(bdText, 'bd'), ...parse(indText, 'ind')]);
+        setHospitals(parse(hospText, 'h'));
+      } catch (error) { console.error("Data error:", error); }
     };
-    loadAllData();
+    loadData();
   }, []);
 
   const speak = (text) => {
@@ -54,7 +48,12 @@ function App() {
       <header>
         <h1 className="logo">💊 Medi-Directory</h1>
         <div className="search-container">
-          <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} 
+          />
         </div>
         <div className="tabs">
           <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicine</button>
@@ -62,14 +61,13 @@ function App() {
           <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
         </div>
       </header>
+
       <main className="grid-container">
         {displayData.map((item, idx) => (
-          <div key={idx} className="card" onClick={() => item.type === 'medicine' && setSelectedItem(item)}>
-            <div className="card-info">
-              <h3>{item.name}</h3>
-              <p className="subtitle">{item.type === 'hospital' ? `📍 ${item.location}` : item.generic}</p>
-            </div>
-            {item.type === 'hospital' ? (
+          <div key={idx} className="card" onClick={() => item.type === 'm' && setSelectedItem(item)}>
+            <h3>{item.name}</h3>
+            <p className="subtitle">{item.type === 'h' ? `📍 ${item.location}` : item.generic}</p>
+            {item.type === 'h' ? (
                <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 Call: {item.phone}</a>
             ) : (
                <button className="voice-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }}>🔊 Pronounce</button>
@@ -77,17 +75,21 @@ function App() {
           </div>
         ))}
       </main>
-      <footer className="footer-nav">
-        <button className="map-btn pharmacy" onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me')}>📍 Pharmacy</button>
-        <button className="map-btn hospital-map" onClick={() => window.open('https://www.google.com/maps/search/hospitals+near+me')}>🏥 Hospitals</button>
-      </footer>
+
+      {selectedItem && (
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+          <div className="modal-body" onClick={e => e.stopPropagation()}>
+            <img src={selectedItem.image} alt={selectedItem.name} className="modal-img" />
+            <h2>{selectedItem.name}</h2>
+            <p><strong>Generic:</strong> {selectedItem.generic}</p>
+            <p><strong>Indication:</strong> {selectedItem.indication}</p>
+            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-// এটিই আপনার অ্যাপকে রান করাবে
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(<App />);
-}
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<App />);
