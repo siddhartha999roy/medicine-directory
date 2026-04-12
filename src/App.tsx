@@ -24,7 +24,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error(err); }
+      } catch (err) { console.error("Error loading CSV:", err); }
     };
     loadData();
   }, []);
