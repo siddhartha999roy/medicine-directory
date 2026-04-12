@@ -12,6 +12,7 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
+    // ট্যাব অনুযায়ী ডাটা লোড করার লজিক
     const file = tab === 'BD' ? '/bd-medicines.csv' : '/indian-medicines.csv';
     Papa.parse(file, {
       download: true,
@@ -25,6 +26,7 @@ const App = () => {
     });
   }, [tab]);
 
+  // সার্চ এবং ফিল্টারিং
   const filteredData = data.filter(item => 
     (item.name || item.Name || '').toLowerCase().includes(searchTerm.toLowerCase())
   ).slice(0, 50);
@@ -32,12 +34,12 @@ const App = () => {
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '15px', fontFamily: 'sans-serif' }}>
       
-      {/* 🟢 Nearby Pharmacy Button */}
+      {/* 🟢 Pharmacy Finder Button */}
       <div 
         onClick={() => window.open('https://www.google.com/maps/search/pharmacy+near+me', '_blank')}
         style={{ position: 'fixed', bottom: '30px', right: '20px', backgroundColor: '#10b981', color: 'white', padding: '14px 22px', borderRadius: '50px', zIndex: 100, cursor: 'pointer', boxShadow: '0 10px 25px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
         <MapPin size={22} />
-        <span>Nearby Pharmacy</span>
+        <span>Pharmacy Near Me</span>
       </div>
 
       <header style={{ textAlign: 'center', marginBottom: '25px' }}>
@@ -64,7 +66,7 @@ const App = () => {
 
       <main style={{ maxWidth: '600px', margin: '0 auto', paddingBottom: '80px' }}>
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '50px' }}><Loader2 className="animate-spin" style={{ margin: '0 auto' }} /></div>
+          <div style={{ textAlign: 'center', padding: '50px' }}><Loader2 className="animate-spin" style={{ margin: '0 auto' }} color="#2563eb" size={40} /></div>
         ) : (
           <div style={{ display: 'grid', gap: '12px' }}>
             {filteredData.map((m, idx) => (
@@ -77,19 +79,20 @@ const App = () => {
         )}
       </main>
 
-      {/* 🔴 Detailed Pop-up with Image Support */}
+      {/* 🔴 Detailed Pop-up */}
       {selected && (
         <div onClick={() => setSelected(null)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
           <div onClick={e => e.stopPropagation()} style={{ background: 'white', padding: '30px', borderRadius: '25px', width: '100%', maxWidth: '450px', position: 'relative', overflowY: 'auto', maxHeight: '90vh' }}>
-            <X onClick={() => setSelected(null)} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer' }} />
+            <X onClick={() => setSelected(null)} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer', color: '#94a3b8' }} />
             
-            {/* 📸 Medicine Image Display */}
+            {/* 📸 Medicine Image */}
             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
               {(selected.image || selected.Image) ? (
                 <img 
                   src={selected.image || selected.Image} 
                   alt="Medicine" 
-                  style={{ width: '120px', height: '120px', objectFit: 'contain', borderRadius: '15px', border: '1px solid #e2e8f0', padding: '5px' }} 
+                  style={{ width: '140px', height: '140px', objectFit: 'contain', borderRadius: '15px', border: '1px solid #e2e8f0', padding: '10px' }} 
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
               ) : (
                 <div style={{ width: '100px', height: '100px', background: '#f1f5f9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
@@ -99,21 +102,32 @@ const App = () => {
             </div>
 
             <h2 style={{ marginTop: 0, color: '#1e293b', textAlign: 'center' }}>{selected.name || selected.Name}</h2>
-            <div style={{ margin: '15px 0' }}>
-               <p style={{ marginBottom: '8px' }}><strong>Generic:</strong> {selected.generic || selected.Generic}</p>
-               <p style={{ marginBottom: '8px' }}><strong>Company:</strong> {selected.company || selected.Company}</p>
+            
+            <div style={{ margin: '20px 0', background: '#f8fafc', padding: '15px', borderRadius: '12px' }}>
+              <p style={{ margin: '0 0 10px 0' }}><strong>Generic:</strong> {selected.generic || selected.Generic}</p>
+              <p style={{ margin: '0 0 10px 0' }}><strong>Company:</strong> {selected.company || selected.Company}</p>
+              <p style={{ margin: 0 }}><strong>Indication:</strong> {selected.indication || selected.Indication || 'N/A'}</p>
             </div>
 
             {/* ⚠️ Warning Section */}
-            <div style={{ marginTop: '20px', padding: '15px', background: '#fff1f2', borderRadius: '12px', borderLeft: '4px solid #e11d48' }}>
+            <div style={{ padding: '15px', background: '#fff1f2', borderRadius: '12px', borderLeft: '4px solid #e11d48' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#e11d48', fontWeight: 'bold', marginBottom: '10px' }}>
                 <AlertCircle size={18} />
-                <span>সতর্কতা / Important</span>
+                <span>সতর্কতা / Warning</span>
               </div>
               
               <div style={{ fontSize: '14px', lineHeight: '1.6', color: '#881337' }}>
-                 <p style={{ margin: '0 0 5px 0' }}>• ডাক্তারের পরামর্শ ছাড়া সেবন করবেন না।</p>
-                 <p style={{ margin: 0 }}>• Consult a doctor before use.</p>
+                 {tab === 'BD' ? (
+                   <>
+                     <p style={{ margin: '0 0 5px 0' }}>• ডাক্তারের পরামর্শ ছাড়া সেবন করবেন না।</p>
+                     <p style={{ margin: 0 }}>• Do not take without a doctor's advice.</p>
+                   </>
+                 ) : (
+                   <>
+                     <p style={{ margin: '0 0 5px 0' }}>• बिना डॉक्टर की सलाह के न लें।</p>
+                     <p style={{ margin: 0 }}>• Consult a professional before use.</p>
+                   </>
+                 )}
               </div>
             </div>
 
