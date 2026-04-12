@@ -1,21 +1,11 @@
 name,generic,company,indication,image
-Dolo 650,Paracetamol 650mg,Micro Labs Ltd,Fever & Body Pain,
-Crocin Advance,Paracetamol 500mg,GlaxoSmithKline,Fever & Pain,
-Pan 40,Pantoprazole 40mg,Alkem Laboratories,Acidity & Heartburn,
-Pantocid 20,Pantoprazole 20mg,Sun Pharmaceutical,Gastric Reflux,
-Omez 20,Omeprazole 20mg,Dr. Reddy's,Stomach Acid,
-Shelcal 500,Calcium + Vitamin D3,Torrent Pharmaceuticals,Bone Health,
-Limcee,Vitamin C 500mg,Abbott India,Immunity Booster,
-Allegra 120mg,Fexofenadine 120mg,Sanofi India,Allergies,
-Avil 25,Pheniramine Maleate,Sanofi India,Allergic Reactions,
-Combiflam,Ibuprofen & Paracetamol,Sanofi India,Inflammation & Pain,
-Digene,Antacid,Abbott India,Gas & Acidity,
-Econorm,Probiotics,Dr. Reddy's,Diarrhea & Gut Health,
-Augmentin 625 Duo,Amoxycillin & Clavulanic Acid,GSK,Bacterial Infection,
-Taxim-O 200,Cefixime 200mg,Alkem Laboratories,Infections,
-Zifi 200,Cefixime 200mg,FDC Ltd,Bacterial Fever,
-Metrogyl 400,Metronidazole 400mg,J.B. Chemicals,Stomach Infection,
-Rantac 150,Ranitidine 150mg,J.B. Chemicals,Stomach Ulcer,
-Voveran SR 100,Diclofenac 100mg,Novartis,Joint & Muscle Pain,
-Becosules Z,B-Complex + Zinc,Pfizer Limited,Multivitamin,
-Liv 52,Herbal Formulation,Himalaya Wellness,Liver Health,
+Dolo 650,Paracetamol 650mg,Micro Labs Ltd,Fever & Body Pain,https://5.imimg.com/data5/SELLER/Default/2022/9/MQ/XF/XN/158742544/dolo-650-tablet-500x500.jpg
+Crocin Advance,Paracetamol 500mg,GSK,Fever & Pain,https://www.crocin.com/content/dam/cf-consumer-healthcare/panadol/en_in/products/crocin-advance/Crocin-Advance-Tablet.png
+Pan 40,Pantoprazole 40mg,Alkem Laboratories,Acidity,https://5.imimg.com/data5/ANDROID/Default/2021/2/OY/WQ/UI/105456456/product-jpeg-500x500.jpg
+Pantocid 20,Pantoprazole 20mg,Sun Pharmaceutical,Gastric,https://5.imimg.com/data5/SELLER/Default/2023/3/WI/ZT/XN/18545645/pantocid-20.jpg
+Omez 20,Omeprazole 20mg,Dr. Reddy's,Stomach Acid,https://5.imimg.com/data5/SELLER/Default/2021/8/ZT/XO/RQ/13545645/omez-20.jpg
+Shelcal 500,Calcium + Vitamin D3,Torrent Pharmaceuticals,Bone Health,https://5.imimg.com/data5/SELLER/Default/2022/1/ZM/XA/XO/14545645/shelcal-500.jpg
+Allegra 120mg,Fexofenadine 120mg,Sanofi India,Allergies,https://5.imimg.com/data5/SELLER/Default/2021/5/QH/YA/ZM/12545645/allegra-120.jpg
+Digene Tablet,Antacid,Abbott India,Gas & Acidity,https://www.digene.in/images/digene-tablet.png
+Combiflam,Ibuprofen & Paracetamol,Sanofi India,Pain Relief,https://5.imimg.com/data5/SELLER/Default/2021/10/QH/YA/ZM/11545645/combiflam.jpg
+Voveran SR 100,Diclofenac 100mg,Novartis,Body Pain,https://5.imimg.com/data5/SELLER/Default/2022/6/QH/YA/ZM/10545645/voveran-sr.jpg
