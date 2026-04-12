@@ -1,61 +1,21 @@
 name,generic,company,indication,image
-Calpol 500mg,Paracetamol 500mg,GSK India,Fever & Pain Relief
-Dolo 650,Paracetamol 650mg,Micro Labs,High Fever
-Paracip 500mg,Paracetamol 500mg,Cipla,Body Pain
-Crocin 500mg,Paracetamol 500mg,GSK India,Headache
-Pan 40,Pantoprazole 40mg,Alkem Laboratories,Gastric Acidity
-Pantocid 40,Pantoprazole 40mg,Sun Pharma,Acid Reflux
-Omez 20,Omeprazole 20mg,Dr. Reddy's,Stomach Ulcer
-Allegra 120mg,Fexofenadine 120mg,Sanofi India,Allergy
-Avil 25,Pheniramine Maleate,Sanofi India,Skin Allergy
-Voveran 50mg,Diclofenac Sodium,Novartis India,Joint Pain
-Combiflam,Ibuprofen & Paracetamol,Sanofi,Muscle Pain
-Taxim-O 200mg,Cefixime 200mg,Alkem,Bacterial Infection
-Azithral 500mg,Azithromycin 500mg,Alembic,Antibiotic
-Zifi 200mg,Cefixime 200mg,FDC Limited,Typhoid Fever
-Glycomet 500mg,Metformin 500mg,USV Private Ltd,Diabetes Control
-Janumet 50/500,Sitagliptin & Metformin,MSD India,Blood Sugar
-Lipvas 10mg,Atorvastatin 10mg,Cipla,Cholesterol
-Telma 40,Telmisartan 40mg,Glenmark,Blood Pressure
-Amlokind 5mg,Amlodipine 5mg,Mankind Pharma,Hypertension
-Liv.52,Herbal Formula,Himalaya Wellness,Liver Health
-Digene,Antacid,Abbott India,Gas & Acidity
-Mucaine Gel,Antacid,Pfizer India,Stomach Pain
-Cremaffin,Laxative,Abbott India,Constipation
-Dulcoflex,Bisacodyl,Sanofi India,Stool Softener
-Stemetil,Prochlorperazine,Abbott India,Vomiting & Dizziness
-Domstal 10mg,Domperidone 10mg,Torrent Pharma,Nausea
-Metrogyl 400,Metronidazole 400mg,Lekar Pharma,Stomach Infection
-Ciplox 500,Ciprofloxacin 500mg,Cipla,Urinary Infection
-Sporlac,Probiotics,Sanzyme,Digestion
-Wysolone 5mg,Prednisolone,Pfizer India,Inflammation
-Omnacortil 5mg,Prednisolone,Macleods,Allergic Reaction
-Eltroxin 50mcg,Thyroxine,GSK India,Thyroid Control
-Thyronorm 50mcg,Thyroxine,Abbott India,Hypothyroidism
-Shelcal 500,Calcium + Vit D3,Torrent Pharma,Calcium Deficiency
-Gemcal,Calcium + Vit D3,Alkem,Bone Health
-Becosules,Vitamin B-Complex,Pfizer India,Mouth Ulcer
-Supradyn,Multivitamin,Bayer India,Daily Health
-Zincovit,Multivitamin + Zinc,Apex Labs,Immunity
-Revital H,Multivitamin + Ginseng,Sun Pharma,Energy
-Azee 500,Azithromycin 500mg,Cipla,Chest Infection
-Augmentin 625 Duo,Amoxycillin + Clavulanic,GSK India,Severe Infection
-Mox 500,Amoxycillin 500mg,Sun Pharma,Bacterial Cold
-Cefakind 500,Cefuroxime Axetil,Mankind Pharma,Infection
-Glimy M2,Glimepiride & Metformin,Dr. Reddy's,Diabetes
-Istamet 50/500,Sitagliptin + Metformin,Sun Pharma,Sugar Control
-Clexane 40mg,Enoxaparin,Sanofi India,Blood Thinner
-Ecosprin 75,Aspirin 75mg,USV Private Ltd,Heart Protection
-Atarax 25mg,Hydroxyzine,Dr. Reddy's,Itching & Sleep
-Lariago 250mg,Chloroquine,Ipca Labs,Malaria
-Zental 400mg,Albendazole 400mg,GSK India,Worms
-Electral,ORS,FDC Limited,Dehydration
-Candid Powder,Clotrimazole,Glenmark,Fungal Rash
-Betadine 10%,Povidone Iodine,Win-Medicare,Antiseptic
-Moov,Pain Relief Ointment,Paras Pharma,Back Pain
-Iodex,Pain Relief Balm,GSK,Body Ache
-Volini,Pain Relief Spray,Sun Pharma,Muscle Sprain
-Folvite 5mg,Folic Acid,Pfizer India,Pregnancy Health
-Evion 400,Vitamin E,P&G Health,Skin & Hair
-Limcee 500,Vitamin C,Abbott India,Vitamin C Supplement
-Saridon,Pain Reliever,Bayer India,Headache
+Dolo 650,Paracetamol 650mg,Micro Labs Ltd,Fever & Body Pain,
+Crocin Advance,Paracetamol 500mg,GlaxoSmithKline,Fever & Pain,
+Pan 40,Pantoprazole 40mg,Alkem Laboratories,Acidity & Heartburn,
+Pantocid 20,Pantoprazole 20mg,Sun Pharmaceutical,Gastric Reflux,
+Omez 20,Omeprazole 20mg,Dr. Reddy's,Stomach Acid,
+Shelcal 500,Calcium + Vitamin D3,Torrent Pharmaceuticals,Bone Health,
+Limcee,Vitamin C 500mg,Abbott India,Immunity Booster,
+Allegra 120mg,Fexofenadine 120mg,Sanofi India,Allergies,
+Avil 25,Pheniramine Maleate,Sanofi India,Allergic Reactions,
+Combiflam,Ibuprofen & Paracetamol,Sanofi India,Inflammation & Pain,
+Digene,Antacid,Abbott India,Gas & Acidity,
+Econorm,Probiotics,Dr. Reddy's,Diarrhea & Gut Health,
+Augmentin 625 Duo,Amoxycillin & Clavulanic Acid,GSK,Bacterial Infection,
+Taxim-O 200,Cefixime 200mg,Alkem Laboratories,Infections,
+Zifi 200,Cefixime 200mg,FDC Ltd,Bacterial Fever,
+Metrogyl 400,Metronidazole 400mg,J.B. Chemicals,Stomach Infection,
+Rantac 150,Ranitidine 150mg,J.B. Chemicals,Stomach Ulcer,
+Voveran SR 100,Diclofenac 100mg,Novartis,Joint & Muscle Pain,
+Becosules Z,B-Complex + Zinc,Pfizer Limited,Multivitamin,
+Liv 52,Herbal Formulation,Himalaya Wellness,Liver Health,
