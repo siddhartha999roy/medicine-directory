@@ -19,3 +19,63 @@ Telma 40,Telmisartan,Glenmark Pharma,High BP,https://hplbd.com/images/products/N
 Clexane 40mg,Enoxaparin,Sanofi India,Blood Thinner,https://hplbd.com/images/products/Napa-500.png,Prevention of blood clots in veins,As per doctor's advice,Bleeding,550 INR,Lomoparin
 Allegra 120mg,Fexofenadine,Sanofi India,Anti-Allergy,https://hplbd.com/images/products/Napa-500.png,Fast relief from seasonal allergies,1 tablet daily,Headache,210 INR,Fexo
 Sporlac DS,Lactic Acid Bacillus,Sanzyme Ltd,Probiotic,https://hplbd.com/images/products/Napa-500.png,Restores gut bacteria after diarrhea,1 tablet twice daily,None,120 INR,Vizylac
+Ascoril LS,Ambroxol+Levosalbutamol,Glenmark Pharma,Cough Syrup,https://hplbd.com/images/products/Napa-500.png,Relief from wet cough and asthma,1 spoon 3 times daily,Tremors,115 INR,Bro-Zeet
+Grilinctus,Dextromethorphan Mix,Abbott India,Dry Cough,https://hplbd.com/images/products/Napa-500.png,Effective for irritating dry cough,2 spoons at night,Sleepiness,135 INR,Ascoril D
+Glycomet 500,Metformin,Franco-Indian Pharma,Diabetes,https://hplbd.com/images/products/Napa-500.png,Blood sugar control for type 2,1 tablet with meals,Nausea,15 INR,Metfo
+Galvus Met,Vildagliptin+Metformin,Novartis India,Diabetes Mix,https://hplbd.com/images/products/Napa-500.png,Advanced sugar control,1 tablet twice daily,Headache,250 INR,Jalra M
+Jalra 50,Vildagliptin,USV Private Ltd,Sugar Control,https://hplbd.com/images/products/Napa-500.png,Manages insulin levels,1 tablet twice daily,Dizziness,190 INR,Galvus
+Janumet 50/500,Sitagliptin+Metformin,MSD India,Severe Diabetes,https://hplbd.com/images/products/Napa-500.png,Combined therapy for sugar,1 tablet twice daily,Diarrhea,320 INR,Istamet
+Istamet 50/500,Sitagliptin+Metformin,Sun Pharma,Diabetes,https://hplbd.com/images/products/Napa-500.png,Effective glucose management,1 tablet twice daily,Nausea,280 INR,Janumet
+Eurepa 1,Repaglinide,Torrent Pharma,Diabetes,https://hplbd.com/images/products/Napa-500.png,Post-meal sugar control,1 tablet before meals,Low sugar,95 INR,Regulin
+Glimulin 2,Glimepiride,Glenmark Pharma,Sugar Control,https://hplbd.com/images/products/Napa-500.png,Sulfonylurea for diabetes,1 tablet daily,Weight gain,65 INR,Amaryl
+Amlokind 5,Amlodipine,Mankind Pharma,High BP,https://hplbd.com/images/products/Napa-500.png,Affordable blood pressure med,1 tablet daily,Swelling,15 INR,Amlocard
+Telvas 40,Telmisartan,Aristo Pharma,Hypertension,https://hplbd.com/images/products/Napa-500.png,Protects heart and controls BP,1 tablet daily,Dizziness,85 INR,Telma 40
+Telsar 40,Telmisartan,Unichem Labs,Heart Care,https://hplbd.com/images/products/Napa-500.png,Long term BP management,1 tablet daily,Headache,75 INR,Telma
+Inderal 10,Propranolol,Abbott India,Anxiety/Heart,https://hplbd.com/images/products/Napa-500.png,Reduces rapid heart rate,As prescribed,Cold hands,25 INR,Ciplar
+Ciplar 10,Propranolol,Cipla Ltd,Palpitations,https://hplbd.com/images/products/Napa-500.png,Control for high heart rate,1 tablet twice daily,Fatigue,20 INR,Inderal
+Cardace 5,Ramipril,Sanofi India,Heart Failure,https://hplbd.com/images/products/Napa-500.png,ACE inhibitor for heart/BP,1 tablet daily,Dry cough,145 INR,Ramistar
+Ramistar 5,Ramipril,Lupin Ltd,BP Control,https://hplbd.com/images/products/Napa-500.png,Reduces workload on heart,1 tablet daily,Dizziness,110 INR,Cardace
+Starpress XL 25,Metoprolol,Lupin Ltd,Hypertension,https://hplbd.com/images/products/Napa-500.png,Extended release heart med,1 tablet daily,Fatigue,95 INR,Metolar
+Metolar XR 25,Metoprolol,Cipla Ltd,Heart Rhythm,https://hplbd.com/images/products/Napa-500.png,Maintains steady heart rate,1 tablet daily,Slow pulse,85 INR,Starpress
+Revelol AM 25,Metoprolol+Amlodipine,Ipca Labs,Complex BP,https://hplbd.com/images/products/Napa-500.png,Dual action BP control,1 tablet daily,Swelling,125 INR,Amlopress M
+Amlopress M,Amlodipine+Metoprolol,Cian Healthcare,High BP,https://hplbd.com/images/products/Napa-500.png,Combined hypertension relief,1 tablet daily,Headache,110 INR,Revelol
+Storvas 10,Atorvastatin,Sun Pharma,Cholesterol,https://hplbd.com/images/products/Napa-500.png,Lowering bad cholesterol,1 tablet at night,Muscle pain,95 INR,Lipvas
+Lipvas 10,Atorvastatin,Cipla Ltd,Heart Health,https://hplbd.com/images/products/Napa-500.png,Reduces risk of heart attack,1 tablet at night,Stomach pain,85 INR,Storvas
+Rosuvas 10,Rosuvastatin,Sun Pharma,Lipid Control,https://hplbd.com/images/products/Napa-500.png,Potent cholesterol reducer,1 tablet at night,Nausea,165 INR,Razel
+Razel 10,Rosuvastatin,Glenmark Pharma,Cholesterol,https://hplbd.com/images/products/Napa-500.png,Manages blood fat levels,1 tablet at night,Headache,145 INR,Rosuvas
+Clavum 625,Amoxicillin+Clavulanic,Alkem Labs,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Bacterial infection in lungs,1 tablet twice daily,Vomiting,210 INR,Augmentin
+Moxikind-CV 625,Amoxicillin+Clavulanic,Mankind Pharma,Infection,https://hplbd.com/images/products/Napa-500.png,Affordable powerful antibiotic,1 tablet twice daily,Diarrhea,190 INR,Clavum
+Monocef 1gm,Ceftriaxone,Aristo Pharma,Severe Infection,https://hplbd.com/images/products/Napa-500.png,Injectable antibiotic for typhoid,IV injection daily,Pain,65 INR,Xone
+Azithral 500,Azithromycin,Alembic Pharma,Throat Infection,https://hplbd.com/images/products/Napa-500.png,3-day antibiotic course,1 tablet daily,Diarrhea,125 INR,Azee
+Azee 500,Azithromycin,Cipla Ltd,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Treatment for chest infections,1 tablet daily,Stomach upset,115 INR,Azithral
+Oflox 200,Ofloxacin,Cipla Ltd,UTI,https://hplbd.com/images/products/Napa-500.png,Urinary and lung infection relief,1 tablet twice daily,Dizziness,75 INR,Zenflox
+Zenflox 200,Ofloxacin,Mankind Pharma,Infection,https://hplbd.com/images/products/Napa-500.png,Broad spectrum antibiotic,1 tablet twice daily,Nausea,65 INR,Oflox
+Norflox 400,Norfloxacin,Cipla Ltd,Stomach Bug,https://hplbd.com/images/products/Napa-500.png,Treatment for stomach infections,1 tablet twice daily,Metallic taste,85 INR,Nor-Metrogyl
+Ciplox 500,Ciprofloxacin,Cipla Ltd,Typhoid/UTI,https://hplbd.com/images/products/Napa-500.png,Bacterial infection treatment,1 tablet twice daily,Diarrhea,45 INR,Cifran
+Cifran 500,Ciprofloxacin,Sun Pharma,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Effective against various bacteria,1 tablet twice daily,Nausea,40 INR,Ciplox
+Metrogyl 400,Metronidazole,J.B. Chemicals,Diarrhea,https://hplbd.com/images/products/Napa-500.png,Classic stomach infection med,1 tablet 3 times,Metallic taste,25 INR,Flagyl
+Omée 20,Omeprazole,Alkem Labs,Acidity,https://hplbd.com/images/products/Napa-500.png,Affordable gas relief,1 tablet before breakfast,Dizziness,55 INR,Omez
+Omez 20,Omeprazole,Dr. Reddy's Labs,Gastric Relief,https://hplbd.com/images/products/Napa-500.png,Original gastric capsule,1 tablet before meals,Headache,65 INR,Omée
+Pan-D,Pantoprazole+Domperidone,Alkem Labs,Gas & Vomit,https://hplbd.com/images/products/Napa-500.png,Relief from gas and nausea,1 tablet before breakfast,Dry mouth,185 INR,Pantocid D
+Pantocid D,Pantoprazole+Domperidone,Sun Pharma,Gastric,https://hplbd.com/images/products/Napa-500.png,Advanced acid reflux therapy,1 tablet before meals,None,195 INR,Pan-D
+Sompraz 40,Esomeprazole,Sun Pharma,Severe Acidity,https://hplbd.com/images/products/Napa-500.png,Premium acid control,1 tablet before breakfast,Headache,160 INR,Nexpro
+Nexpro 40,Esomeprazole,Torrent Pharma,Heartburn,https://hplbd.com/images/products/Napa-500.png,Relief from peptic ulcers,1 tablet before meals,Dry mouth,150 INR,Sompraz
+Rabium 20,Rabeprazole,Intas Pharma,Acid Reflux,https://hplbd.com/images/products/Napa-500.png,Fast acting gastric relief,1 tablet before breakfast,None,125 INR,Cyra
+Cyra 20,Rabeprazole,Systopic Labs,Gastritis,https://hplbd.com/images/products/Napa-500.png,Treatment for stomach acid,1 tablet before meals,Headache,65 INR,Rabium
+Mucaine Gel,Antacid Liquid,Pfizer India,Heartburn,https://hplbd.com/images/products/Napa-500.png,Liquid for instant acid relief,2 spoons after meals,Constipation,210 INR,Digene Gel
+Cremaffin,Laxative,Abbott India,Constipation,https://hplbd.com/images/products/Napa-500.png,Milk of magnesia for digestion,2 spoons at night,Diarrhea,250 INR,Looz
+Looz Syrup,Lactulose,Intas Pharma,Constipation,https://hplbd.com/images/products/Napa-500.png,Treatment for severe constipation,15ml at night,Gas,320 INR,Cremaffin
+Ibugesic Plus,Ibuprofen+Paracetamol,Cipla Ltd,Pain & Fever,https://hplbd.com/images/products/Napa-500.png,Relief from body ache,1 tablet twice daily,Gastritis,35 INR,Combiflam
+Zerodol-P,Aceclofenac+Paracetamol,Ipca Labs,Joint Pain,https://hplbd.com/images/products/Napa-500.png,Powerful painkiller for injury,1 tablet twice daily,Stomach upset,65 INR,Afenac P
+Zerodol-SP,Aceclofenac+Serratio,Ipca Labs,Swelling/Pain,https://hplbd.com/images/products/Napa-500.png,Relief from swelling and pain,1 tablet twice daily,Nausea,115 INR,Diclomol
+Voveran SR 100,Diclofenac,Novartis India,Severe Pain,https://hplbd.com/images/products/Napa-500.png,Sustained relief from body pain,1 tablet daily,Gastritis,95 INR,Fenak
+Naprosyn 500,Naproxen,RPG Life Sciences,Period Pain,https://hplbd.com/images/products/Napa-500.png,Effective for joint/period pain,1 tablet twice daily,Stomach pain,75 INR,Artagen
+Meftal-Spas,Mefenamic+Dicyclomine,Blue Cross,Cramp Relief,https://hplbd.com/images/products/Napa-500.png,Relief from stomach cramps/periods,1 tablet as needed,Dry mouth,55 INR,Cyclopam
+Cyclopam,Dicyclomine+Paracetamol,Indoco Remedies,Stomach Pain,https://hplbd.com/images/products/Napa-500.png,Treatment for abdominal pain,1 tablet 3 times daily,Drowsiness,65 INR,Meftal
+Ecosprin-AV 75,Aspirin+Atorvastatin,USV Private Ltd,Heart Attack,https://hplbd.com/images/products/Napa-500.png,Combined prevention for stroke,1 tablet daily,Bleeding,85 INR,Atorva Asp
+Atorva Asp 75,Atorvastatin+Aspirin,Zydus Cadila,Heart Health,https://hplbd.com/images/products/Napa-500.png,Manages lipids and blood clots,1 tablet daily,Muscle pain,75 INR,Ecosprin-AV
+Liv.52 DS,Herbal Liver,Himalaya Wellness,Liver Health,https://hplbd.com/images/products/Napa-500.png,Double strength liver protection,1 tablet twice daily,None,175 INR,Liv.52
+Septilin,Herbal Immunity,Himalaya Wellness,Immunity,https://hplbd.com/images/products/Napa-500.png,Natural immunity booster,2 tablets twice daily,None,150 INR,Immulant
+Confido,Herbal Health,Himalaya Wellness,Strength,https://hplbd.com/images/products/Napa-500.png,Supports male vitality,1 tablet daily,None,180 INR,Speman
+Cystone,Herbal Kidney,Himalaya Wellness,Kidney Stone,https://hplbd.com/images/products/Napa-500.png,Natural support for kidney stones,2 tablets twice daily,None,165 INR,Neeri
+Neeri,Herbal Kidney,Aimil Pharma,Urinary Health,https://hplbd.com/images/products/Napa-500.png,Ayurvedic relief for UTI/Stones,2 tablets 3 times daily,None,220 INR,Cystone
