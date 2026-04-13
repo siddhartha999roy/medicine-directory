@@ -137,6 +137,7 @@ function App() {
             <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
+              <p><strong>Indication:</strong> {selectedItem.indication}</p>
               <div className="warning-box">
                 ⚠️ ওষুধ খাওয়ার আগে অবশ্যই একজন বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।
               </div>
