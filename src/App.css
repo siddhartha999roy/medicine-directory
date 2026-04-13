@@ -56,3 +56,20 @@ body { background: #f4f7f6; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, 
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 .warning { background: #fff1f2; color: #e11d48; padding: 10px; border-radius: 10px; margin: 15px 0; font-size: 13px; }
 .close-btn { width: 100%; padding: 12px; border: none; background: #2563eb; color: white; border-radius: 12px; font-weight: bold; cursor: pointer; }
+/* Dark Theme Colors */
+.dark-theme { background-color: #1a1a1a; color: #ffffff; }
+.dark-theme .fixed-header, .dark-theme .medicine-card, .dark-theme .ai-container, .dark-theme .modal-card {
+  background-color: #2d2d2d; color: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.dark-theme .search-box input { background: #3d3d3d; border-color: #4d4d4d; color: white; }
+.dark-theme .tabs button { background: #3d3d3d; color: #cbd5e0; }
+
+/* Theme Toggle Button */
+.header-top { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.theme-toggle { background: #edf2f7; border: none; padding: 5px 12px; border-radius: 15px; cursor: pointer; font-weight: bold; }
+.dark-theme .theme-toggle { background: #4a5568; color: white; }
+
+/* Favorite Star */
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.fav-star { cursor: pointer; filter: grayscale(1); transition: 0.3s; font-size: 20px; }
+.fav-star.active { filter: grayscale(0); transform: scale(1.2); }
