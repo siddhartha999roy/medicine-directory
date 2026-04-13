@@ -9,16 +9,16 @@ function App() {
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
   const [isAiLoading, setIsAiLoading] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false); // Dark Mode State
+  const [isDarkMode, setIsDarkMode] = useState(false); // নতুন ডার্ক মোড স্টেট
   const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem('favorites');
+    const saved = localStorage.getItem('medi-favs');
     return saved ? JSON.parse(saved) : [];
-  }); // Favorites State
+  }); // নতুন ফেভারিট স্টেট
 
   const aiSectionRef = useRef(null);
 
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('medi-favs', JSON.stringify(favorites));
   }, [favorites]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function App() {
         const parse = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
           const p = line.split(',');
           if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
-          return { id: p[0]+p[1], name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
+          return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
@@ -48,8 +48,8 @@ function App() {
 
   const toggleFavorite = (e, item) => {
     e.stopPropagation();
-    const isFav = favorites.find(f => f.name === item.name);
-    if (isFav) {
+    const exists = favorites.find(f => f.name === item.name);
+    if (exists) {
       setFavorites(favorites.filter(f => f.name !== item.name));
     } else {
       setFavorites([...favorites, item]);
@@ -66,10 +66,10 @@ function App() {
     <div className={`App ${isDarkMode ? 'dark-theme' : ''}`}>
       <header className="fixed-header">
         <div className="header-top">
-           <h1 className="logo">💊 Medi-Directory</h1>
-           <button className="theme-toggle" onClick={() => setIsDarkMode(!isDarkMode)}>
-             {isDarkMode ? '☀️ Light' : '🌙 Dark'}
-           </button>
+          <h1 className="logo">💊 Medi-Directory</h1>
+          <button className="theme-toggle" onClick={() => setIsDarkMode(!isDarkMode)}>
+            {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+          </button>
         </div>
         
         <button className="ai-nav-btn" onClick={() => aiSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}>
@@ -114,16 +114,14 @@ function App() {
         </div>
 
         <div className="ai-container" ref={aiSectionRef}>
-          <div className="ai-header">
-             <h2>🤖 Medi-Assistant AI</h2>
-          </div>
+          <div className="ai-header"><h2>🤖 Medi-Assistant AI</h2></div>
           <div className="iframe-wrapper">
             {isAiLoading && <div className="ai-loader"><div className="spinner"></div></div>}
             <iframe
               src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
               width="100%" height="600px"
               onLoad={() => setIsAiLoading(false)}
-              style={{ border: 'none', borderRadius: '15px', opacity: isAiLoading ? 0 : 1 }}
+              style={{ border: 'none', borderRadius: '15px', background: '#fff', opacity: isAiLoading ? 0 : 1 }}
             ></iframe>
           </div>
         </div>
@@ -136,10 +134,12 @@ function App() {
           <div className="modal-card" onClick={e => e.stopPropagation()}>
             <div className="heart-icon">❤️‍🔥</div>
             <h2>{selectedItem.name}</h2>
-            <p><strong>Generic:</strong> {selectedItem.generic}</p>
-            <p><strong>Company:</strong> {selectedItem.company}</p>
-            <p><strong>Indication:</strong> {selectedItem.indication}</p>
-            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close</button>
+            <div className="details">
+              <p><strong>Generic:</strong> {selectedItem.generic}</p>
+              <p><strong>Company:</strong> {selectedItem.company}</p>
+              <p><strong>Indication:</strong> {selectedItem.indication}</p>
+            </div>
+            <button className="close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
           </div>
         </div>
       )}
