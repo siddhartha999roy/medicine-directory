@@ -9,7 +9,6 @@ function App() {
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // ১. ডেটা লোড ফিচার (সব CSV ফাইল রিড করা)
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -21,15 +20,7 @@ function App() {
         const parse = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
           const p = line.split(',');
           if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
-          return { 
-            name: p[0], 
-            generic: p[1], 
-            company: p[2], 
-            indication: p[3], 
-            image: p[4] ? p[4].trim() : '', 
-            origin: type, 
-            type: 'm' 
-          };
+          return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
@@ -38,13 +29,11 @@ function App() {
     loadData();
   }, []);
 
-  // ২. ভয়েস ফিচার (Pronunciation)
   const speak = (t) => {
     const utterance = new SpeechSynthesisUtterance(t);
     window.speechSynthesis.speak(utterance);
   };
 
-  // ৩. সার্চ এবং ক্যাটাগরি ফিল্টার
   const displayData = category === 'hospitals' 
     ? hospitals.filter(h => h.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : medicines.filter(m => m.origin === category && m.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -61,7 +50,6 @@ function App() {
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
         </div>
-        {/* ৪. ট্যাব ফিচার (হাসপাতাল সহ) */}
         <div className="tabs">
           <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicine</button>
           <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian Medicine</button>
@@ -83,28 +71,26 @@ function App() {
         ))}
       </main>
 
-      {/* ৫. পপ-আপ মোডাল ফিচার (Medicine Details) */}
+      {/* ৫. পপ-আপ মোডাল (আগের হার্টবিট লোগো ডিজাইনসহ) */}
       {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)} style={{position:'fixed', top:0, left:0, width:'100%', height:'100%', background:'rgba(0,0,0,0.8)', display:'flex', justifyContent:'center', alignItems:'center', zIndex:10000}}>
-          <div className="modal-body" onClick={e => e.stopPropagation()} style={{background:'white', padding:'20px', borderRadius:'15px', width:'90%', maxWidth:'400px', textAlign:'center', position:'relative', boxShadow:'0 10px 25px rgba(0,0,0,0.3)'}}>
-            <span className="close-x" onClick={() => setSelectedItem(null)} style={{position:'absolute', top:'10px', right:'15px', border:'none', background:'none', fontSize:'24px', cursor:'pointer'}}>×</span>
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+          <div className="modal-body" onClick={e => e.stopPropagation()}>
+            {/* আগের মতো হার্টবিট লোগো */}
+            <div className="heart-icon">❤️‍🔥</div>
             
-            {/* ছবির জন্য ফিক্সড কোড */}
-            <img 
-              src={selectedItem.image} 
-              alt={selectedItem.name} 
-              className="modal-img" 
-              style={{width:'100%', maxHeight:'200px', objectFit:'contain', marginBottom:'15px'}}
-              onError={(e) => { e.target.src = 'https://via.placeholder.com/150'; }} 
-            />
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize:'18px'}}>🔊</span></h2>
             
-            <h2 style={{margin:'10px 0', fontSize:'22px'}}>{selectedItem.name}</h2>
-            
-            <div className="details" style={{textAlign:'left', fontSize:'16px', lineHeight:'1.8', marginTop:'15px'}}>
+            <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
               <p><strong>Indication:</strong> {selectedItem.indication}</p>
             </div>
+
+            <div className="warning-box">
+                ⚠️ ডাক্তারের পরামর্শ ছাড়া কোনো ওষুধ সেবন করবেন না।
+            </div>
+
+            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close / বন্ধ করুন</button>
           </div>
         </div>
       )}
