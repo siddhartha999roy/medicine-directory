@@ -9,11 +9,11 @@ function App() {
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
   const [isAiLoading, setIsAiLoading] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false); // নতুন ডার্ক মোড স্টেট
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem('medi-favs');
     return saved ? JSON.parse(saved) : [];
-  }); // নতুন ফেভারিট স্টেট
+  });
 
   const aiSectionRef = useRef(null);
 
