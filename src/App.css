@@ -1,15 +1,18 @@
-body { background: #f4f7f6; margin: 0; font-family: 'Segoe UI', sans-serif; }
+body { background: #f4f7f6; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 .fixed-header {
   position: sticky; top: 0; background: white; padding: 15px;
   z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1); text-align: center;
 }
 
+.logo { font-size: 24px; margin-bottom: 5px; color: #1a1a1a; }
+
 .ai-nav-btn {
-  background: #2563eb; color: white; border: none; padding: 8px 18px;
-  border-radius: 25px; font-weight: bold; cursor: pointer; margin-bottom: 10px;
-  transition: 0.3s ease;
+  background: #2563eb; color: white; border: none; padding: 10px 20px;
+  border-radius: 25px; font-weight: bold; cursor: pointer; margin-bottom: 12px;
+  transition: 0.3s ease; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 }
+.ai-nav-btn:hover { background: #1e40af; transform: translateY(-2px); }
 
 .search-box input {
   width: 90%; max-width: 450px; padding: 12px 20px; border-radius: 30px;
@@ -18,30 +21,31 @@ body { background: #f4f7f6; margin: 0; font-family: 'Segoe UI', sans-serif; }
 
 .tabs button {
   padding: 8px 16px; border-radius: 20px; border: none; font-weight: 600;
-  cursor: pointer; background: #edf2f7; margin: 0 4px;
+  cursor: pointer; background: #edf2f7; margin: 0 4px; color: #4a5568;
 }
 .tabs button.active { background: #2563eb; color: white; }
 
 .card-grid { display: grid; padding: 20px; gap: 15px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 
-.medicine-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.medicine-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.2s; }
+.medicine-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
 
 .voice-btn { background: #eff6ff; color: #2563eb; border: none; padding: 10px 15px; border-radius: 10px; font-weight: bold; cursor: pointer; }
 
 .fab-btn {
   position: fixed; bottom: 30px; right: 20px; background: #10b981;
   color: white; padding: 14px 24px; border-radius: 50px; text-decoration: none;
-  font-weight: bold; z-index: 2000;
+  font-weight: bold; z-index: 2000; box-shadow: 0 5px 15px rgba(16,185,129,0.4);
 }
 
-/* AI Section & Loader */
+/* AI Container & Loading */
 .ai-container { margin: 40px auto; padding: 20px; max-width: 900px; background: white; border-radius: 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 .iframe-wrapper { position: relative; min-height: 400px; }
 .ai-loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #2563eb; }
-.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #2563eb; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #2563eb; border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* Modal Overlay Fix */
+/* Modal Styles */
 .modal-overlay {
   position: fixed !important; top: 0; left: 0; width: 100vw; height: 100vh;
   background: rgba(0,0,0,0.85); display: flex; justify-content: center;
@@ -50,4 +54,5 @@ body { background: #f4f7f6; margin: 0; font-family: 'Segoe UI', sans-serif; }
 .modal-card { background: white; padding: 30px; border-radius: 25px; width: 90%; max-width: 380px; text-align: center; }
 .heart-icon { font-size: 55px; animation: pulse 1.2s infinite; }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+.warning { background: #fff1f2; color: #e11d48; padding: 10px; border-radius: 10px; margin: 15px 0; font-size: 13px; }
 .close-btn { width: 100%; padding: 12px; border: none; background: #2563eb; color: white; border-radius: 12px; font-weight: bold; cursor: pointer; }
