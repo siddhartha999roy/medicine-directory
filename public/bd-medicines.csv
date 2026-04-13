@@ -528,3 +528,43 @@ Lexotan 3mg,Bromazepam,Roche / Radiant,Tension,https://hplbd.com/images/products
 Dormicum 7.5mg,Midazolam,Roche / Radiant,Insomnia,https://hplbd.com/images/products/Napa-500.png,Induces sleep before surgery,1 tablet at night,Memory loss,25 BDT,Hypnofast
 Zoloft 50mg,Sertraline,Pfizer,Depression,https://hplbd.com/images/products/Napa-500.png,Treatment for OCD and depression,1 tablet daily,Sweating,45 BDT,Serta
 Prozac 20mg,Fluoxetine,Eli Lilly,Mental Health,https://hplbd.com/images/products/Napa-500.png,Mood stabilizer and anti-anxiety,1 tablet daily,Dry mouth,35 BDT,Flutin
+Civox 1gm,Ceftriaxone,Square Pharmaceuticals,Severe Infection,https://hplbd.com/images/products/Napa-500.png,Injectable antibiotic for typhoid/pneumonia,IV/IM injection daily,Pain at injection site,190 BDT,Tricef / Traxyl
+Trizon 1gm,Ceftriaxone,Incepta Pharmaceuticals,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Used for post-surgery infections,As per doctor,Diarrhea,185 BDT,Civox
+Maxcef 1gm,Cefepime,Renata Limited,Severe Fever,https://hplbd.com/images/products/Napa-500.png,Fourth generation antibiotic,IV injection twice daily,Nausea,350 BDT,Cefepim
+Pantix IV,Pantoprazole,Incepta Pharmaceuticals,Gastric Emergency,https://hplbd.com/images/products/Napa-500.png,Fast relief from severe acidity/ulcer,IV injection as needed,Headache,70 BDT,Sergel IV
+Sergel IV,Esomeprazole,Healthcare Pharma,Severe Acid,https://hplbd.com/images/products/Napa-500.png,Injectable acid reflux treatment,IV injection daily,Dizziness,80 BDT,Nexum IV
+Seclo IV,Omeprazole,Square Pharmaceuticals,Gastritis,https://hplbd.com/images/products/Napa-500.png,Used in hospital for gastric relief,IV injection as needed,Nausea,60 BDT,Losectil IV
+Fenaka 75mg,Diclofenac Sodium,Square Pharmaceuticals,Acute Pain,https://hplbd.com/images/products/Napa-500.png,Fast relief from injury/stone pain,IM injection,Injection site pain,25 BDT,Clofenac
+Clofenac 75mg,Diclofenac Sodium,Incepta Pharmaceuticals,Pain Killer,https://hplbd.com/images/products/Napa-500.png,Rapid pain relief injection,IM injection twice daily,Gastritis,22 BDT,Fenaka
+Ketorac 30mg,Ketorolac Tromethamine,Incepta Pharmaceuticals,Severe Pain,https://hplbd.com/images/products/Napa-500.png,Post-operative pain management,IV/IM injection,Stomach upset,55 BDT,Rolac
+Rolac 30mg,Ketorolac Tromethamine,Renata Limited,Surgery Pain,https://hplbd.com/images/products/Napa-500.png,Strong injectable painkiller,As per doctor,Nausea,60 BDT,Torax
+Torax 30mg,Ketorolac,Square Pharmaceuticals,Acute Pain,https://hplbd.com/images/products/Napa-500.png,Used for kidney stone pain,IM injection,Stomach pain,58 BDT,Rolac
+Emeset IV,Ondansetron,Incepta Pharmaceuticals,Anti-Vomiting,https://hplbd.com/images/products/Napa-500.png,Stops severe vomiting/nausea,IV injection,Headache,45 BDT,Joytrip
+Joytrip IV,Ondansetron,Square Pharmaceuticals,Stop Vomit,https://hplbd.com/images/products/Napa-500.png,Used during chemotherapy/surgery,IV injection as needed,Drowsiness,40 BDT,Emeset
+Lomoparin 40,Enoxaparin Sodium,Incepta Pharmaceuticals,Blood Thinner,https://hplbd.com/images/products/Napa-500.png,Prevents blood clots in heart,Subcutaneous injection,Bruising,550 BDT,Clexane
+Clexane 40,Enoxaparin Sodium,Sanofi Bangladesh,Heart Care,https://hplbd.com/images/products/Napa-500.png,Injectable anticoagulant,As per doctor,Bleeding,600 BDT,Lomoparin
+Pevonum 4mg,Pancuronium,Incepta Pharmaceuticals,Muscle Relaxant,https://hplbd.com/images/products/Napa-500.png,Used during general anesthesia,IV injection,Low BP,180 BDT,Pavulon
+Adrenin,Adrenaline,Incepta Pharmaceuticals,Emergency,https://hplbd.com/images/products/Napa-500.png,Used for cardiac arrest/allergy,Emergency IV/IM,Palpitation,15 BDT,Epinephrine
+Atropin,Atropine Sulfate,Square Pharmaceuticals,Heart Rate,https://hplbd.com/images/products/Napa-500.png,Used for slow heart rate,IV injection,Dry mouth,12 BDT,Atrop
+Dexamet,Dexamethasone,Square Pharmaceuticals,Inflammation,https://hplbd.com/images/products/Napa-500.png,Severe allergy and breathing relief,IM/IV injection,Weight gain,15 BDT,Oradexon
+Oradexon,Dexamethasone,Organon / Radiant,Steroid,https://hplbd.com/images/products/Napa-500.png,High quality injectable steroid,As per doctor,Mood change,25 BDT,Dexamet
+Hydrocort,Hydrocortisone,Incepta Pharmaceuticals,Acute Allergy,https://hplbd.com/images/products/Napa-500.png,Used for severe asthma/shock,IV injection,Swelling,85 BDT,Cortisol
+V-Amik 500,Amikacin,Incepta Pharmaceuticals,Strong Antibiotic,https://hplbd.com/images/products/Napa-500.png,Treatment for resistant bacteria,IV/IM daily,Ear ringing,120 BDT,Amicin
+Gentabac,Gentamicin,Square Pharmaceuticals,Infection,https://hplbd.com/images/products/Napa-500.png,Used for skin and bone infections,IM injection twice,Kidney issues,15 BDT,Gentricin
+Furopen,Furosemide,Incepta Pharmaceuticals,Water Pill,https://hplbd.com/images/products/Napa-500.png,Reduces fluid in lungs/heart,IV injection,Frequent urination,10 BDT,Lasix
+Sedil IV,Diazepam,Square Pharmaceuticals,Sedative,https://hplbd.com/images/products/Napa-500.png,Used for seizures and anxiety,IV/IM injection,Sleepiness,8 BDT,Valium
+H-B 12,Vitamin B12,Square Pharmaceuticals,Vitamin,https://hplbd.com/images/products/Napa-500.png,Treatment for nerve weakness,IM injection weekly,None,25 BDT,Neuro-B
+Neuro-B IV,Vitamin B1+B6+B12,Square Pharmaceuticals,Nerve Support,https://hplbd.com/images/products/Napa-500.png,Combined vitamin for pain,IV infusion,None,60 BDT,Vitabion
+M-Sol 500,Methylprednisolone,Incepta Pharmaceuticals,Severe Allergy,https://hplbd.com/images/products/Napa-500.png,High dose steroid for lungs,IV injection,Increased sugar,450 BDT,Solu-Medrol
+Tetanus Vaccine,Tetanus Toxoid,Incepta Pharmaceuticals,Vaccine,https://hplbd.com/images/products/Napa-500.png,Prevention of tetanus infection,IM injection,Fever,65 BDT,Tetavax
+Oxytocin,Oxytocin,Incepta Pharmaceuticals,Maternity,https://hplbd.com/images/products/Napa-500.png,Used during labor/childbirth,IV drip,Cramping,20 BDT,Pitocin
+Iron-J,Iron Sucrose,Incepta Pharmaceuticals,Anemia,https://hplbd.com/images/products/Napa-500.png,Injectable iron for blood,IV infusion,Metallic taste,350 BDT,Venofer
+Venofer,Iron Sucrose,Healthcare Pharma,Blood Booster,https://hplbd.com/images/products/Napa-500.png,Used for severe anemia,IV drip,Headache,650 BDT,Iron-J
+G-Pethidine,Pethidine HCl,Government,Severe Pain,https://hplbd.com/images/products/Napa-500.png,Narcotic pain reliever,IM injection,Drowsiness,30 BDT,Morphine
+Dopamin,Dopamine HCl,Incepta Pharmaceuticals,Heart Shock,https://hplbd.com/images/products/Napa-500.png,Maintains BP in emergencies,IV drip,Palpitations,120 BDT,Dopacard
+Aminofin,Aminophylline,Square Pharmaceuticals,Asthma,https://hplbd.com/images/products/Napa-500.png,Relief from severe wheezing,IV drip,Tremors,15 BDT,Phyllin
+S-Caine,Bupivacaine,Incepta Pharmaceuticals,Anesthesia,https://hplbd.com/images/products/Napa-500.png,Spinal anesthesia for surgery,Spinal injection,Numbness,150 BDT,Marcain
+Lidocain,Lidocaine HCl,Square Pharmaceuticals,Local Numbness,https://hplbd.com/images/products/Napa-500.png,Used for small stitches/surgeries,Local application,Redness,40 BDT,Xylocaine
+Humulin 70/30,Insulin Mix,Eli Lilly / Incepta,Diabetes,https://hplbd.com/images/products/Napa-500.png,Intermediate acting insulin,Subcutaneous injection,Low sugar,850 BDT,Mixtard
+Mixtard 30,Insulin Mix,Novo Nordisk,Sugar Control,https://hplbd.com/images/products/Napa-500.png,Standard insulin for daily use,As per doctor,Shaking,950 BDT,Humulin
+Lantus Solostar,Insulin Glargine,Sanofi,Long Acting,https://hplbd.com/images/products/Napa-500.png,24-hour sugar control pen,Injection at night,Weight gain,1100 BDT,Basaglar
