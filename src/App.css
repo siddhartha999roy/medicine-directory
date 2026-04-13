@@ -1,89 +1,76 @@
+/* Near Me বাটন ডিজাইন */
+.near-me-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.near-me-btn:hover {
+  transform: scale(1.05);
+  background: #059669;
+}
+
+/* Modal স্টাইল */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   display: flex; justify-content: center; align-items: center;
-  z-index: 9999;
-  backdrop-filter: blur(3px);
+  z-index: 10000;
 }
 
 .modal-body {
   background: white;
-  padding: 25px;
-  border-radius: 25px;
-  width: 85%;
-  max-width: 380px;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  position: relative;
 }
 
-.heart-wrapper {
+.heart-icon {
+  font-size: 60px;
   margin-bottom: 15px;
+  animation: beat 1s infinite;
 }
 
-.heart-img {
-  width: 80px;
-  height: 80px;
-  animation: heartbeat 1.2s infinite;
-}
-
-@keyframes heartbeat {
+@keyframes beat {
   0% { transform: scale(1); }
-  20% { transform: scale(1.15); }
-  40% { transform: scale(1); }
-  60% { transform: scale(1.15); }
+  50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
 
-.modal-title {
-  font-size: 24px;
-  margin: 10px 0;
-  color: #1a1a1a;
-}
-
-.speak-icon {
-  cursor: pointer;
-  font-size: 18px;
-  color: #3b82f6;
-  margin-left: 5px;
-}
-
-.modal-info-box {
-  background: #f8fafc;
-  padding: 15px;
-  border-radius: 15px;
-  text-align: left;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.modal-warning {
+.warning-box {
   background: #fff1f2;
-  color: #be123c;
-  padding: 10px;
+  color: #e11d48;
+  padding: 12px;
   border-radius: 10px;
-  font-size: 13px;
-  margin: 15px 0;
+  font-size: 14px;
+  margin: 20px 0;
   border: 1px solid #fecdd3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
 }
 
-.modal-close-btn {
+.close-btn {
   background: #2563eb;
   color: white;
   border: none;
-  padding: 12px 0;
-  border-radius: 15px;
+  padding: 12px;
+  border-radius: 12px;
   width: 100%;
   font-weight: bold;
-  font-size: 16px;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-.modal-close-btn:hover {
-  background: #1d4ed8;
 }
