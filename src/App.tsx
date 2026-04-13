@@ -8,8 +8,8 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isAiLoading, setIsAiLoading] = useState(true); // AI লোডিং ট্র্যাকার
   
-  // AI সেকশনে যাওয়ার জন্য রেফারেন্স
   const aiSectionRef = useRef(null);
 
   useEffect(() => {
@@ -50,10 +50,8 @@ function App() {
       <header className="fixed-header">
         <h1 className="logo">💊 Medi-Directory</h1>
         
-        {/* প্রফেশনাল AI বাটন */}
-        <button className="ai-nav-btn" onClick={scrollToAI}>
-          <span>🤖</span> Ask AI Assistant
-        </button>
+        {/* উপরের AI নেভিগেশন বাটন */}
+        <button className="ai-nav-btn" onClick={scrollToAI}>🤖 Ask AI Assistant</button>
 
         <div className="search-box">
           <input 
@@ -85,33 +83,41 @@ function App() {
           ))}
         </div>
 
-        {/* AI Section (একদম নিচে) */}
+        {/* AI Section with Loader */}
         <div className="ai-container" ref={aiSectionRef}>
           <div className="ai-header">
-            <h2>🤖 Medi-Assistant AI</h2>
-            <p>আপনার যেকোনো স্বাস্থ্য বিষয়ক প্রশ্নের উত্তর পেতে AI ব্যবহার করুন।</p>
+             <h2>🤖 Medi-Assistant AI</h2>
+             <p>আপনার স্বাস্থ্য বিষয়ক যেকোনো প্রশ্নে সাহায্য করতে আমি প্রস্তুত।</p>
           </div>
-          <iframe
-            src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
-            width="100%"
-            height="600px"
-            style={{ border: 'none', borderRadius: '15px', background: '#fff' }}
-            title="Medi-Assistant AI"
-          ></iframe>
+          
+          <div className="iframe-wrapper">
+            {isAiLoading && (
+              <div className="ai-loader">
+                <div className="spinner"></div>
+                <p>AI অ্যাসিস্ট্যান্ট লোড হচ্ছে...</p>
+              </div>
+            )}
+            <iframe
+              src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
+              width="100%"
+              height="600px"
+              onLoad={() => setIsAiLoading(false)}
+              style={{ border: 'none', borderRadius: '15px', background: '#fff', opacity: isAiLoading ? 0 : 1 }}
+              title="Medi-Assistant AI"
+            ></iframe>
+          </div>
         </div>
       </main>
 
-      {/* Pharmacy Near Me FAB */}
       <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">
         📍 Pharmacy Near Me
       </a>
 
-      {/* Details Modal */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-card" onClick={e => e.stopPropagation()}>
             <div className="heart-icon">❤️‍🔥</div>
-            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize: '20px'}}>🔊</span></h2>
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer'}}>🔊</span></h2>
             <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
