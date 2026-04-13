@@ -9,7 +9,7 @@ function App() {
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
   
-  // AI সেকশনে সরাসরি যাওয়ার জন্য রেফারেন্স
+  // AI সেকশনে যাওয়ার জন্য রেফারেন্স
   const aiSectionRef = useRef(null);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Data load failed:", err); }
+      } catch (err) { console.error("Error loading data:", err); }
     };
     loadData();
   }, []);
@@ -37,7 +37,6 @@ function App() {
     window.speechSynthesis.speak(utterance);
   };
 
-  // ক্লিক করলে নিচে AI সেকশনে নিয়ে যাওয়ার ফাংশন
   const scrollToAI = () => {
     aiSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -51,8 +50,10 @@ function App() {
       <header className="fixed-header">
         <h1 className="logo">💊 Medi-Directory</h1>
         
-        {/* উপরের নতুন AI নেভিগেশন বাটন */}
-        <button className="ai-nav-btn" onClick={scrollToAI}>🤖 Ask AI Assistant</button>
+        {/* প্রফেশনাল AI বাটন */}
+        <button className="ai-nav-btn" onClick={scrollToAI}>
+          <span>🤖</span> Ask AI Assistant
+        </button>
 
         <div className="search-box">
           <input 
@@ -84,11 +85,11 @@ function App() {
           ))}
         </div>
 
-        {/* --- Medi-Assistant AI Section (সাইটের একদম নিচে) --- */}
+        {/* AI Section (একদম নিচে) */}
         <div className="ai-container" ref={aiSectionRef}>
           <div className="ai-header">
-             <h2>🤖 Medi-Assistant AI</h2>
-             <p>আপনার স্বাস্থ্য বিষয়ক যেকোনো প্রশ্নে সাহায্য করতে আমি প্রস্তুত।</p>
+            <h2>🤖 Medi-Assistant AI</h2>
+            <p>আপনার যেকোনো স্বাস্থ্য বিষয়ক প্রশ্নের উত্তর পেতে AI ব্যবহার করুন।</p>
           </div>
           <iframe
             src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
@@ -100,17 +101,17 @@ function App() {
         </div>
       </main>
 
-      {/* Floating Near Me Button */}
+      {/* Pharmacy Near Me FAB */}
       <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">
         📍 Pharmacy Near Me
       </a>
 
-      {/* Pop-up Modal (Fix for overlapping issue) */}
+      {/* Details Modal */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-card" onClick={e => e.stopPropagation()}>
             <div className="heart-icon">❤️‍🔥</div>
-            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer'}}>🔊</span></h2>
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize: '20px'}}>🔊</span></h2>
             <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
