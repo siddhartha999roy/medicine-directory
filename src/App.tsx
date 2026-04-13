@@ -32,11 +32,15 @@ function App() {
         const parse = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
           const p = line.split(',');
           if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
-          return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
+          return { 
+            name: p[0], generic: p[1], company: p[2], indication: p[3], 
+            image: p[4], uses: p[5], dosage: p[6], sideEffects: p[7], 
+            price: p[8], alternatives: p[9], origin: type, type: 'm' 
+          };
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Error:", err); }
+      } catch (err) { console.error("Error loading data:", err); }
     };
     loadData();
   }, []);
@@ -134,10 +138,14 @@ function App() {
           <div className="modal-card" onClick={e => e.stopPropagation()}>
             <div className="heart-icon">❤️‍🔥</div>
             <h2>{selectedItem.name}</h2>
-            <div className="details">
+            <div className="details-scroll">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
-              <p><strong>Indication:</strong> {selectedItem.indication}</p>
+              <p><strong>Uses:</strong> {selectedItem.uses || 'N/A'}</p>
+              <p><strong>Dosage:</strong> {selectedItem.dosage || 'N/A'}</p>
+              <p><strong>Side Effects:</strong> {selectedItem.sideEffects || 'N/A'}</p>
+              <p><strong>Price (BD):</strong> {selectedItem.price || 'N/A'}</p>
+              <p><strong>Alternatives:</strong> {selectedItem.alternatives || 'N/A'}</p>
               <div className="warning-box">
                 ⚠️ ওষুধ খাওয়ার আগে অবশ্যই একজন বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।
               </div>
