@@ -36,7 +36,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Error:", err); }
+      } catch (err) { console.error("Error loading data:", err); }
     };
     loadData();
   }, []);
@@ -85,8 +85,8 @@ function App() {
           />
         </div>
         <div className="tabs">
-          <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD</button>
-          <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian</button>
+          <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicines</button>
+          <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian Medicines</button>
           <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
           <button className={category === 'favorites' ? 'active' : ''} onClick={() => setCategory('favorites')}>⭐ Saved</button>
         </div>
@@ -127,18 +127,14 @@ function App() {
         </div>
       </main>
 
-      <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy</a>
+      <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
 
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-card" onClick={e => e.stopPropagation()}>
-            <div className="heart-icon">❤️‍🔥</div>
             <h2>{selectedItem.name}</h2>
-            <div className="details">
-              <p><strong>Generic:</strong> {selectedItem.generic}</p>
-              <p><strong>Company:</strong> {selectedItem.company}</p>
-              <p><strong>Indication:</strong> {selectedItem.indication}</p>
-            </div>
+            <p><strong>Generic:</strong> {selectedItem.generic}</p>
+            <p><strong>Company:</strong> {selectedItem.company}</p>
             <button className="close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
           </div>
         </div>
