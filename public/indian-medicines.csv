@@ -1,92 +1,11 @@
 name,generic,company,indication,image,uses,dosage,sideEffects,price,alternatives
-Dolo 650,Paracetamol 650mg,Micro Labs Ltd,Fever & Body Pain,https://5.imimg.com/data5/SELLER/Default/2022/9/MQ/XF/XN/158742544/dolo-650-tablet-500x500.jpg
-Crocin Advance,Paracetamol 500mg,GSK,Fever & Pain,https://www.crocin.com/content/dam/cf-consumer-healthcare/panadol/en_in/products/crocin-advance/Crocin-Advance-Tablet.png
-Pan 40,Pantoprazole 40mg,Alkem Laboratories,Acidity,https://5.imimg.com/data5/ANDROID/Default/2021/2/OY/WQ/UI/105456456/product-jpeg-500x500.jpg
-Pantocid 20,Pantoprazole 20mg,Sun Pharmaceutical,Gastric,https://5.imimg.com/data5/SELLER/Default/2023/3/WI/ZT/XN/18545645/pantocid-20.jpg
-Omez 20,Omeprazole 20mg,Dr. Reddy's,Stomach Acid,https://5.imimg.com/data5/SELLER/Default/2021/8/ZT/XO/RQ/13545645/omez-20.jpg
-Shelcal 500,Calcium + Vitamin D3,Torrent Pharmaceuticals,Bone Health,https://5.imimg.com/data5/SELLER/Default/2022/1/ZM/XA/XO/14545645/shelcal-500.jpg
-Allegra 120mg,Fexofenadine 120mg,Sanofi India,Allergies,https://5.imimg.com/data5/SELLER/Default/2021/5/QH/YA/ZM/12545645/allegra-120.jpg
-Digene Tablet,Antacid,Abbott India,Gas & Acidity,https://www.digene.in/images/digene-tablet.png
-Combiflam,Ibuprofen & Paracetamol,Sanofi India,Pain Relief,https://5.imimg.com/data5/SELLER/Default/2021/10/QH/YA/ZM/11545645/combiflam.jpg
-Voveran SR 100,Diclofenac 100mg,Novartis,Body Pain,https://5.imimg.com/data5/SELLER/Default/2022/6/QH/YA/ZM/10545645/voveran-sr.jpg
-name,generic,company,indication,image
-Combiflam,Ibuprofen + Paracetamol,Sanofi India,Body Pain & Fever,https://hplbd.com/images/products/Napa-500.png
-Zerodol-SP,Aceclofenac + Serratiopeptidase,Ipca Laboratories,Swelling & Pain,https://hplbd.com/images/products/Napa-500.png
-Voveran SR 100,Diclofenac Sodium,Novartis India,Severe Joint Pain,https://hplbd.com/images/products/Napa-500.png
-Chymoral Forte,Trypsin Chymotrypsin,Torrent Pharma,Edema & Healing,https://hplbd.com/images/products/Napa-500.png
-Liv 52,Herbal,Himalaya Wellness,Liver Health,https://hplbd.com/images/products/Napa-500.png
-Cystone,Herbal,Himalaya Wellness,Kidney Stone Support,https://hplbd.com/images/products/Napa-500.png
-Septilin,Herbal,Himalaya Wellness,Immunity Booster,https://hplbd.com/images/products/Napa-500.png
-Abzorb Powder,Clotrimazole,Abbott India,Fungal Infection,https://hplbd.com/images/products/Napa-500.png
-Itaspor 100,Itraconazole,Intas Pharma,Fungal Nails & Skin,https://hplbd.com/images/products/Napa-500.png
-Lulifin Cream,Luliconazole,Lupin Ltd,Ringworm,https://hplbd.com/images/products/Napa-500.png
-Taxim-O 200,Cefixime,Alkem Laboratories,Typhoid & Infection,https://hplbd.com/images/products/Napa-500.png
-Zifi 200,Cefixime,FDC Ltd,Bacterial Infection,https://hplbd.com/images/products/Napa-500.png
-Gudcef 200,Cefpodoxime,Mankind Pharma,Sinusitis & Throat,https://hplbd.com/images/products/Napa-500.png
-Moxikind-CV 625,Amoxicillin + Clavulanic,Mankind Pharma,Severe Infection,https://hplbd.com/images/products/Napa-500.png
-Azee 500,Azithromycin,Cipla Ltd,Chest Infection,https://hplbd.com/images/products/Napa-500.png
-Ascoril LS,Ambroxol + Levosalbutamol,Glenmark Pharma,Wet Cough,https://hplbd.com/images/products/Napa-500.png
-Grilinctus,Cough Syrup,Wallace Pharma,Dry Cough Relief,https://hplbd.com/images/products/Napa-500.png
-Benadryl,Diphenhydramine,J&J India,Cough & Cold,https://hplbd.com/images/products/Napa-500.png
-Allegra 120,Fexofenadine,Sanofi India,Running Nose,https://hplbd.com/images/products/Napa-500.png
-Avil 25,Pheniramine Maleate,Sanofi India,Allergic Reaction,https://hplbd.com/images/products/Napa-500.png
-Okacet,Cetirizine,Cipla Ltd,Sneezing & Cold,https://hplbd.com/images/products/Napa-500.png
-Montair 10,Montelukast,Cipla Ltd,Asthma Control,https://hplbd.com/images/products/Napa-500.png
-Metrogyl 400,Metronidazole,J.B. Chemicals,Diarrhea & Dysentery,https://hplbd.com/images/products/Napa-500.png
-Omez-D,Omeprazole + Domperidone,Dr. Reddy's Lab,Acid Reflux,https://hplbd.com/images/products/Napa-500.png
-Pantocid 40,Pantoprazole,Sun Pharma,Stomach Ulcer,https://hplbd.com/images/products/Napa-500.png
-Aciloc 150,Ranitidine,Cadila Pharma,Gastric Relief,https://hplbd.com/images/products/Napa-500.png
-Digene Tablet,Antacid,Abbott India,Gas & Acidity,https://hplbd.com/images/products/Napa-500.png
-Econorm,Saccharomyces Boulardii,Dr. Reddy's Lab,Probiotic for Diarrhea,https://hplbd.com/images/products/Napa-500.png
-Sporlac DS,Lactic Acid Bacillus,Sanofi India,Digestion Support,https://hplbd.com/images/products/Napa-500.png
-Becosules,Vitamin B-Complex,Pfizer India,Mouth Ulcer & Weakness,https://hplbd.com/images/products/Napa-500.png
-Neurobion Forte,Vitamin B12,Procter & Gamble,Nerve Pain,https://hplbd.com/images/products/Napa-500.png
-Evion 400,Vitamin E,Merck India,Hair & Skin Health,https://hplbd.com/images/products/Napa-500.png
-Limcee 500,Vitamin C,Abbott India,Scurvy & Immunity,https://hplbd.com/images/products/Napa-500.png
-Shelcal 500,Calcium + Vit D3,Torrent Pharma,Calcium Deficiency,https://hplbd.com/images/products/Napa-500.png
-Calcirol 60K,Vitamin D3,Cadila Pharma,Bone Strength,https://hplbd.com/images/products/Napa-500.png
-Folvite 5mg,Folic Acid,Pfizer India,Pregnancy Support,https://hplbd.com/images/products/Napa-500.png
-Dexorange,Iron Syrup,Franco-Indian Pharma,Anemia & Weakness,https://hplbd.com/images/products/Napa-500.png
-Glycomet 500,Metformin,USV Ltd,Blood Sugar Control,https://hplbd.com/images/products/Napa-500.png
-Telma 40,Telmisartan,Glenmark Pharma,High Blood Pressure,https://hplbd.com/images/products/Napa-500.png
-Amlokind 5,Amlodipine,Mankind Pharma,Hypertension,https://hplbd.com/images/products/Napa-500.png
-Rosuvas 10,Rosuvastatin,Sun Pharma,High Cholesterol Control,https://hplbd.com/images/products/Napa-500.png
-Ezetrol 10,Ezetimibe,MSD Pharmaceuticals,Lipid Reduction,https://hplbd.com/images/products/Napa-500.png
-Lipvas 20,Atorvastatin,Cipla Ltd,Fat Management,https://hplbd.com/images/products/Napa-500.png
-Istamet 50/500,Sitagliptin + Metformin,Sun Pharma,Combined Diabetes Care,https://hplbd.com/images/products/Napa-500.png
-Januvia 100,Sitagliptin,MSD Pharmaceuticals,Blood Sugar Control,https://hplbd.com/images/products/Napa-500.png
-Galvus Met 50/500,Vildagliptin + Metformin,Novartis India,Diabetes Management,https://hplbd.com/images/products/Napa-500.png
-Jardiance 10,Empagliflozin,Boehringer Ingelheim,Type 2 Diabetes,https://hplbd.com/images/products/Napa-500.png
-Forxiga 10,Dapagliflozin,AstraZeneca India,Sugar Regulation,https://hplbd.com/images/products/Napa-500.png
-Eltroxin 50,Levothyroxine,GSK India,Thyroid Hormone Support,https://hplbd.com/images/products/Napa-500.png
-Thyronorm 75,Levothyroxine,Abbott India,Hypothyroidism,https://hplbd.com/images/products/Napa-500.png
-Stelbid 2,Trifluoperazine + Isopropamide,GSK India,Acid Peptic Disease,https://hplbd.com/images/products/Napa-500.png
-Ganaton 50,Itopride Hydrochloride,Abbott India,Bloating & Heartburn,https://hplbd.com/images/products/Napa-500.png
-Librax,Chlordiazepoxide + Clidinium,Abbott India,Irritable Bowel Syndrome,https://hplbd.com/images/products/Napa-500.png
-Normaxin,Chlordiazepoxide + Clidinium,Systopic Lab,Stomach Cramps,https://hplbd.com/images/products/Napa-500.png
-Duphalac Syrup,Lactulose,Abbott India,Gentle Laxative,https://hplbd.com/images/products/Napa-500.png
-Cremaffin,Milk of Magnesia + Paraffin,Abbott India,Constipation Relief,https://hplbd.com/images/products/Napa-500.png
-Lupizyme Syrup,Fungal Diastase + Pepsin,Lupin Ltd,Digestive Aid,https://hplbd.com/images/products/Napa-500.png
-Aristozyme,Diastase + Pepsin,Aristo Pharma,Indigestion & Gas,https://hplbd.com/images/products/Napa-500.png
-Bonisan,Herbal,Himalaya Wellness,Infant Digestion,https://hplbd.com/images/products/Napa-500.png
-Liv 52 DS,Herbal,Himalaya Wellness,Double Strength Liver Care,https://hplbd.com/images/products/Napa-500.png
-Geriforte,Herbal,Himalaya Wellness,Anti-stress & Fitness,https://hplbd.com/images/products/Napa-500.png
-Confido,Herbal,Himalaya Wellness,Men's Health,https://hplbd.com/images/products/Napa-500.png
-Speman,Herbal,Himalaya Wellness,Vitality Support,https://hplbd.com/images/products/Napa-500.png
-Tentex Royal,Herbal,Himalaya Wellness,Energy & Stamina,https://hplbd.com/images/products/Napa-500.png
-Pilex,Herbal,Himalaya Wellness,Hemorrhoids Relief,https://hplbd.com/images/products/Napa-500.png
-Rumalaya Forte,Herbal,Himalaya Wellness,Joint Pain Relief,https://hplbd.com/images/products/Napa-500.png
-Vigomax Forte,Herbal,Charak Pharma,Vitality & Energy,https://hplbd.com/images/products/Napa-500.png
-M-2 Tone,Herbal,Charak Pharma,Women's Health,https://hplbd.com/images/products/Napa-500.png
-Zevit,Multivitamin + Zinc,GlaxoSmithKline,Immunity & Recovery,https://hplbd.com/images/products/Napa-500.png
-Zincovit,Multivitamin + Minerals,Apex Laboratories,Nutritional Support,https://hplbd.com/images/products/Napa-500.png
-A To Z NS,Multivitamin,Alkem Laboratories,General Weakness,https://hplbd.com/images/products/Napa-500.png
-Supradyn,Multivitamin,Bayer India,Daily Energy,https://hplbd.com/images/products/Napa-500.png
-Revital H,Multivitamin + Ginseng,Sun Pharma,Stamina & Focus,https://hplbd.com/images/products/Napa-500.png
-T-Bact Ointment,Mupirocin,GSK India,Skin Infection & Cuts,https://hplbd.com/images/products/Napa-500.png
-Fourderm Cream,Chlorocort + Gentamicin,Cipla Ltd,Skin Allergy & Fungus,https://hplbd.com/images/products/Napa-500.png
-Panderm + Cream,Clobetasol + Terbinafine,Macleods Pharma,Severe Skin Rash,https://hplbd.com/images/products/Napa-500.png
-Bactroban Cream,Mupirocin,GSK India,Bacterial Skin Sore,https://hplbd.com/images/products/Napa-500.png
-Candid Mouth Gel,Clotrimazole,Glenmark Pharma,Oral Thrush,https://hplbd.com/images/products/Napa-500.png
-Zytee Gel,Choline Salicylate,Abbott India,Mouth Ulcer Pain,https://hplbd.com/images/products/Napa-500.png
-Dettol Antiseptic,Chloroxylenol,Reckitt Benckiser,Wound Cleaning,https://hplbd.com/images/products/Napa-500.png
+Crocin 500mg,Paracetamol,GSK India,Fever & Pain,https://hplbd.com/images/products/Napa-500.png,Relieves fever and mild pain,1 tablet 3 times daily,Nausea or rash,15 INR,Dolo 650
+Combiflam,Ibuprofen + Paracetamol,Sanofi India,Pain & Inflammation,https://hplbd.com/images/products/Napa-500.png,Body ache and swelling,1 tablet after food,Stomach upset,45 INR,Flexon
+Dolo 650,Paracetamol,Micro Labs Ltd,High Fever,https://hplbd.com/images/products/Napa-500.png,Effective for viral fever,1 tablet every 6 hours,Allergic reaction,30 INR,Crocin 650
+Shelcal 500,Calcium + Vitamin D3,Torrent Pharma,Bone Health,https://hplbd.com/images/products/Napa-500.png,Calcium deficiency,1 tablet daily,Constipation,130 INR,Gemcal
+Liv.52,Herbal Formulation,Himalaya Wellness,Liver Health,https://hplbd.com/images/products/Napa-500.png,Protects liver and improves appetite,2 tablets twice daily,No major side effects,150 INR,Liv-52 DS
+Digene,Antacid,Abbott India,Acidity & Gas,https://hplbd.com/images/products/Napa-500.png,Instant relief from gas,1-2 tablets as needed,Chalky taste,25 INR,Gelusil
+Pantocid 40,Pantoprazole,Sun Pharma,Acid Reflux,https://hplbd.com/images/products/Napa-500.png,GERD and Gastric problems,1 tablet before breakfast,Headache,160 INR,Pan 40
+Taxim-O 200,Cefixime,Alkem Laboratories,Bacterial Infection,https://hplbd.com/images/products/Napa-500.png,Infections in lungs or throat,1 tablet twice daily,Diarrhea,110 INR,Zifi 200
+Amoxyclav 625,Amoxicillin + Clavulanic Acid,Abbott India,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Severe infections,1 tablet for 5 days,Vomiting,220 INR,Augmentin 625
+Vicks Action 500,Paracetamol + Caffeine,P&G India,Cold & Flu,https://hplbd.com/images/products/Napa-500.png,Relief from cold and headache,1 tablet twice daily,Drowsiness,50 INR,Solvin Cold
