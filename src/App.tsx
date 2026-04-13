@@ -9,6 +9,7 @@ function App() {
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
 
+  // ১. ডেটা লোড ফিচার (সব CSV ফাইল রিড করা)
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -24,13 +25,18 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Error:", err); }
+      } catch (err) { console.error("Error loading CSV:", err); }
     };
     loadData();
   }, []);
 
-  const speak = (t) => window.speechSynthesis.speak(new SpeechSynthesisUtterance(t));
+  // ২. ভয়েস ফিচার (Pronunciation)
+  const speak = (t) => {
+    const utterance = new SpeechSynthesisUtterance(t);
+    window.speechSynthesis.speak(utterance);
+  };
 
+  // ৩. সার্চ এবং ক্যাটাগরি ফিল্টার
   const displayData = category === 'hospitals' 
     ? hospitals.filter(h => h.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : medicines.filter(m => m.origin === category && m.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -38,11 +44,17 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1 style={{color: '#2563eb'}}>💊 Medi-Directory</h1>
+        <h1 className="logo">💊 Medi-Directory</h1>
         <div className="search-container">
-          <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          <input 
+            type="text" 
+            placeholder="Search medicine or hospital..." 
+            value={searchTerm} 
+            onChange={(e) => setSearchTerm(e.target.value)} 
+          />
         </div>
-        <div className="tabs" style={{display:'flex', gap:'10px', justifyContent:'center', margin:'10px 0'}}>
+        {/* ৪. ট্যাব ফিচার (হাসপাতাল সহ) */}
+        <div className="tabs">
           <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicine</button>
           <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian Medicine</button>
           <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
@@ -55,7 +67,7 @@ function App() {
             <h3>{item.name}</h3>
             <p className="subtitle">{item.type === 'h' ? `📍 ${item.location}` : item.generic}</p>
             {item.type === 'h' ? (
-               <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 Call</a>
+               <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 Call Now</a>
             ) : (
                <button className="voice-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }}>🔊 Pronounce</button>
             )}
@@ -63,14 +75,19 @@ function App() {
         ))}
       </main>
 
-      {/* Pop-up Modal - এটি এখন ১০০% কাজ করবে */}
+      {/* ৫. পপ-আপ মোডাল ফিচার (Medicine Details) */}
       {selectedItem && (
-        <div onClick={() => setSelectedItem(null)} style={{position:'fixed', top:0, left:0, width:'100%', height:'100%', background:'rgba(0,0,0,0.8)', display:'flex', justifyContent:'center', alignItems:'center', zIndex:10000}}>
-          <div onClick={e => e.stopPropagation()} style={{background:'white', padding:'20px', borderRadius:'15px', width:'90%', maxWidth:'400px', textAlign:'center', position:'relative'}}>
-            <button onClick={() => setSelectedItem(null)} style={{position:'absolute', top:'10px', right:'15px', border:'none', background:'none', fontSize:'24px', cursor:'pointer'}}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.name} style={{width:'100%', maxHeight:'200px', objectFit:'contain', marginBottom:'15px'}} onError={(e) => e.target.src='https://via.placeholder.com/150'} />
-            <h2 style={{margin:'10px 0'}}>{selectedItem.name}</h2>
-            <div style={{textAlign:'left', fontSize:'14px', lineHeight:'1.5'}}>
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+          <div className="modal-body" onClick={e => e.stopPropagation()}>
+            <span className="close-x" onClick={() => setSelectedItem(null)}>&times;</span>
+            <img 
+              src={selectedItem.image} 
+              alt={selectedItem.name} 
+              className="modal-img" 
+              onError={(e) => e.target.src='https://via.placeholder.com/150'} 
+            />
+            <h2>{selectedItem.name}</h2>
+            <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
               <p><strong>Indication:</strong> {selectedItem.indication}</p>
