@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './App.css';
 
@@ -8,6 +8,9 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
+  
+  // AI সেকশনে সরাসরি যাওয়ার জন্য রেফারেন্স
+  const aiSectionRef = useRef(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -24,7 +27,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Error loading data:", err); }
+      } catch (err) { console.error("Data load failed:", err); }
     };
     loadData();
   }, []);
@@ -32,6 +35,11 @@ function App() {
   const speak = (t) => {
     const utterance = new SpeechSynthesisUtterance(t);
     window.speechSynthesis.speak(utterance);
+  };
+
+  // ক্লিক করলে নিচে AI সেকশনে নিয়ে যাওয়ার ফাংশন
+  const scrollToAI = () => {
+    aiSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const displayData = category === 'hospitals' 
@@ -42,6 +50,10 @@ function App() {
     <div className="App">
       <header className="fixed-header">
         <h1 className="logo">💊 Medi-Directory</h1>
+        
+        {/* উপরের নতুন AI নেভিগেশন বাটন */}
+        <button className="ai-nav-btn" onClick={scrollToAI}>🤖 Ask AI Assistant</button>
+
         <div className="search-box">
           <input 
             type="text" 
@@ -72,10 +84,12 @@ function App() {
           ))}
         </div>
 
-        {/* --- Medi-Assistant AI Section (New) --- */}
-        <div className="ai-container">
-          <h2>🤖 Medi-Assistant AI</h2>
-          <p style={{fontSize: '14px', color: '#666', marginBottom: '15px'}}>আপনার যেকোনো স্বাস্থ্য বিষয়ক প্রশ্নের উত্তর পেতে AI ব্যবহার করুন।</p>
+        {/* --- Medi-Assistant AI Section (সাইটের একদম নিচে) --- */}
+        <div className="ai-container" ref={aiSectionRef}>
+          <div className="ai-header">
+             <h2>🤖 Medi-Assistant AI</h2>
+             <p>আপনার স্বাস্থ্য বিষয়ক যেকোনো প্রশ্নে সাহায্য করতে আমি প্রস্তুত।</p>
+          </div>
           <iframe
             src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
             width="100%"
@@ -86,17 +100,17 @@ function App() {
         </div>
       </main>
 
-      {/* Near Me Button (Floating) */}
+      {/* Floating Near Me Button */}
       <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">
         📍 Pharmacy Near Me
       </a>
 
-      {/* Pop-up Modal */}
+      {/* Pop-up Modal (Fix for overlapping issue) */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-card" onClick={e => e.stopPropagation()}>
             <div className="heart-icon">❤️‍🔥</div>
-            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize: '20px'}}>🔊</span></h2>
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer'}}>🔊</span></h2>
             <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
