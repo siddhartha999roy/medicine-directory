@@ -24,7 +24,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("CSV loading error:", err); }
+      } catch (err) { console.error("Data Load Error:", err); }
     };
     loadData();
   }, []);
@@ -40,62 +40,65 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className="app-header">
         <h1 className="logo">💊 Medi-Directory</h1>
-        <div className="search-container">
+        <div className="search-box">
           <input 
             type="text" 
-            placeholder="Search medicine or hospital..." 
+            placeholder="ওষুধ বা হাসপাতালের নাম খুঁজুন..." 
             value={searchTerm} 
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
         </div>
-        <div className="tabs">
-          <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicine</button>
-          <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian Medicine</button>
+        <nav className="tabs">
+          <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD Medicines</button>
+          <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian Medicines</button>
           <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
-        </div>
+        </nav>
       </header>
 
-      <main className="grid-container">
-        {displayData.map((item, idx) => (
-          <div key={idx} className="card" onClick={() => item.type === 'm' && setSelectedItem(item)}>
-            <h3>{item.name}</h3>
-            <p className="subtitle">{item.type === 'h' ? `📍 ${item.location}` : item.generic}</p>
-            {item.type === 'h' ? (
-               <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 Call Now</a>
-            ) : (
-               <button className="voice-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }}>🔊 Pronounce</button>
-            )}
-          </div>
-        ))}
+      <main className="container">
+        <div className="grid">
+          {displayData.length > 0 ? (
+            displayData.map((item, idx) => (
+              <div key={idx} className="card" onClick={() => item.type === 'm' && setSelectedItem(item)}>
+                <h3>{item.name}</h3>
+                <p className="subtitle">{item.type === 'h' ? `📍 ${item.location}` : item.generic}</p>
+                <div className="card-actions">
+                  {item.type === 'h' ? (
+                    <a href={`tel:${item.phone}`} className="call-btn" onClick={(e) => e.stopPropagation()}>📞 কল করুন</a>
+                  ) : (
+                    <button className="voice-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }}>🔊 উচ্চারণ</button>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="no-result">কোনো তথ্য পাওয়া যায়নি।</div>
+          )}
+        </div>
       </main>
 
-      {/* Floating Pharmacy Near Me Button */}
-      <a 
-        href="https://www.google.com/maps/search/pharmacy+near+me" 
-        target="_blank" 
-        rel="noreferrer" 
-        className="near-me-btn"
-      >
+      {/* ৫. ফ্লোটিং নেয়ার মি বাটন */}
+      <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="near-me-fab">
         📍 Pharmacy Near Me
       </a>
 
-      {/* পপ-আপ মোডাল */}
+      {/* ৬. পপ-আপ মোডাল (অ্যানিমেটেড হার্টবিট সহ) */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="modal-body" onClick={e => e.stopPropagation()}>
-            <div className="heart-icon">❤️‍🔥</div>
-            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize:'18px'}}>🔊</span></h2>
-            <div className="details">
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="heart-anim">❤️‍🔥</div>
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer'}}>🔊</span></h2>
+            <div className="info-grid">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
               <p><strong>Indication:</strong> {selectedItem.indication}</p>
             </div>
-            <div className="warning-box">
-                ⚠️ ডাক্তারের পরামর্শ ছাড়া কোনো ওষুধ সেবন করবেন না।
+            <div className="caution">
+               ⚠️ ডাক্তারের পরামর্শ ছাড়া ওষুধ খাবেন না।
             </div>
-            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close / বন্ধ করুন</button>
+            <button className="close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
           </div>
         </div>
       )}
