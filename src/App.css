@@ -1,40 +1,50 @@
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* সবার উপরে রাখার জন্য */
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
 }
 
 .modal-body {
   background: white;
-  padding: 25px;
+  padding: 30px;
   border-radius: 20px;
   width: 90%;
-  max-width: 450px;
-  position: relative;
+  max-width: 400px;
   text-align: center;
-  animation: fadeIn 0.3s ease;
+  position: relative;
 }
 
-.close-modal {
-  position: absolute;
-  top: 10px; right: 15px;
-  background: none; border: none;
-  font-size: 30px; cursor: pointer;
-  color: #333;
+.heart-icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+  animation: beat 1s infinite;
 }
 
-.modal-img {
-  width: 100%; max-height: 250px;
-  object-fit: contain;
-  margin-bottom: 20px;
+@keyframes beat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
-@keyframes fadeIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+.warning-box {
+  background: #fff1f2;
+  color: #e11d48;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin: 15px 0;
+  border: 1px solid #fecdd3;
+}
+
+.close-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
 }
