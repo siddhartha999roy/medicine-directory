@@ -109,3 +109,103 @@ Dolo 650,Paracetamol,Micro Labs Ltd,High Fever,https://hplbd.com/images/products
 Combiflam,Ibuprofen,Sanofi India,Pain,https://hplbd.com/images/products/Napa-500.png,Body ache and inflammation,1 tablet after food,Stomach upset,45 INR,Flexon
 Crocin 500mg,Paracetamol,GSK India,Fever,https://hplbd.com/images/products/Napa-500.png,Mild fever and pain,1 tablet twice daily,Nausea,15 INR,Dolo 650
 Liv.52,Herbal,Himalaya Wellness,Liver,https://hplbd.com/images/products/Napa-500.png,Protects liver health,2 tablets daily,None,150 INR,Liv-52 DS
+Fexo 180mg,Fexofenadine,Healthcare Pharma,Severe Allergy,https://hplbd.com/images/products/Napa-500.png,Chronic allergic conditions,1 tablet daily,Headache,15 BDT,Fenadin / Alatrol
+Moxyl 500mg,Amoxicillin,Square Pharmaceuticals,Bacterial Infection,https://hplbd.com/images/products/Napa-500.png,Infections of ear/nose/throat,1 tablet 3 times daily,Rash,7 BDT,Amoxil / Moxilin
+Cef-3 200mg,Cefixime,Healthcare Pharma,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Typhoid and urinary infection,1 tablet twice daily,Diarrhea,45 BDT,Fixit / T-cef
+Neosten,Clotrimazole,Radiant Pharmaceuticals,Fungal Infection,https://hplbd.com/images/products/Napa-500.png,Skin and nail fungus,Apply 2 times daily,Skin irritation,40 BDT,Candid / G-clot
+Provair 10mg,Montelukast,Healthcare Pharma,Asthma control,https://hplbd.com/images/products/Napa-500.png,Prevents asthma attacks,1 tablet at night,Headache,16 BDT,Monas / Monkast
+Xedat 10mg,Vildagliptin,Healthcare Pharma,Diabetes,https://hplbd.com/images/products/Napa-500.png,Blood sugar management,1 tablet twice daily,Dizziness,22 BDT,Galvus / Viset
+Eromycin 250mg,Erythromycin,Square Pharmaceuticals,Infection,https://hplbd.com/images/products/Napa-500.png,Skin and respiratory infections,1 tablet 4 times daily,Vomiting,5 BDT,Erythro / Rex
+Avlocard 10mg,Propranolol,Square Pharmaceuticals,Heart Rate,https://hplbd.com/images/products/Napa-500.png,Controls palpitations/anxiety,1 tablet as needed,Fatigue,2 BDT,Indever
+Toma 200mg,Ofloxacin,Incepta Pharmaceuticals,Diarrhea,https://hplbd.com/images/products/Napa-500.png,Urinary and stomach infections,1 tablet twice daily,Nausea,10 BDT,Tarivid
+Atreza 0.5mg,Atropine Sulfate,Incepta Pharmaceuticals,Eye Exam,https://hplbd.com/images/products/Napa-500.png,Used for eye examination,As directed by doctor,Blurred vision,35 BDT,Atro
+Dormicum 7.5mg,Midazolam,Radiant Pharmaceuticals,Sleep Aid,https://hplbd.com/images/products/Napa-500.png,Short term insomnia treatment,1 tablet at night,Drowsiness,10 BDT,Midzo
+Pase 0.5mg,Clonazepam,Incepta Pharmaceuticals,Panic Attack,https://hplbd.com/images/products/Napa-500.png,Controls anxiety and panic,As per doctor's advice,Sleepiness,8 BDT,Rivotril / Denixil
+Laxyl 10mg,Bisacodyl,Incepta Pharmaceuticals,Constipation,https://hplbd.com/images/products/Napa-500.png,Occasional constipation relief,1 tablet at night,Stomach cramps,2 BDT,Dulcolax
+Almex 400mg,Albendazole,Healthcare Pharma,Worm Infection,https://hplbd.com/images/products/Napa-500.png,Kills intestinal parasites,1 tablet (one dose),Abdominal pain,3 BDT,Solas / Zentel
+Flagyl 400mg,Metronidazole,Sanofi Bangladesh,Amoebiasis,https://hplbd.com/images/products/Napa-500.png,Treats stomach infections,1 tablet 3 times daily,Metallic taste,4 BDT,Amodis / Metro
+Zith 500mg,Azithromycin,Incepta Pharmaceuticals,Infection,https://hplbd.com/images/products/Napa-500.png,Bacterial infection treatment,1 tablet daily,Stomach upset,35 BDT,Zimax / Azith
+Lipigel 10mg,Atorvastatin,Incepta Pharmaceuticals,Cholesterol,https://hplbd.com/images/products/Napa-500.png,Lowers bad cholesterol,1 tablet at night,Muscle pain,12 BDT,Atova / Lipiget
+Bicon 5mg,Bisoprolol Fumarate,Square Pharmaceuticals,High BP,https://hplbd.com/images/products/Napa-500.png,Lowers blood pressure,1 tablet daily,Fatigue,8 BDT,Bisocor / Concor
+Doxacin 100mg,Doxycycline,Square Pharmaceuticals,Acne & Infection,https://hplbd.com/images/products/Napa-500.png,Bacterial and acne treatment,1 tablet twice daily,Nausea,3 BDT,Doxiv
+Oscal 500mg,Calcium Carbonate,Beacon Pharmaceuticals,Bones,https://hplbd.com/images/products/Napa-500.png,Calcium supplement,1 tablet twice daily,Constipation,8 BDT,Calbo / Shelcal
+Loprin 75mg,Aspirin,Aristopharma,Blood Thinner,https://hplbd.com/images/products/Napa-500.png,Prevents heart attack/stroke,1 tablet daily,Stomach pain,1.5 BDT,Ecosprin
+T-Cef 200mg,Cefixime,Incepta Pharmaceuticals,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Severe lung/throat infections,1 tablet twice daily,Diarrhea,45 BDT,Fixit / Cef-3
+Rupatrol 10mg,Rupatadine,Incepta Pharmaceuticals,Allergy,https://hplbd.com/images/products/Napa-500.png,Seasonal allergy relief,1 tablet daily,Sleepiness,12 BDT,Rupa / Rupazol
+Monkast 10mg,Montelukast,Healthcare Pharma,Asthma,https://hplbd.com/images/products/Napa-500.png,Long term asthma control,1 tablet at night,Headache,16 BDT,Monas / Provair
+Pevison Cream,Econazole + Triamcinolone,Healthcare Pharma,Skin Fungus,https://hplbd.com/images/products/Napa-500.png,Itching and fungal infection,Apply 2 times daily,Burning sensation,70 BDT,Pevisone
+Sultolin 2mg,Salbutamol,Square Pharmaceuticals,Breathing,https://hplbd.com/images/products/Napa-500.png,Relief from chest tightness,1 tablet 3 times daily,Shaking,2 BDT,Ventolin
+Azmasol Inhaler,Salbutamol,Beximco Pharma,Asthma,https://hplbd.com/images/products/Napa-500.png,Instant relief from asthma,2 puffs as needed,Palpitations,220 BDT,Ventolin
+Emeset 4mg,Ondansetron,Incepta Pharmaceuticals,Vomiting,https://hplbd.com/images/products/Napa-500.png,Prevents nausea/vomiting,1 tablet before meal,Headache,10 BDT,Joytrip
+Flatameal DS,Aluminium + Magnesium,Incepta Pharmaceuticals,Gas relief,https://hplbd.com/images/products/Napa-500.png,Relief from stomach gas,1-2 tablets after meal,None,3 BDT,Entacyd
+Dantrol 20mg,Omeprazole,Healthcare Pharma,Acidity,https://hplbd.com/images/products/Napa-500.png,Heartburn and acid reflux,1 tablet before breakfast,Dizziness,6 BDT,Seclo / Seclo
+Osartil 50mg,Losartan Potassium,Incepta Pharmaceuticals,BP Control,https://hplbd.com/images/products/Napa-500.png,Lowers blood pressure,1 tablet daily,Dizziness,8 BDT,Angilock
+Atrizin 10mg,Cetirizine,Healthcare Pharma,Cold/Allergy,https://hplbd.com/images/products/Napa-500.png,Sneezing and runny nose,1 tablet at night,Drowsiness,4 BDT,Alatrol
+C-Vit 250mg,Vitamin C,Beximco Pharma,Immunity,https://hplbd.com/images/products/Napa-500.png,Vitamin C supplement,1 tablet twice daily,None,2 BDT,Ceevit
+X-Pel,Praziquantel,Incepta Pharmaceuticals,Parasites,https://hplbd.com/images/products/Napa-500.png,Treats worm infections,As per weight/dose,Nausea,150 BDT,Prazik
+Rupazol 10mg,Rupatadine,Healthcare Pharma,Hives,https://hplbd.com/images/products/Napa-500.png,Relief from skin itching,1 tablet daily,Sleepiness,12 BDT,Rupa
+K-Bet 10mg,Ketotifen,Healthcare Pharma,Allergy,https://hplbd.com/images/products/Napa-500.png,Asthma and allergy prevention,1 tablet twice daily,Dry mouth,4 BDT,Tofen
+Nidazyl 400mg,Metronidazole,Healthcare Pharma,Diarrhea,https://hplbd.com/images/products/Napa-500.png,Stomach infection relief,1 tablet 3 times daily,Metallic taste,4 BDT,Flagyl
+Prazitab 20mg,Pantoprazole,Healthcare Pharma,Gastritis,https://hplbd.com/images/products/Napa-500.png,Acid control in stomach,1 tablet before meal,Headache,7 BDT,Pantocid
+Cardit 10mg,Propranolol,Incepta Pharmaceuticals,Heart Health,https://hplbd.com/images/products/Napa-500.png,Anxiety and rapid heart rate,As prescribed by doctor,Fatigue,2 BDT,Indever
+D-Cap 20000,Vitamin D3,Healthcare Pharma,Vitamin D,https://hplbd.com/images/products/Napa-500.png,Bone and immune support,1 capsule weekly,None,40 BDT,D-Rise
+Fenix 20mg,Rabeprazole,Opsonin Pharma,Acid Reflux,https://hplbd.com/images/products/Napa-500.png,Gastric ulcer treatment,1 tablet before meal,Dry mouth,7 BDT,Finix
+Opticlox 500mg,Cloxacillin,Incepta Pharmaceuticals,Skin Infection,https://hplbd.com/images/products/Napa-500.png,Bacterial skin infections,1 tablet 4 times daily,Rash,12 BDT,Cloxacin
+V-Plex,Vitamin B-Complex,Incepta Pharmaceuticals,Vitamin,https://hplbd.com/images/products/Napa-500.png,B-vitamin deficiency,1 tablet daily,None,2.5 BDT,B-Plex
+S-Plex,Syrup B-Complex,Square Pharmaceuticals,Health,https://hplbd.com/images/products/Napa-500.png,Energy booster for kids,1 spoon twice daily,None,60 BDT,B-Syrup
+Cemax 500mg,Vitamin C,Incepta Pharmaceuticals,Immunity,https://hplbd.com/images/products/Napa-500.png,Fights cold and flu,1 tablet daily,None,2 BDT,Ceevit
+Oxycon 20mg,Omeprazole,Beacon Pharmaceuticals,Gastric,https://hplbd.com/images/products/Napa-500.png,Acid reflux control,1 tablet before breakfast,Dizziness,6 BDT,Seclo
+Loper 2mg,Loperamide,Incepta Pharmaceuticals,Loose Motion,https://hplbd.com/images/products/Napa-500.png,Controls severe diarrhea,1 tablet after motion,Constipation,1 BDT,Imotil
+Imotil 2mg,Loperamide,Square Pharmaceuticals,Diarrhea,https://hplbd.com/images/products/Napa-500.png,Fast relief from diarrhea,1 tablet as needed,Dry mouth,1 BDT,Loper
+Zox 500mg,Nitazoxanide,Incepta Pharmaceuticals,Stomach Bug,https://hplbd.com/images/products/Napa-500.png,Broad spectrum parasite treatment,1 tablet twice daily,Nausea,20 BDT,Zidok
+Zinconia 20mg,Zinc Sulfate,Healthcare Pharma,Zinc,https://hplbd.com/images/products/Napa-500.png,Zinc supplement,1 tablet daily,Stomach upset,3 BDT,Xinc
+B-50 Forte,Vitamin B-Complex,Square Pharmaceuticals,Nerve,https://hplbd.com/images/products/Napa-500.png,Nerve and brain health,1 tablet daily,None,5 BDT,Neuro-B
+Calbo-G,Calcium Gluconate,Square Pharmaceuticals,Calcium,https://hplbd.com/images/products/Napa-500.png,Calcium deficiency,As per doctor's dose,None,100 BDT,Calbo
+Gliclaz 80mg,Gliclazide,Incepta Pharmaceuticals,Diabetes,https://hplbd.com/images/products/Napa-500.png,Sugar control for adults,1 tablet daily,Weight gain,10 BDT,Glicron
+Amocal 5mg,Amlodipine,Healthcare Pharma,High BP,https://hplbd.com/images/products/Napa-500.png,Reduces blood pressure,1 tablet daily,Swelling,5 BDT,Amlocard
+Camlosart 5/20,Amlodipine+Olmesartan,Healthcare Pharma,BP Control,https://hplbd.com/images/products/Napa-500.png,Effective for high BP,1 tablet daily,Fatigue,12 BDT,Bizoran
+Moxilin 500mg,Amoxicillin,Healthcare Pharma,Infection,https://hplbd.com/images/products/Napa-500.png,Ear and throat infection,1 tablet 3 times daily,Rash,7 BDT,Moxyl
+Zimax Syrup,Azithromycin,Square Pharmaceuticals,Kids Cold,https://hplbd.com/images/products/Napa-500.png,Liquid antibiotic for kids,As per weight,Stomach pain,120 BDT,Azith-S
+Filwel Gold,Multivitamin,Square Pharmaceuticals,Supplements,https://hplbd.com/images/products/Napa-500.png,Daily health and immunity,1 tablet daily,None,12 BDT,Bextram
+Optimox 400mg,Moxifloxacin,Incepta Pharmaceuticals,Severe Cold,https://hplbd.com/images/products/Napa-500.png,Treatment of pneumonia,1 tablet daily,Nausea,160 BDT,Avelox
+Osartil 100mg,Losartan,Incepta Pharmaceuticals,Heart risk,https://hplbd.com/images/products/Napa-500.png,Stroke prevention,1 tablet daily,Dizziness,15 BDT,Angilock
+Emeset Syrup,Ondansetron,Incepta Pharmaceuticals,Kids Vomit,https://hplbd.com/images/products/Napa-500.png,Prevents vomiting in kids,As per doctor,Headache,80 BDT,Joytrip
+Flatameal Liquid,Antacid,Incepta Pharmaceuticals,Digestion,https://hplbd.com/images/products/Napa-500.png,Fast acting gas relief,2 spoons after meal,None,95 BDT,Entacyd
+Debridat 100mg,Trimebutine,Opsonin Pharma,IBS,https://hplbd.com/images/products/Napa-500.png,Regulates bowel habits,1 tablet 3 times daily,Dry mouth,10 BDT,Triton
+Neobion,Vitamin B1+B6+B12,Healthcare Pharma,Nerve,https://hplbd.com/images/products/Napa-500.png,Supports nerve function,1 tablet daily,None,8 BDT,Neuro-B
+Coral-D,Calcium + Vitamin D3,Incepta Pharmaceuticals,Bones,https://hplbd.com/images/products/Napa-500.png,Calcium for strong bones,1 tablet daily,Constipation,10 BDT,Calbo-D
+Almex Syrup,Albendazole,Healthcare Pharma,Kids Worm,https://hplbd.com/images/products/Napa-500.png,Kills worms in kids,1 bottle (one dose),Abdominal pain,25 BDT,Solas
+Basaglar,Insulin Glargine,Incepta Pharmaceuticals,Diabetes,https://hplbd.com/images/products/Napa-500.png,Long acting insulin pen,As per sugar level,Low sugar,1100 BDT,Lantus
+Pan 40,Pantoprazole,Healthcare Pharma,Gastric,https://hplbd.com/images/products/Napa-500.png,Acid reflux and heartburn,1 tablet before breakfast,Headache,7 BDT,Pantocid
+Augmentin 625,Amoxicillin+Clavulanic,Radiant / GSK,Infection,https://hplbd.com/images/products/Napa-500.png,Severe bacterial infections,1 tablet twice daily,Diarrhea,45 BDT,Amoxyclav
+Dermovate,Clobetasol Propionate,Radiant / GSK,Skin,https://hplbd.com/images/products/Napa-500.png,Eczema and psoriasis,Apply as directed,Thinning of skin,90 BDT,Betnovate
+Nystin,Nystatin,Incepta Pharmaceuticals,Oral Fungal,https://hplbd.com/images/products/Napa-500.png,Treatment of mouth fungus,1ml 4 times daily,Nausea,45 BDT,Nystat
+Atova 20mg,Atorvastatin,Square Pharmaceuticals,Cholesterol,https://hplbd.com/images/products/Napa-500.png,Higher dose for cholesterol,1 tablet at night,Muscle pain,20 BDT,Lipiget
+Afenac 100mg,Aceclofenac,Healthcare Pharma,Body Pain,https://hplbd.com/images/products/Napa-500.png,Pain and inflammation relief,1 tablet after meal,Gastritis,5 BDT,Aceclofen
+Aceclofen 100mg,Aceclofenac,Incepta Pharmaceuticals,Joint Pain,https://hplbd.com/images/products/Napa-500.png,Back pain and arthritis relief,1 tablet twice daily,Stomach upset,5 BDT,Afenac
+Ketofen 1mg,Ketotifen,Square Pharmaceuticals,Allergy,https://hplbd.com/images/products/Napa-500.png,Prevents asthma symptoms,1 tablet twice daily,Sleepiness,4 BDT,Tofen
+Zinvit 20mg,Zinc Sulfate,Incepta Pharmaceuticals,Immunity,https://hplbd.com/images/products/Napa-500.png,Daily zinc supplement,1 tablet daily,Nausea,3 BDT,Xinc
+Baxigel,Antacid,Beximco Pharma,Acidity,https://hplbd.com/images/products/Napa-500.png,Quick relief from gas,2 tablets as needed,None,3 BDT,Entacyd
+Fexo 60mg,Fexofenadine,Incepta Pharmaceuticals,Sneezing,https://hplbd.com/images/products/Napa-500.png,Allergy and cold relief,1 tablet daily,None,7 BDT,Alatrol
+Indever 40mg,Propranolol,Square Pharmaceuticals,Heart,https://hplbd.com/images/products/Napa-500.png,Heart rhythm control,As per doctor's dose,Fatigue,5 BDT,Avlocard
+Cardit 40mg,Propranolol,Incepta Pharmaceuticals,Palpitation,https://hplbd.com/images/products/Napa-500.png,Reduces rapid heart rate,As prescribed,Cold hands,5 BDT,Indever
+D-Rise 40000,Vitamin D3,Incepta Pharmaceuticals,Vitamin D,https://hplbd.com/images/products/Napa-500.png,High dose for deficiency,1 capsule per 2 weeks,None,70 BDT,D-Cap
+Fixit 400mg,Cefixime,Incepta Pharmaceuticals,Infection,https://hplbd.com/images/products/Napa-500.png,Severe bacterial pneumonia,1 tablet daily,Diarrhea,80 BDT,Cef-3
+Rupa 5mg,Rupatadine,Square Pharmaceuticals,Kids Allergy,https://hplbd.com/images/products/Napa-500.png,Relief from itching in kids,As per weight,Sleepiness,8 BDT,Rupatrol
+Solas 200mg,Mebendazole,Healthcare Pharma,Worms,https://hplbd.com/images/products/Napa-500.png,Higher dose for parasites,1 tablet as directed,None,5 BDT,Almex
+Virux 200mg,Acyclovir,Incepta Pharmaceuticals,Viral,https://hplbd.com/images/products/Napa-500.png,Treats shingles/chickenpox,1 tablet 5 times daily,Vomiting,15 BDT,Zovirax
+Dettol,Chloroxylenol,Reckitt Benckiser,Antiseptic,https://hplbd.com/images/products/Napa-500.png,Disinfectant for wounds,Use for cleaning,Skin irritation,120 BDT,Savlon
+Eczema Cream,Hydrocortisone,Incepta Pharmaceuticals,Skin,https://hplbd.com/images/products/Napa-500.png,Itching and skin rash,Apply 2 times daily,Skin thinning,30 BDT,Betnovate
+Gaviscon Liquid,Sodium Alginate,Reckitt Benckiser,Reflux,https://hplbd.com/images/products/Napa-500.png,Protects from acid reflux,2 spoons after meal,Constipation,280 BDT,Entacyd
+Filmet 400mg,Metronidazole,Healthcare Pharma,Stomach,https://hplbd.com/images/products/Napa-500.png,Treats amoebiasis/infection,1 tablet 3 times daily,Metallic taste,4 BDT,Amodis
+Vincit 250mg,Vitamin C,Incepta Pharmaceuticals,Health,https://hplbd.com/images/products/Napa-500.png,Fights infections/colds,1 tablet daily,None,2 BDT,Ceevit
+X-Pel 600mg,Praziquantel,Square Pharmaceuticals,Worms,https://hplbd.com/images/products/Napa-500.png,Treatment for flukes,As per doctor's dose,Nausea,180 BDT,Prazik
+Rupazol Syrup,Rupatadine,Healthcare Pharma,Kids Itch,https://hplbd.com/images/products/Napa-500.png,Allergy relief for children,1 spoon daily,Sleepiness,110 BDT,Rupa
+Astafen 1mg,Ketotifen,Healthcare Pharma,Asthma,https://hplbd.com/images/products/Napa-500.png,Prevents allergic symptoms,1 tablet twice daily,Dry mouth,4 BDT,Tofen
+Nidazyl Syrup,Metronidazole,Healthcare Pharma,Kids Diarrhea,https://hplbd.com/images/products/Napa-500.png,Liquid for stomach bug,As per doctor,Metallic taste,55 BDT,Flagyl
+Pantocid 20mg,Pantoprazole,Sun Pharma,Acidity,https://hplbd.com/images/products/Napa-500.png,Acid control for gastritis,1 tablet before meal,Headache,80 INR,Pantocid
+Atrova 40mg,Atorvastatin,Square Pharmaceuticals,Cholesterol,https://hplbd.com/images/products/Napa-500.png,Severe cholesterol control,1 tablet at night,Muscle pain,35 BDT,Lipiget
+Afenac 200mg,Aceclofenac,Healthcare Pharma,Chronic Pain,https://hplbd.com/images/products/Napa-500.png,Long acting pain relief,1 tablet daily,Gastritis,9 BDT,Aceclofen
+Aceclofen Plus,Aceclofenac+Paracetamol,Incepta Pharmaceuticals,Severe Pain,https://hplbd.com/images/products/Napa-500.png,Combination for pain/fever,1 tablet twice daily,Nausea,8 BDT,Afenac
+Zithrin Syrup,Azithromycin,Square Pharmaceuticals,Antibiotic,https://hplbd.com/images/products/Napa-500.png,Kids respiratory infection,As per weight,Stomach pain,125 BDT,Zimax
+Vit-D3 Drop,Vitamin D3,Incepta Pharmaceuticals,Infants,https://hplbd.com/images/products/Napa-500.png,Vitamin D for babies,As per doctor,None,150 BDT,D-Rise
