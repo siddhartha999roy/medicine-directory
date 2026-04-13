@@ -76,7 +76,7 @@ function App() {
         <div className="ai-container">
           <h2>🤖 AI Medical Assistant</h2>
           <iframe
-            src="আপনার_গ্লোবাল_স্টুডেন্ট_AI_লিঙ্ক"
+            src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/"
             width="100%"
             height="550px"
             style={{ border: 'none', borderRadius: '15px' }}
