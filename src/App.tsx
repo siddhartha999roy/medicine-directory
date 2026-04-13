@@ -24,7 +24,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("CSV error:", err); }
+      } catch (err) { console.error("CSV loading error:", err); }
     };
     loadData();
   }, []);
@@ -71,28 +71,31 @@ function App() {
         ))}
       </main>
 
-      {/* পপ-আপ মোডাল (আগের সেই প্রফেশনাল ডিজাইন ফিরিয়ে আনা হলো) */}
+      {/* Floating Pharmacy Near Me Button */}
+      <a 
+        href="https://www.google.com/maps/search/pharmacy+near+me" 
+        target="_blank" 
+        rel="noreferrer" 
+        className="near-me-btn"
+      >
+        📍 Pharmacy Near Me
+      </a>
+
+      {/* পপ-আপ মোডাল */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-body" onClick={e => e.stopPropagation()}>
-            {/* বড় হার্টবিট আইকন */}
-            <div className="heart-wrapper">
-                <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" className="heart-img" alt="heartbeat" />
-            </div>
-            
-            <h2 className="modal-title">{selectedItem.name} <span onClick={() => speak(selectedItem.name)} className="speak-icon">🔊</span></h2>
-            
-            <div className="modal-info-box">
+            <div className="heart-icon">❤️‍🔥</div>
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize:'18px'}}>🔊</span></h2>
+            <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
               <p><strong>Indication:</strong> {selectedItem.indication}</p>
             </div>
-
-            <div className="modal-warning">
-                <span className="warning-icon">⚠️</span> ডাক্তারের পরামর্শ ছাড়া ওষুধ সেবন করবেন না।
+            <div className="warning-box">
+                ⚠️ ডাক্তারের পরামর্শ ছাড়া কোনো ওষুধ সেবন করবেন না।
             </div>
-
-            <button className="modal-close-btn" onClick={() => setSelectedItem(null)}>Close / বন্ধ করুন</button>
+            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close / বন্ধ করুন</button>
           </div>
         </div>
       )}
