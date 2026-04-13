@@ -21,7 +21,15 @@ function App() {
         const parse = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
           const p = line.split(',');
           if (type === 'h') return { name: p[0], location: p[1], phone: p[2], type: 'h' };
-          return { name: p[0], generic: p[1], company: p[2], indication: p[3], image: p[4], origin: type, type: 'm' };
+          return { 
+            name: p[0], 
+            generic: p[1], 
+            company: p[2], 
+            indication: p[3], 
+            image: p[4] ? p[4].trim() : '', 
+            origin: type, 
+            type: 'm' 
+          };
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
@@ -77,17 +85,22 @@ function App() {
 
       {/* ৫. পপ-আপ মোডাল ফিচার (Medicine Details) */}
       {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="modal-body" onClick={e => e.stopPropagation()}>
-            <span className="close-x" onClick={() => setSelectedItem(null)}>&times;</span>
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)} style={{position:'fixed', top:0, left:0, width:'100%', height:'100%', background:'rgba(0,0,0,0.8)', display:'flex', justifyContent:'center', alignItems:'center', zIndex:10000}}>
+          <div className="modal-body" onClick={e => e.stopPropagation()} style={{background:'white', padding:'20px', borderRadius:'15px', width:'90%', maxWidth:'400px', textAlign:'center', position:'relative', boxShadow:'0 10px 25px rgba(0,0,0,0.3)'}}>
+            <span className="close-x" onClick={() => setSelectedItem(null)} style={{position:'absolute', top:'10px', right:'15px', border:'none', background:'none', fontSize:'24px', cursor:'pointer'}}>×</span>
+            
+            {/* ছবির জন্য ফিক্সড কোড */}
             <img 
               src={selectedItem.image} 
               alt={selectedItem.name} 
               className="modal-img" 
-              onError={(e) => e.target.src='https://via.placeholder.com/150'} 
+              style={{width:'100%', maxHeight:'200px', objectFit:'contain', marginBottom:'15px'}}
+              onError={(e) => { e.target.src = 'https://via.placeholder.com/150'; }} 
             />
-            <h2>{selectedItem.name}</h2>
-            <div className="details">
+            
+            <h2 style={{margin:'10px 0', fontSize:'22px'}}>{selectedItem.name}</h2>
+            
+            <div className="details" style={{textAlign:'left', fontSize:'16px', lineHeight:'1.8', marginTop:'15px'}}>
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
               <p><strong>Indication:</strong> {selectedItem.indication}</p>
