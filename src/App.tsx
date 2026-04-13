@@ -24,7 +24,7 @@ function App() {
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
         setHospitals(parse(hospT, 'h'));
-      } catch (err) { console.error("Error:", err); }
+      } catch (err) { console.error("Error loading data:", err); }
     };
     loadData();
   }, []);
@@ -72,28 +72,31 @@ function App() {
           ))}
         </div>
 
-        {/* AI Assistant Section using Iframe */}
+        {/* --- Medi-Assistant AI Section (New) --- */}
         <div className="ai-container">
-          <h2>🤖 AI Medical Assistant</h2>
+          <h2>🤖 Medi-Assistant AI</h2>
+          <p style={{fontSize: '14px', color: '#666', marginBottom: '15px'}}>আপনার যেকোনো স্বাস্থ্য বিষয়ক প্রশ্নের উত্তর পেতে AI ব্যবহার করুন।</p>
           <iframe
-            src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/"
+            src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
             width="100%"
-            height="550px"
-            style={{ border: 'none', borderRadius: '15px' }}
-            title="Global Student AI"
+            height="600px"
+            style={{ border: 'none', borderRadius: '15px', background: '#fff' }}
+            title="Medi-Assistant AI"
           ></iframe>
         </div>
       </main>
 
+      {/* Near Me Button (Floating) */}
       <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">
         📍 Pharmacy Near Me
       </a>
 
+      {/* Pop-up Modal */}
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-card" onClick={e => e.stopPropagation()}>
             <div className="heart-icon">❤️‍🔥</div>
-            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer'}}>🔊</span></h2>
+            <h2>{selectedItem.name} <span onClick={() => speak(selectedItem.name)} style={{cursor:'pointer', fontSize: '20px'}}>🔊</span></h2>
             <div className="details">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
