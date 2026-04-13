@@ -8,7 +8,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
-  const [isAiLoading, setIsAiLoading] = useState(true); // AI লোডিং ট্র্যাকার
+  const [isAiLoading, setIsAiLoading] = useState(true); 
   
   const aiSectionRef = useRef(null);
 
@@ -50,7 +50,7 @@ function App() {
       <header className="fixed-header">
         <h1 className="logo">💊 Medi-Directory</h1>
         
-        {/* উপরের AI নেভিগেশন বাটন */}
+        {/* উপরের AI বাটন */}
         <button className="ai-nav-btn" onClick={scrollToAI}>🤖 Ask AI Assistant</button>
 
         <div className="search-box">
