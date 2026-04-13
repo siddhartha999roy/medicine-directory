@@ -1,76 +1,146 @@
-/* Near Me বাটন ডিজাইন */
-.near-me-btn {
+:root {
+  --primary: #2563eb;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+}
+
+.app-header {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo { color: var(--primary); margin-bottom: 15px; }
+
+.search-box input {
+  width: 90%;
+  max-width: 500px;
+  padding: 12px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 50px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-box input:focus { border-color: var(--primary); }
+
+.tabs { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+.tabs button {
+  padding: 8px 16px;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabs button.active { background: var(--primary); color: white; }
+
+.container { padding: 20px; max-width: 1200px; margin: 0 auto; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.voice-btn, .call-btn {
+  background: #eff6ff;
+  color: var(--primary);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Pharmacy Near Me Floating Button */
+.near-me-fab {
   position: fixed;
-  bottom: 20px;
+  bottom: 30px;
   right: 20px;
   background: #10b981;
   color: white;
-  padding: 12px 20px;
+  padding: 12px 25px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 14px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  z-index: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: transform 0.2s;
+  box-shadow: 0 10px 20px rgba(16,185,129,0.3);
+  z-index: 99;
 }
 
-.near-me-btn:hover {
-  transform: scale(1.05);
-  background: #059669;
-}
-
-/* Modal স্টাইল */
+/* Modal and Animation */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.7);
   display: flex; justify-content: center; align-items: center;
-  z-index: 10000;
+  z-index: 1000;
 }
 
-.modal-body {
+.modal-content {
   background: white;
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 25px;
   width: 90%;
   max-width: 400px;
   text-align: center;
-  position: relative;
 }
 
-.heart-icon {
+.heart-anim {
   font-size: 60px;
-  margin-bottom: 15px;
-  animation: beat 1s infinite;
+  animation: heartBeat 1.2s infinite;
 }
 
-@keyframes beat {
+@keyframes heartBeat {
   0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
 
-.warning-box {
+.caution {
   background: #fff1f2;
   color: #e11d48;
-  padding: 12px;
+  padding: 10px;
   border-radius: 10px;
+  margin: 15px 0;
   font-size: 14px;
-  margin: 20px 0;
-  border: 1px solid #fecdd3;
 }
 
 .close-btn {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
   width: 100%;
+  padding: 12px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
 }
