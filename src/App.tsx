@@ -69,7 +69,6 @@ function App() {
         )
       : medicines.filter(m => m.origin === category && m.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
-  // বাটন দিয়ে লোকেশন ফিল্টার করার ফাংশন
   const filterByLocation = (loc) => {
     setCategory('hospitals');
     setSearchTerm(loc);
@@ -89,6 +88,19 @@ function App() {
           🤖 Ask AI Assistant
         </button>
 
+        {/* নতুন ক্রেডিট লাইন - Ask AI Assistant এর নিচে */}
+        <p style={{ 
+          fontSize: '11px', 
+          color: isDarkMode ? '#bbb' : '#666', 
+          marginTop: '6px', 
+          marginBottom: '10px',
+          textAlign: 'center',
+          fontWeight: '500',
+          letterSpacing: '0.3px'
+        }}>
+          Made by East West University Genetic Engineering Department
+        </p>
+
         <div className="search-box">
           <input 
             type="text" 
@@ -97,6 +109,7 @@ function App() {
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
         </div>
+
         <div className="tabs">
           <button className={category === 'bd' ? 'active' : ''} onClick={() => {setCategory('bd'); setSearchTerm('');}}>BD</button>
           <button className={category === 'ind' ? 'active' : ''} onClick={() => {setCategory('ind'); setSearchTerm('');}}>Indian</button>
@@ -104,7 +117,6 @@ function App() {
           <button className={category === 'favorites' ? 'active' : ''} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
         </div>
 
-        {/* নতুন লোকেশন ফিল্টার বাটন সেকশন */}
         <div className="location-filters" style={{ display: 'flex', gap: '5px', overflowX: 'auto', padding: '10px 0', justifyContent: 'center' }}>
            <button className="loc-btn" onClick={() => filterByLocation('Dhaka')}>📍 Dhaka</button>
            <button className="loc-btn" onClick={() => filterByLocation('Chattogram')}>📍 Chattogram</button>
@@ -134,7 +146,7 @@ function App() {
               )}
             </div>
           ))}
-          {displayData.length === 0 && <p style={{textAlign: 'center', padding: '20px'}}>কোনো তথ্য পাওয়া যায়নি।</p>}
+          {displayData.length === 0 && <p style={{textAlign: 'center', padding: '20px'}}>কোনো তথ্য পাওয়া যায়নি।</p>}
         </div>
 
         <div className="ai-container" ref={aiSectionRef}>
