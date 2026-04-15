@@ -63,8 +63,17 @@ function App() {
   const displayData = category === 'favorites' 
     ? favorites 
     : category === 'hospitals' 
-      ? hospitals.filter(h => h.name.toLowerCase().includes(searchTerm.toLowerCase()))
+      ? hospitals.filter(h => 
+          h.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+          h.location.toLowerCase().includes(searchTerm.toLowerCase())
+        )
       : medicines.filter(m => m.origin === category && m.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  // বাটন দিয়ে লোকেশন ফিল্টার করার ফাংশন
+  const filterByLocation = (loc) => {
+    setCategory('hospitals');
+    setSearchTerm(loc);
+  };
 
   return (
     <div className={`App ${isDarkMode ? 'dark-theme' : ''}`}>
@@ -89,10 +98,20 @@ function App() {
           />
         </div>
         <div className="tabs">
-          <button className={category === 'bd' ? 'active' : ''} onClick={() => setCategory('bd')}>BD</button>
-          <button className={category === 'ind' ? 'active' : ''} onClick={() => setCategory('ind')}>Indian</button>
-          <button className={category === 'hospitals' ? 'active' : ''} onClick={() => setCategory('hospitals')}>🏥 Hospitals</button>
-          <button className={category === 'favorites' ? 'active' : ''} onClick={() => setCategory('favorites')}>⭐ Saved</button>
+          <button className={category === 'bd' ? 'active' : ''} onClick={() => {setCategory('bd'); setSearchTerm('');}}>BD</button>
+          <button className={category === 'ind' ? 'active' : ''} onClick={() => {setCategory('ind'); setSearchTerm('');}}>Indian</button>
+          <button className={category === 'hospitals' ? 'active' : ''} onClick={() => {setCategory('hospitals'); setSearchTerm('');}}>🏥 Hospitals</button>
+          <button className={category === 'favorites' ? 'active' : ''} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
+        </div>
+
+        {/* নতুন লোকেশন ফিল্টার বাটন সেকশন */}
+        <div className="location-filters" style={{ display: 'flex', gap: '5px', overflowX: 'auto', padding: '10px 0', justifyContent: 'center' }}>
+           <button className="loc-btn" onClick={() => filterByLocation('Dhaka')}>📍 Dhaka</button>
+           <button className="loc-btn" onClick={() => filterByLocation('Chattogram')}>📍 Chattogram</button>
+           <button className="loc-btn" onClick={() => filterByLocation('Noakhali')}>📍 Noakhali</button>
+           <button className="loc-btn" onClick={() => filterByLocation('Sylhet')}>📍 Sylhet</button>
+           <button className="loc-btn" onClick={() => filterByLocation('Rajshahi')}>📍 Rajshahi</button>
+           <button className="loc-btn" style={{background: '#ffebee', color: '#f44336'}} onClick={() => setSearchTerm('')}>✖ Clear</button>
         </div>
       </header>
 
@@ -115,6 +134,7 @@ function App() {
               )}
             </div>
           ))}
+          {displayData.length === 0 && <p style={{textAlign: 'center', padding: '20px'}}>কোনো তথ্য পাওয়া যায়নি।</p>}
         </div>
 
         <div className="ai-container" ref={aiSectionRef}>
@@ -147,7 +167,7 @@ function App() {
               <p><strong>Price (BD):</strong> {selectedItem.price || 'N/A'}</p>
               <p><strong>Alternatives:</strong> {selectedItem.alternatives || 'N/A'}</p>
               <div className="warning-box">
-                ⚠️ ওষুধ খাওয়ার আগে অবশ্যই একজন বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।
+                ⚠️ ওষুধ খাওয়ার আগে অবশ্যই একজন বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।
               </div>
             </div>
             <button className="close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
