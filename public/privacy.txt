@@ -1,0 +1,11 @@
+Privacy Policy for Medi-Directory
+
+At Medi-Directory, accessible from medicine-directory-otjt.vercel.app, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Medi-Directory and how we use it.
+
+Log Files: Medi-Directory follows a standard procedure of using log files. These files log visitors when they visit websites.
+
+Google DoubleClick DART Cookie: Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.
+
+Privacy Policies: Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Medi-Directory, which are sent directly to users' browser.
+
+Consent: By using our website, you hereby consent to our Privacy Policy and agree to its terms.
