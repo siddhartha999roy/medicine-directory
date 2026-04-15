@@ -88,7 +88,6 @@ function App() {
           🤖 Ask AI Assistant
         </button>
 
-        {/* Credit Line */}
         <p style={{ 
           fontSize: '11px', 
           color: isDarkMode ? '#bbb' : '#666', 
@@ -116,7 +115,7 @@ function App() {
           <button className={category === 'favorites' ? 'active' : ''} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
         </div>
 
-        <div className="location-filters" style={{ display: 'flex', gap: '5px', overflowX: 'auto', padding: '10px 0', justifyContent: 'center' }}>
+        <div className="location-filters">
            <button className="loc-btn" onClick={() => filterByLocation('Dhaka')}>📍 Dhaka</button>
            <button className="loc-btn" onClick={() => filterByLocation('Chattogram')}>📍 Chattogram</button>
            <button className="loc-btn" onClick={() => filterByLocation('Noakhali')}>📍 Noakhali</button>
@@ -145,58 +144,44 @@ function App() {
               )}
             </div>
           ))}
-          {displayData.length === 0 && <p style={{textAlign: 'center', padding: '20px'}}>কোনো তথ্য পাওয়া যায়নি।</p>}
         </div>
 
-        {/* AI Assistant Section with Clipping Fix */}
+        {/* AI Section with Send Button Fix */}
         <div className="ai-container" ref={aiSectionRef}>
           <div className="ai-header"><h2>🤖 Medi-Assistant AI</h2></div>
           <div className="iframe-wrapper" style={{ 
             position: 'relative', 
-            height: '570px', 
+            height: '565px', 
             overflow: 'hidden', 
-            borderRadius: '15px', 
+            borderRadius: '15px',
             background: '#fff' 
           }}>
             {isAiLoading && <div className="ai-loader"><div className="spinner"></div></div>}
             <iframe
               src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
-              width="100%" 
-              height="640px" 
+              width="100%" height="640px"
               onLoad={() => setIsAiLoading(false)}
+              style={{ border: 'none', position: 'absolute', top: '0', opacity: isAiLoading ? 0 : 1 }}
               scrolling="no"
-              style={{ 
-                border: 'none', 
-                position: 'absolute', 
-                top: '0', 
-                left: '0', 
-                opacity: isAiLoading ? 0 : 1 
-              }}
             ></iframe>
-            {/* Invisible Shield to block bottom clicks */}
-            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '50px', background: 'transparent', zIndex: 10 }}></div>
+            {/* Invisibly block only the very bottom bar */}
+            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '32px', zIndex: 10 }}></div>
           </div>
         </div>
       </main>
 
-      <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
+      <a href="https://maps.google.com/?q=pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
 
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-card" onClick={e => e.stopPropagation()}>
-            <div className="heart-icon">❤️‍🔥</div>
             <h2>{selectedItem.name}</h2>
             <div className="details-scroll">
               <p><strong>Generic:</strong> {selectedItem.generic}</p>
               <p><strong>Company:</strong> {selectedItem.company}</p>
               <p><strong>Uses:</strong> {selectedItem.uses || 'N/A'}</p>
-              <p><strong>Dosage:</strong> {selectedItem.dosage || 'N/A'}</p>
-              <p><strong>Side Effects:</strong> {selectedItem.sideEffects || 'N/A'}</p>
-              <p><strong>Price (BD):</strong> {selectedItem.price || 'N/A'}</p>
-              <p><strong>Alternatives:</strong> {selectedItem.alternatives || 'N/A'}</p>
-              <div className="warning-box">
-                ⚠️ ওষুধ খাওয়ার আগে অবশ্যই একজন বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।
-              </div>
+              <p><strong>Price:</strong> {selectedItem.price || 'N/A'}</p>
+              <div className="warning-box">⚠️ বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।</div>
             </div>
             <button className="close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
           </div>
