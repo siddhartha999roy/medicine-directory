@@ -115,7 +115,7 @@ function App() {
           <button className={category === 'favorites' ? 'active' : ''} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
         </div>
 
-        <div className="location-filters">
+        <div className="location-filters" style={{ display: 'flex', gap: '5px', overflowX: 'auto', padding: '10px 0', justifyContent: 'center' }}>
            <button className="loc-btn" onClick={() => filterByLocation('Dhaka')}>📍 Dhaka</button>
            <button className="loc-btn" onClick={() => filterByLocation('Chattogram')}>📍 Chattogram</button>
            <button className="loc-btn" onClick={() => filterByLocation('Noakhali')}>📍 Noakhali</button>
@@ -146,12 +146,11 @@ function App() {
           ))}
         </div>
 
-        {/* AI Section with Send Button Fix */}
         <div className="ai-container" ref={aiSectionRef}>
           <div className="ai-header"><h2>🤖 Medi-Assistant AI</h2></div>
           <div className="iframe-wrapper" style={{ 
             position: 'relative', 
-            height: '565px', 
+            height: '560px', 
             overflow: 'hidden', 
             borderRadius: '15px',
             background: '#fff' 
@@ -159,18 +158,18 @@ function App() {
             {isAiLoading && <div className="ai-loader"><div className="spinner"></div></div>}
             <iframe
               src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
-              width="100%" height="640px"
+              width="100%" height="630px"
               onLoad={() => setIsAiLoading(false)}
-              style={{ border: 'none', position: 'absolute', top: '0', opacity: isAiLoading ? 0 : 1 }}
+              style={{ border: 'none', position: 'absolute', top: '0', left: '0', opacity: isAiLoading ? 0 : 1 }}
               scrolling="no"
             ></iframe>
-            {/* Invisibly block only the very bottom bar */}
-            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '32px', zIndex: 10 }}></div>
+            {/* নিচের আইকন ব্লক করার জন্য চিকন লেয়ার */}
+            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '20px', zIndex: 10 }}></div>
           </div>
         </div>
       </main>
 
-      <a href="https://maps.google.com/?q=pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
+      <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
 
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
