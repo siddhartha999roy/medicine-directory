@@ -88,15 +88,14 @@ function App() {
           🤖 Ask AI Assistant
         </button>
 
-        {/* নতুন ক্রেডিট লাইন - Ask AI Assistant এর নিচে */}
+        {/* Credit Line */}
         <p style={{ 
           fontSize: '11px', 
           color: isDarkMode ? '#bbb' : '#666', 
           marginTop: '6px', 
           marginBottom: '10px',
           textAlign: 'center',
-          fontWeight: '500',
-          letterSpacing: '0.3px'
+          fontWeight: '500'
         }}>
           Made by East West University Genetic Engineering Department
         </p>
@@ -149,16 +148,33 @@ function App() {
           {displayData.length === 0 && <p style={{textAlign: 'center', padding: '20px'}}>কোনো তথ্য পাওয়া যায়নি।</p>}
         </div>
 
+        {/* AI Assistant Section with Clipping Fix */}
         <div className="ai-container" ref={aiSectionRef}>
           <div className="ai-header"><h2>🤖 Medi-Assistant AI</h2></div>
-          <div className="iframe-wrapper">
+          <div className="iframe-wrapper" style={{ 
+            position: 'relative', 
+            height: '570px', 
+            overflow: 'hidden', 
+            borderRadius: '15px', 
+            background: '#fff' 
+          }}>
             {isAiLoading && <div className="ai-loader"><div className="spinner"></div></div>}
             <iframe
               src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
-              width="100%" height="600px"
+              width="100%" 
+              height="640px" 
               onLoad={() => setIsAiLoading(false)}
-              style={{ border: 'none', borderRadius: '15px', background: '#fff', opacity: isAiLoading ? 0 : 1 }}
+              scrolling="no"
+              style={{ 
+                border: 'none', 
+                position: 'absolute', 
+                top: '0', 
+                left: '0', 
+                opacity: isAiLoading ? 0 : 1 
+              }}
             ></iframe>
+            {/* Invisible Shield to block bottom clicks */}
+            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '50px', background: 'transparent', zIndex: 10 }}></div>
           </div>
         </div>
       </main>
