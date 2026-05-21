@@ -35,7 +35,9 @@ function App() {
           return { 
             name: p[0], generic: p[1], company: p[2], indication: p[3], 
             image: p[4], uses: p[5], dosage: p[6], sideEffects: p[7], 
-            price: p[8], alternatives: p[9], origin: type, type: 'm' 
+            price: p[8], alternatives: p[9], pharmacodynamics: p[10], 
+            administration: p[11], interaction: p[12], contraindications: p[13],
+            pregnancy: p[14], warnings: p[15], storage: p[16], origin: type, type: 'm' 
           };
         });
         setMedicines([...parse(bdT, 'bd'), ...parse(indT, 'ind')]);
@@ -163,26 +165,122 @@ function App() {
               style={{ border: 'none', position: 'absolute', top: '0', left: '0', opacity: isAiLoading ? 0 : 1 }}
               scrolling="no"
             ></iframe>
-            {/* নিচের আইকন ব্লক করার জন্য চিকন লেয়ার */}
             <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '20px', zIndex: 10 }}></div>
           </div>
         </div>
       </main>
 
-      <a href="https://www.google.com/maps/search/pharmacy+near+me" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
+      <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
 
-      {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="modal-card" onClick={e => e.stopPropagation()}>
-            <h2>{selectedItem.name}</h2>
-            <div className="details-scroll">
-              <p><strong>Generic:</strong> {selectedItem.generic}</p>
-              <p><strong>Company:</strong> {selectedItem.company}</p>
-              <p><strong>Uses:</strong> {selectedItem.uses || 'N/A'}</p>
-              <p><strong>Price:</strong> {selectedItem.price || 'N/A'}</p>
-              <div className="warning-box">⚠️ বিশেষজ্ঞ চিকিৎসকের পরামর্শ নিন।</div>
+      {/* নতুন MedEx স্টাইল ফুল-ডিটেইলস মডাল পেজ */}
+      {selectedItem && selectedItem.type === 'm' && (
+        <div className="medex-modal-overlay" onClick={() => setSelectedItem(null)}>
+          <div className="medex-modal-card" onClick={e => e.stopPropagation()}>
+            
+            {/* উপরের হেডার সেকশন */}
+            <div className="medex-header">
+              <div className="medex-title-row">
+                <h1 className="medex-med-name">💊 {selectedItem.name}</h1>
+                <button className="medex-close-icon-btn" onClick={() => setSelectedItem(null)}>✕</button>
+              </div>
+              <p className="medex-generic-name">{selectedItem.generic}</p>
+              <p className="medex-company-name">{selectedItem.company}</p>
+              <div className="medex-price-tag">৳ {selectedItem.price || 'N/A'}</div>
             </div>
-            <button className="close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
+
+            {/* স্ক্রলযোগ্য বিস্তারিত সেকশন (MedEx এর মতো সাজানো) */}
+            <div className="medex-body-scroll">
+              
+              {selectedItem.indication && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Indications</h3>
+                  <p className="medex-section-content">{selectedItem.indication}</p>
+                </div>
+              )}
+
+              {selectedItem.uses && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Therapeutic Class</h3>
+                  <p className="medex-section-content">{selectedItem.uses}</p>
+                </div>
+              )}
+
+              {selectedItem.pharmacodynamics && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Pharmacology (Pharmacodynamics & Pharmacokinetics)</h3>
+                  <p className="medex-section-content">{selectedItem.pharmacodynamics}</p>
+                </div>
+              )}
+
+              {selectedItem.dosage && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Dosage & Administration</h3>
+                  <p className="medex-section-content">{selectedItem.dosage}</p>
+                </div>
+              )}
+
+              {selectedItem.administration && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Administration Guide</h3>
+                  <p className="medex-section-content">{selectedItem.administration}</p>
+                </div>
+              )}
+
+              {selectedItem.interaction && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Interaction</h3>
+                  <p className="medex-section-content">{selectedItem.interaction}</p>
+                </div>
+              )}
+
+              {selectedItem.contraindications && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Contraindications</h3>
+                  <p className="medex-section-content">{selectedItem.contraindications}</p>
+                </div>
+              )}
+
+              {selectedItem.sideEffects && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Side Effects</h3>
+                  <p className="medex-section-content">{selectedItem.sideEffects}</p>
+                </div>
+              )}
+
+              {selectedItem.pregnancy && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Pregnancy & Lactation</h3>
+                  <p className="medex-section-content">{selectedItem.pregnancy}</p>
+                </div>
+              )}
+
+              {selectedItem.warnings && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Precautions & Warnings</h3>
+                  <p className="medex-section-content">{selectedItem.warnings}</p>
+                </div>
+              )}
+
+              {selectedItem.storage && (
+                <div className="medex-section">
+                  <h3 className="medex-section-title">Storage Conditions</h3>
+                  <p className="medex-section-content">{selectedItem.storage}</p>
+                </div>
+              )}
+
+              {selectedItem.alternatives && (
+                <div className="medex-section alternative-box">
+                  <h3 className="medex-section-title" style={{color: '#2e7d32'}}>Alternate Brands</h3>
+                  <p className="medex-section-content"><strong>Alternatives:</strong> {selectedItem.alternatives}</p>
+                </div>
+              )}
+
+              <div className="medex-warning-footer">
+                ⚠️ রেজিস্টার্ড চিকিৎসকের পরামর্শ মোতাবেক ওষুধ সেবন করুন।
+              </div>
+            </div>
+
+            <button className="medex-bottom-close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
           </div>
         </div>
       )}
