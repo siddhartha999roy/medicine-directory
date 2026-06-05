@@ -1,1 +1,56 @@
-
+[
+  {
+    "name": "Lazz Pharma (Dhanmondi)",
+    "location": "Dhaka",
+    "address": "House #2, Road #3, Dhanmondi, Dhaka",
+    "phone": "01711122233",
+    "map_link": "https://maps.google.com/?q=Lazz+Pharma+Dhanmondi",
+    "status": "24/7 Open",
+    "type": "p"
+  },
+  {
+    "name": "Tamanna Pharmacy (Mirpur)",
+    "location": "Dhaka",
+    "address": "Mirpur-10 Circle, Dhaka",
+    "phone": "01811223344",
+    "map_link": "https://maps.google.com/?q=Tamanna+Pharmacy+Mirpur",
+    "status": "Closes at 11 PM",
+    "type": "p"
+  },
+  {
+    "name": "Al-Amin Pharmacy (GEC)",
+    "location": "Chattogram",
+    "address": "GEC Circle, Central Chittagong",
+    "phone": "01911334455",
+    "map_link": "https://maps.google.com/?q=GEC+Circle+Chittagong",
+    "status": "24/7 Open",
+    "type": "p"
+  },
+  {
+    "name": "Maizdee Model Pharmacy",
+    "location": "Noakhali",
+    "address": "Hospital Road, Maizdee, Noakhali",
+    "phone": "01511445566",
+    "map_link": "https://maps.google.com/?q=Maizdee+Noakhali",
+    "status": "Closes at 10 PM",
+    "type": "p"
+  },
+  {
+    "name": "Sylhet Model Pharmacy",
+    "location": "Sylhet",
+    "address": "Zindabazar, Sylhet",
+    "phone": "01611556677",
+    "map_link": "https://maps.google.com/?q=Zindabazar+Sylhet",
+    "status": "24/7 Open",
+    "type": "p"
+  },
+  {
+    "name": "Rajshahi Central Pharmacy",
+    "location": "Rajshahi",
+    "address": "Rani Bazar, Rajshahi",
+    "phone": "01711667788",
+    "map_link": "https://maps.google.com/?q=Rani+Bazar+Rajshahi",
+    "status": "Closes at 11 PM",
+    "type": "p"
+  }
+]
