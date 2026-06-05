@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   const [medicines, setMedicines] = useState([]);
   const [hospitals, setHospitals] = useState([]);
+  const [pharmacies, setPharmacies] = useState([]); // নতুন স্টেট
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('bd'); 
   const [selectedItem, setSelectedItem] = useState(null);
@@ -24,10 +25,12 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [bdT, indT, hospT] = await Promise.all([
+        // নতুন pharmacies.json ডেটা একসাথে ফেচ করা হচ্ছে
+        const [bdT, indT, hospT, pharmRes] = await Promise.all([
           fetch('/bd-medicines.csv').then(res => res.text()),
           fetch('/indian-medicines.csv').then(res => res.text()),
-          fetch('/hospitals.csv').then(res => res.text())
+          fetch('/hospitals.csv').then(res => res.text()),
+          fetch('/src/data/pharmacies.json').then(res => res.json()) // JSON লোড
         ]);
         
         const parseMedicines = (text, type) => text.split('\n').filter(l => l.trim()).slice(1).map(line => {
@@ -52,6 +55,7 @@ function App() {
 
         setMedicines([...parseMedicines(bdT, 'bd'), ...parseMedicines(indT, 'ind')]);
         setHospitals(parseHospitals(hospT));
+        setPharmacies(pharmRes); // স্টেট সেট করা হলো
       } catch (err) { console.error("Error loading data:", err); }
     };
     loadData();
@@ -72,6 +76,7 @@ function App() {
     }
   };
 
+  // ডিসপ্লে ডেটা ফিল্টারিং লজিক আপডেট
   const displayData = category === 'favorites' 
     ? favorites 
     : category === 'hospitals' 
@@ -79,13 +84,21 @@ function App() {
           h.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
           h.location.toLowerCase().includes(searchTerm.toLowerCase())
         )
-      : medicines.filter(m => m.origin === category && 
-          (m.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-           m.generic.toLowerCase().includes(searchTerm.toLowerCase()))
-        );
+      : category === 'pharmacies'
+        ? pharmacies.filter(p =>
+            p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            p.location.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        : medicines.filter(m => m.origin === category && 
+            (m.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+             m.generic.toLowerCase().includes(searchTerm.toLowerCase()))
+          );
 
+  // লোকেশন ফিল্টার এবার ফার্মেসিতেও কাজ করবে
   const filterByLocation = (loc) => {
-    setCategory('hospitals');
+    if (category !== 'hospitals' && category !== 'pharmacies') {
+      setCategory('hospitals');
+    }
     setSearchTerm(loc);
   };
 
@@ -111,26 +124,31 @@ function App() {
       {/* হিরো সেকশন */}
       <section className="hero-section">
         <h2 className="main-title">Medicine & Hospital Directory</h2>
-        <p className="sub-title">Search the clinical database by brand name, generic name, or hospital details.</p>
+        <p className="sub-title">Search the clinical database by brand name, generic name, hospital, or pharmacy details.</p>
         
         {/* সার্চ বার */}
         <div className="search-container-box">
           <span className="search-icon-inside">🔍</span>
           <input 
             type="text" 
-            placeholder={category === 'hospitals' ? "Search hospitals by name or location..." : "Search medicines (e.g. Paracetamol, Napa)..."}
+            placeholder={
+              category === 'hospitals' ? "Search hospitals..." : 
+              category === 'pharmacies' ? "Search pharmacies by name or area..." : 
+              "Search medicines (e.g. Paracetamol, Napa)..."
+            }
             value={searchTerm} 
             onChange={(e) => setSearchTerm(e.target.value)} 
             className="modern-input-field"
           />
         </div>
 
-        {/* ফিল্টার ট্যাব */}
+        {/* ফিল্টার ট্যাব (এখানে নতুন Pharmacies ট্যাব যুক্ত করা হয়েছে) */}
         <div className="filter-dropdown-row">
           <div className="tabs-container">
             <button className={`tab-item ${category === 'bd' ? 'active' : ''}`} onClick={() => {setCategory('bd'); setSearchTerm('');}}>BD</button>
             <button className={`tab-item ${category === 'ind' ? 'active' : ''}`} onClick={() => {setCategory('ind'); setSearchTerm('');}}>Indian</button>
             <button className={`tab-item ${category === 'hospitals' ? 'active' : ''}`} onClick={() => {setCategory('hospitals'); setSearchTerm('');}}>🏥 Hospitals</button>
+            <button className={`tab-item ${category === 'pharmacies' ? 'active' : ''}`} onClick={() => {setCategory('pharmacies'); setSearchTerm('');}}>🏪 Pharmacies</button>
             <button className={`tab-item ${category === 'favorites' ? 'active' : ''}`} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
           </div>
         </div>
@@ -159,7 +177,7 @@ function App() {
                 <div className="med-info-block">
                   <h3 className="med-brand-title">{item.name}</h3>
                   <p className="med-generic-subtitle">
-                    {item.type === 'h' ? `📍 ${item.location}` : `🧬 ${item.generic}`}
+                    {item.type === 'h' ? `📍 ${item.location}` : item.type === 'p' ? `📍 ${item.location}` : `🧬 ${item.generic}`}
                   </p>
                 </div>
                 <div className="card-right-actions">
@@ -169,6 +187,7 @@ function App() {
                   )}
                   {item.type === 'm' && item.uses && <span className="class-tag-badge">{item.uses.split(';')[0]}</span>}
                   {item.type === 'h' && <span className="class-tag-badge" style={{background: '#eff6ff', color: '#1d4ed8', borderColor: '#bfdbfe'}}>Hospital</span>}
+                  {item.type === 'p' && <span className="class-tag-badge" style={{background: '#f0fdf4', color: '#16a34a', borderColor: '#bbf7d0'}}>Pharmacy</span>}
                 </div>
               </div>
 
@@ -178,13 +197,19 @@ function App() {
                 </p>
               )}
 
+              {item.type === 'p' && (
+                <p className="card-indication-text">
+                  <strong>Address:</strong> {item.address}<br />
+                  <strong style={{color: '#16a34a'}}>Status:</strong> {item.status}
+                </p>
+              )}
+
               <div className="card-footer-actions">
                 <div className="footer-left-info">
-                  {item.type === 'm' && item.sideEffects && <span className="footer-info-span">⚠️ Side Effects</span>}
                   <span className="footer-info-span">🔍 Click for full profile</span>
                 </div>
-                {item.type === 'h' ? (
-                   <a href={`tel:${item.phone}`} className="action-circle-btn" onClick={(e) => e.stopPropagation()} title="Call Hospital">📞</a>
+                {item.type === 'h' || item.type === 'p' ? (
+                   <a href={`tel:${item.phone}`} className="action-circle-btn" onClick={(e) => e.stopPropagation()} title="Call Now">📞</a>
                 ) : (
                    <button className="action-circle-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }} title="Pronounce">🔊</button>
                 )}
@@ -213,7 +238,7 @@ function App() {
 
       <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="floating-map-btn">📍 Pharmacy Near Me</a>
 
-      {/* ডায়নামিক ফুল প্রোফাইল ভিউ (ওষুধ এবং হাসপাতাল উভয়ের জন্য আলাদা লেআউট) */}
+      {/* ডায়নামিক ফুল প্রোফাইল ভিউ (মেডিসিন, হাসপাতাল ও নতুন ফার্মেসি লেআউট) */}
       {selectedItem && (
         <div className="full-profile-overlay">
           <div className="full-profile-container">
@@ -224,7 +249,7 @@ function App() {
               </button>
             </div>
 
-            {/* ১. ওষুুুধের প্রোফাইল ভিউ */}
+            {/* ১. মেডিসিন প্রোফাইল */}
             {selectedItem.type === 'm' && (
               <>
                 <div className="profile-header-card">
@@ -234,7 +259,6 @@ function App() {
                   {selectedItem.company && <p className="profile-company-name">🏢 {selectedItem.company}</p>}
                   {selectedItem.price && <div className="profile-price-tag">Price: ৳ {selectedItem.price}</div>}
                 </div>
-
                 <div className="profile-details-body">
                   {selectedItem.indication && (
                     <div className="profile-data-block">
@@ -242,15 +266,9 @@ function App() {
                       <p className="block-body-content">{selectedItem.indication}</p>
                     </div>
                   )}
-                  {selectedItem.pharmacodynamics && (
-                    <div className="profile-data-block">
-                      <h3 className="block-header-title">ℹ️ Mechanism of Action</h3>
-                      <p className="block-body-content">{selectedItem.pharmacodynamics}</p>
-                    </div>
-                  )}
                   {selectedItem.dosage && (
                     <div className="profile-data-block">
-                      <h3 className="block-header-title">⚖️ Dosage & Administration</h3>
+                      <h3 className="block-header-title">⚖️ Dosage</h3>
                       <p className="block-body-content">{selectedItem.dosage}</p>
                     </div>
                   )}
@@ -260,73 +278,74 @@ function App() {
                       <p className="block-body-content">{selectedItem.sideEffects}</p>
                     </div>
                   )}
-                  {selectedItem.contraindications && (
-                    <div className="profile-data-block">
-                      <h3 className="block-header-title">🚫 Contraindications</h3>
-                      <p className="block-body-content">{selectedItem.contraindications}</p>
-                    </div>
-                  )}
-                  {selectedItem.alternatives && (
-                    <div className="profile-data-block alternative-brands-block">
-                      <h3 className="block-header-title">🧬 Common Alternate Brands</h3>
-                      <div className="alternative-chips-container">
-                        {selectedItem.alternatives.split(',').map((brand, i) => (
-                          <span key={i} className="alternative-item-chip">{brand.trim()}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </>
             )}
 
-            {/* ২. নতুন হাসপাতালের প্রোফাইল ভিউ (Photo, Facilities & Doctor Schedule) */}
+            {/* ২. হাসপাতাল প্রোফাইল */}
             {selectedItem.type === 'h' && (
               <>
                 <div className="profile-header-card" style={{ background: '#f0f6ff', borderColor: '#bfdbfe' }}>
                   <h1 className="profile-med-title" style={{ color: '#1e3a8a' }}>🏥 {selectedItem.name}</h1>
                   <div className="profile-generic-row" style={{ color: '#2563eb' }}>📍 {selectedItem.location}</div>
                   <div className="profile-price-tag" style={{ color: '#1e293b', marginTop: '5px' }}>
-                    📞 Emergency Contact: <a href={`tel:${selectedItem.phone}`} style={{color: '#2563eb', textDecoration: 'none'}}>{selectedItem.phone}</a>
+                    📞 Emergency: <a href={`tel:${selectedItem.phone}`}>{selectedItem.phone}</a>
+                  </div>
+                </div>
+                <div className="profile-details-body">
+                  {selectedItem.facilities && (
+                    <div className="profile-data-block">
+                      <h3 className="block-header-title" style={{ color: '#2563eb' }}>⚡ Facilities</h3>
+                      <p className="block-body-content">{selectedItem.facilities}</p>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* ৩. নতুন ফার্মেসি প্রোফাইল ভিউ (Map Link সহ) */}
+            {selectedItem.type === 'p' && (
+              <>
+                <div className="profile-header-card" style={{ background: '#f0fdf4', borderColor: '#bbf7d0' }}>
+                  <h1 className="profile-med-title" style={{ color: '#16a34a' }}>🏪 {selectedItem.name}</h1>
+                  <div className="profile-generic-row" style={{ color: '#16a34a' }}>📍 {selectedItem.location}</div>
+                  <div className="profile-price-tag" style={{ color: '#1e293b', marginTop: '5px' }}>
+                    📞 Contact: <a href={`tel:${selectedItem.phone}`} style={{color: '#16a34a', textDecoration: 'none'}}>{selectedItem.phone}</a>
                   </div>
                 </div>
 
-                {/* হাসপাতালের ছবি */}
-                {selectedItem.image && (
-                  <div className="profile-data-block" style={{ padding: '0', overflow: 'hidden', textAlign: 'center' }}>
-                    <img 
-                      src={selectedItem.image} 
-                      alt={selectedItem.name} 
-                      style={{ width: '100%', maxHeight: '250px', objectFit: 'cover', display: 'block' }} 
-                      onError={(e) => { e.target.style.display = 'none'; }}
-                    />
-                  </div>
-                )}
-
                 <div className="profile-details-body">
-                  {/* হাসপাতালের সুুুবিধাসমূহ */}
-                  {selectedItem.facilities && (
-                    <div className="profile-data-block">
-                      <h3 className="block-header-title" style={{ color: '#2563eb', borderColor: '#bfdbfe' }}>⚡ Available Facilities</h3>
-                      <div className="alternative-chips-container">
-                        {selectedItem.facilities.split(';').map((fac, i) => (
-                          <span key={i} className="alternative-item-chip" style={{ background: '#eff6ff', color: '#1e4ed8', borderColor: '#bfdbfe' }}>
-                            ✓ {fac.trim()}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="profile-data-block">
+                    <h3 className="block-header-title" style={{ color: '#16a34a', borderColor: '#bbf7d0' }}>📌 Full Address</h3>
+                    <p className="block-body-content" style={{fontSize: '15px'}}>{selectedItem.address}</p>
+                  </div>
 
-                  {/* ডাক্তার ও শিডিউল তালিকা */}
-                  {selectedItem.doctors && (
-                    <div className="profile-data-block">
-                      <h3 className="block-header-title" style={{ color: '#2563eb', borderColor: '#bfdbfe' }}>👨‍⚕️ Available Doctors & Schedule</h3>
-                      <ul style={{ margin: '0', paddingLeft: '20px', fontSize: '13.5px', lineHeight: '1.6', color: 'var(--text-main)' }}>
-                        {selectedItem.doctors.split(';').map((doc, i) => (
-                          <li key={i} style={{ marginBottom: '6px' }}>{doc.trim()}</li>
-                        ))}
-                      </ul>
+                  <div className="profile-data-block">
+                    <h3 className="block-header-title" style={{ color: '#16a34a', borderColor: '#bbf7d0' }}>⏰ Operational Status</h3>
+                    <p className="block-body-content" style={{fontWeight: 'bold', color: '#15803d'}}>{selectedItem.status}</p>
+                  </div>
+
+                  {/* ম্যাপ লিংক বাটন */}
+                  {selectedItem.map_link && (
+                    <div style={{ textAlign: 'center', marginTop: '25px' }}>
+                      <a 
+                        href={selectedItem.map_link} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        style={{
+                          display: 'inline-block',
+                          background: '#16a34a',
+                          color: '#ffffff',
+                          padding: '12px 24px',
+                          borderRadius: '8px',
+                          textDecoration: 'none',
+                          fontWeight: 'bold',
+                          fontSize: '14px',
+                          boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'
+                        }}
+                      >
+                        🌐 View on Google Maps
+                      </a>
                     </div>
                   )}
                 </div>
