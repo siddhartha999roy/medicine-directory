@@ -520,8 +520,9 @@ body {
 .tabs-container::-webkit-scrollbar {
   display: none;
 }
-
-/* বাটনগুলোর সাইজ ঠিক রাখা যাতে চেপে ছোট না হয়ে যায় */
-.tab-item {
-  flex-shrink: 0;
+.tabs-container {
+  display: flex;
+  flex-wrap: wrap; /* জায়গা না হলে বাটন নিচের লাইনে আসবে */
+  justify-content: center; /* বাটনগুলো মাঝখানে থাকবে */
+  gap: 8px;
 }
