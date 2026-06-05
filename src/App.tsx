@@ -69,7 +69,10 @@ function App() {
           h.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
           h.location.toLowerCase().includes(searchTerm.toLowerCase())
         )
-      : medicines.filter(m => m.origin === category && m.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      : medicines.filter(m => m.origin === category && 
+          (m.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+           m.generic.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
 
   const filterByLocation = (loc) => {
     setCategory('hospitals');
@@ -78,209 +81,193 @@ function App() {
 
   return (
     <div className={`App ${isDarkMode ? 'dark-theme' : ''}`}>
-      <header className="fixed-header">
-        <div className="header-top">
-          <h1 className="logo">💊 Medi-Directory</h1>
-          <button className="theme-toggle" onClick={() => setIsDarkMode(!isDarkMode)}>
-            {isDarkMode ? '☀️ Light' : '🌙 Dark'}
-          </button>
-        </div>
-        
-        <button className="ai-nav-btn" onClick={() => aiSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}>
-          🤖 Ask AI Assistant
-        </button>
-
-        <p style={{ 
-          fontSize: '11px', 
-          color: isDarkMode ? '#bbb' : '#666', 
-          marginTop: '6px', 
-          marginBottom: '10px',
-          textAlign: 'center',
-          fontWeight: '500'
-        }}>
-          Made by East West University Genetic Engineering Department
-        </p>
-
-        <div className="search-box">
-          <input 
-            type="text" 
-            placeholder="ওষুধ বা হাসপাতালের নাম খুঁজুন..." 
-            value={searchTerm} 
-            onChange={(e) => setSearchTerm(e.target.value)} 
-          />
-        </div>
-
-        <div className="tabs">
-          <button className={category === 'bd' ? 'active' : ''} onClick={() => {setCategory('bd'); setSearchTerm('');}}>BD</button>
-          <button className={category === 'ind' ? 'active' : ''} onClick={() => {setCategory('ind'); setSearchTerm('');}}>Indian</button>
-          <button className={category === 'hospitals' ? 'active' : ''} onClick={() => {setCategory('hospitals'); setSearchTerm('');}}>🏥 Hospitals</button>
-          <button className={category === 'favorites' ? 'active' : ''} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
-        </div>
-
-        <div className="location-filters" style={{ display: 'flex', gap: '5px', overflowX: 'auto', padding: '10px 0', justifyContent: 'center' }}>
-           <button className="loc-btn" onClick={() => filterByLocation('Dhaka')}>📍 Dhaka</button>
-           <button className="loc-btn" onClick={() => filterByLocation('Chattogram')}>📍 Chattogram</button>
-           <button className="loc-btn" onClick={() => filterByLocation('Noakhali')}>📍 Noakhali</button>
-           <button className="loc-btn" onClick={() => filterByLocation('Sylhet')}>📍 Sylhet</button>
-           <button className="loc-btn" onClick={() => filterByLocation('Rajshahi')}>📍 Rajshahi</button>
-           <button className="loc-btn" style={{background: '#ffebee', color: '#f44336'}} onClick={() => setSearchTerm('')}>✖ Clear</button>
+      {/* নতুন প্রফেশনাল টপ নেভিগেশন বার */}
+      <header className="custom-navbar">
+        <div className="nav-container">
+          <div className="brand-area">
+            <span className="brand-icon">🔱</span>
+            <h1 className="brand-logo">MediRef BD</h1>
+          </div>
+          <div className="nav-actions">
+            <button className="nav-icon-btn" onClick={() => aiSectionRef.current?.scrollIntoView({ behavior: 'smooth' })} title="Ask AI">🤖</button>
+            <button className="nav-icon-btn" onClick={() => setIsDarkMode(!isDarkMode)}>
+              {isDarkMode ? '☀️' : '🌙'}
+            </button>
+            <span className="lang-badge">文/A বাংলা</span>
+          </div>
         </div>
       </header>
 
-      <main className="main-content">
-        <div className="card-grid">
+      {/* হিরো সেকশন */}
+      <section className="hero-section">
+        <h2 className="main-title">Medicine Directory</h2>
+        <p className="sub-title">Search the clinical database by brand name, generic name, or drug class.</p>
+        
+        {/* মডার্ন সার্চ বার */}
+        <div className="search-container-box">
+          <span className="search-icon-inside">🔍</span>
+          <input 
+            type="text" 
+            placeholder="Search medicines (e.g. Paracetamol, Napa)..." 
+            value={searchTerm} 
+            onChange={(e) => setSearchTerm(e.target.value)} 
+            className="modern-input-field"
+          />
+        </div>
+
+        {/* ক্যাটাগরি ও ফিল্টার ট্যাব */}
+        <div className="filter-dropdown-row">
+          <div className="tabs-container">
+            <button className={`tab-item ${category === 'bd' ? 'active' : ''}`} onClick={() => {setCategory('bd'); setSearchTerm('');}}>BD</button>
+            <button className={`tab-item ${category === 'ind' ? 'active' : ''}`} onClick={() => {setCategory('ind'); setSearchTerm('');}}>Indian</button>
+            <button className={`tab-item ${category === 'hospitals' ? 'active' : ''}`} onClick={() => {setCategory('hospitals'); setSearchTerm('');}}>🏥 Hospitals</button>
+            <button className={`tab-item ${category === 'favorites' ? 'active' : ''}`} onClick={() => {setCategory('favorites'); setSearchTerm('');}}>⭐ Saved</button>
+          </div>
+        </div>
+
+        {/* হাসপাতাল লোকেশন ফিল্টারসমূহ */}
+        <div className="location-scroll-bar">
+           <button className="loc-chip" onClick={() => filterByLocation('Dhaka')}>📍 Dhaka</button>
+           <button className="loc-chip" onClick={() => filterByLocation('Chattogram')}>📍 Chattogram</button>
+           <button className="loc-chip" onClick={() => filterByLocation('Noakhali')}>📍 Noakhali</button>
+           <button className="loc-chip" onClick={() => filterByLocation('Sylhet')}>📍 Sylhet</button>
+           <button className="loc-chip" onClick={() => filterByLocation('Rajshahi')}>📍 Rajshahi</button>
+           <button className="loc-chip clear-chip" onClick={() => setSearchTerm('')}>✖ Clear</button>
+        </div>
+        
+        <p className="university-credit">
+          Made by East West University Genetic Engineering & Biotechnology Department
+        </p>
+      </section>
+
+      {/* মেডিসিন ও হাসপাতাল কার্ড গ্রিড */}
+      <main className="content-container">
+        <div className="medicine-cards-list">
           {displayData.map((item, idx) => (
-            <div key={idx} className="medicine-card" onClick={() => item.type === 'm' && setSelectedItem(item)}>
-              <div className="card-header">
-                <h3>{item.name}</h3>
-                {item.type === 'm' && (
-                  <span className={`fav-star ${favorites.find(f => f.name === item.name) ? 'active' : ''}`} 
-                        onClick={(e) => toggleFavorite(e, item)}>⭐</span>
+            <div key={idx} className="modern-medicine-card" onClick={() => item.type === 'm' && setSelectedItem(item)}>
+              <div className="card-top-row">
+                <div className="med-info-block">
+                  <h3 className="med-brand-title">{item.name}</h3>
+                  <p className="med-generic-subtitle">🧬 {item.generic || item.location}</p>
+                </div>
+                <div className="card-right-actions">
+                  {item.type === 'm' && (
+                    <span className={`fav-star-icon ${favorites.find(f => f.name === item.name) ? 'pinned' : ''}`} 
+                          onClick={(e) => toggleFavorite(e, item)}>⭐</span>
+                  )}
+                  {item.uses && <span className="class-tag-badge">{item.uses.split(';')[0]}</span>}
+                </div>
+              </div>
+
+              {item.indication && (
+                <p className="card-indication-text">
+                  <strong>Indication:</strong> {item.indication.length > 120 ? item.indication.substring(0, 120) + '...' : item.indication}
+                </p>
+              )}
+
+              <div className="card-footer-actions">
+                <div className="footer-left-info">
+                  {item.sideEffects && <span className="footer-info-span">⚠️ Side Effects</span>}
+                  <span className="footer-info-span">🔍 Click for full profile</span>
+                </div>
+                {item.type === 'h' ? (
+                   <a href={`tel:${item.phone}`} className="action-circle-btn" onClick={(e) => e.stopPropagation()}>📞</a>
+                ) : (
+                   <button className="action-circle-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }} title="Pronounce">🔊</button>
                 )}
               </div>
-              <p>{item.type === 'h' ? `📍 ${item.location}` : item.generic}</p>
-              {item.type === 'h' ? (
-                 <a href={`tel:${item.phone}`} className="voice-btn" onClick={(e) => e.stopPropagation()}>📞 Call</a>
-              ) : (
-                 <button className="voice-btn" onClick={(e) => { e.stopPropagation(); speak(item.name); }}>🔊 উচ্চারণ</button>
-              )}
             </div>
           ))}
         </div>
 
-        <div className="ai-container" ref={aiSectionRef}>
-          <div className="ai-header"><h2>🤖 Medi-Assistant AI</h2></div>
-          <div className="iframe-wrapper" style={{ 
-            position: 'relative', 
-            height: '560px', 
-            overflow: 'hidden', 
-            borderRadius: '15px',
-            background: '#fff' 
-          }}>
-            {isAiLoading && <div className="ai-loader"><div className="spinner"></div></div>}
-            <iframe
-              src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
-              width="100%" height="630px"
-              onLoad={() => setIsAiLoading(false)}
-              style={{ border: 'none', position: 'absolute', top: '0', left: '0', opacity: isAiLoading ? 0 : 1 }}
-              scrolling="no"
-            ></iframe>
-            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '20px', zIndex: 10 }}></div>
+        {/* এআই অ্যাসিস্ট্যান্ট সেকশন */}
+        <div className="ai-section-wrapper" ref={aiSectionRef}>
+          <div className="ai-container-box">
+            <div className="ai-box-header"><h2>🤖 Medi-Assistant AI</h2></div>
+            <div className="iframe-box-inside">
+              {isAiLoading && <div className="ai-spinner-layer"><div className="custom-spinner"></div></div>}
+              <iframe
+                src="https://global-student-ai-m4rzaqcfbxis6m98fsyna9.streamlit.app/?embedded=true"
+                width="100%" height="540px"
+                onLoad={() => setIsAiLoading(false)}
+                className="ai-iframe-element"
+                scrolling="no"
+              ></iframe>
+            </div>
           </div>
         </div>
       </main>
 
-      <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="fab-btn">📍 Pharmacy Near Me</a>
+      <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="floating-map-btn">📍 Pharmacy Near Me</a>
 
-      {/* নতুন MedEx স্টাইল ফুল-ডিটেইলস মডাল পেজ */}
+      {/* নতুন ফুল স্ক্রিন ক্লিন ডিটেইলস ভিউ (হুবহু স্ক্রিনশট ১৮৪৯৮৩ এবং ১৮৪৯৮৪ এর মতো) */}
       {selectedItem && selectedItem.type === 'm' && (
-        <div className="medex-modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="medex-modal-card" onClick={e => e.stopPropagation()}>
+        <div className="full-profile-overlay">
+          <div className="full-profile-container">
             
-            {/* উপরের হেডার সেকশন */}
-            <div className="medex-header">
-              <div className="medex-title-row">
-                <h1 className="medex-med-name">💊 {selectedItem.name}</h1>
-                <button className="medex-close-icon-btn" onClick={() => setSelectedItem(null)}>✕</button>
-              </div>
-              <p className="medex-generic-name">{selectedItem.generic}</p>
-              <p className="medex-company-name">{selectedItem.company}</p>
-              <div className="medex-price-tag">৳ {selectedItem.price || 'N/A'}</div>
+            <div className="profile-top-bar">
+              <button className="back-to-directory-btn" onClick={() => setSelectedItem(null)}>
+                ← Back to Directory
+              </button>
             </div>
 
-            {/* স্ক্রলযোগ্য বিস্তারিত সেকশন (MedEx এর মতো সাজানো) */}
-            <div className="medex-body-scroll">
-              
-              {selectedItem.indication && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Indications</h3>
-                  <p className="medex-section-content">{selectedItem.indication}</p>
-                </div>
-              )}
+            <div className="profile-header-card">
+              <h1 className="profile-med-title">{selectedItem.name}</h1>
+              <div className="profile-generic-row">💊 {selectedItem.generic}</div>
+              {selectedItem.uses && <span className="profile-class-badge">{selectedItem.uses}</span>}
+              {selectedItem.company && <p className="profile-company-name">🏢 {selectedItem.company}</p>}
+              {selectedItem.price && <div className="profile-price-tag">Price: ৳ {selectedItem.price}</div>}
+            </div>
 
-              {selectedItem.uses && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Therapeutic Class</h3>
-                  <p className="medex-section-content">{selectedItem.uses}</p>
+            <div className="profile-details-body">
+              {selectedItem.indication && (
+                <div className="profile-data-block">
+                  <h3 className="block-header-title">🩺 Indication</h3>
+                  <p className="block-body-content">{selectedItem.indication}</p>
                 </div>
               )}
 
               {selectedItem.pharmacodynamics && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Pharmacology (Pharmacodynamics & Pharmacokinetics)</h3>
-                  <p className="medex-section-content">{selectedItem.pharmacodynamics}</p>
+                <div className="profile-data-block">
+                  <h3 className="block-header-title">ℹ️ Mechanism of Action</h3>
+                  <p className="block-body-content">{selectedItem.pharmacodynamics}</p>
                 </div>
               )}
 
               {selectedItem.dosage && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Dosage & Administration</h3>
-                  <p className="medex-section-content">{selectedItem.dosage}</p>
-                </div>
-              )}
-
-              {selectedItem.administration && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Administration Guide</h3>
-                  <p className="medex-section-content">{selectedItem.administration}</p>
-                </div>
-              )}
-
-              {selectedItem.interaction && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Interaction</h3>
-                  <p className="medex-section-content">{selectedItem.interaction}</p>
-                </div>
-              )}
-
-              {selectedItem.contraindications && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Contraindications</h3>
-                  <p className="medex-section-content">{selectedItem.contraindications}</p>
+                <div className="profile-data-block">
+                  <h3 className="block-header-title">⚖️ Dosage & Administration</h3>
+                  <p className="block-body-content">{selectedItem.dosage}</p>
                 </div>
               )}
 
               {selectedItem.sideEffects && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Side Effects</h3>
-                  <p className="medex-section-content">{selectedItem.sideEffects}</p>
+                <div className="profile-data-block">
+                  <h3 className="block-header-title">⚠️ Side Effects</h3>
+                  <p className="block-body-content">{selectedItem.sideEffects}</p>
                 </div>
               )}
 
-              {selectedItem.pregnancy && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Pregnancy & Lactation</h3>
-                  <p className="medex-section-content">{selectedItem.pregnancy}</p>
-                </div>
-              )}
-
-              {selectedItem.warnings && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Precautions & Warnings</h3>
-                  <p className="medex-section-content">{selectedItem.warnings}</p>
-                </div>
-              )}
-
-              {selectedItem.storage && (
-                <div className="medex-section">
-                  <h3 className="medex-section-title">Storage Conditions</h3>
-                  <p className="medex-section-content">{selectedItem.storage}</p>
+              {selectedItem.contraindications && (
+                <div className="profile-data-block">
+                  <h3 className="block-header-title">🚫 Contraindications</h3>
+                  <p className="block-body-content">{selectedItem.contraindications}</p>
                 </div>
               )}
 
               {selectedItem.alternatives && (
-                <div className="medex-section alternative-box">
-                  <h3 className="medex-section-title" style={{color: '#2e7d32'}}>Alternate Brands</h3>
-                  <p className="medex-section-content"><strong>Alternatives:</strong> {selectedItem.alternatives}</p>
+                <div className="profile-data-block alternative-brands-block">
+                  <h3 className="block-header-title">🧬 Common Alternate Brands</h3>
+                  <div className="alternative-chips-container">
+                    {selectedItem.alternatives.split(',').map((brand, i) => (
+                      <span key={i} className="alternative-item-chip">{brand.trim()}</span>
+                    ))}
+                  </div>
                 </div>
               )}
-
-              <div className="medex-warning-footer">
-                ⚠️ রেজিস্টার্ড চিকিৎসকের পরামর্শ মোতাবেক ওষুধ সেবন করুন।
-              </div>
             </div>
 
-            <button className="medex-bottom-close-btn" onClick={() => setSelectedItem(null)}>বন্ধ করুন</button>
+            <button className="profile-close-footer-btn" onClick={() => setSelectedItem(null)}>Close Profile</button>
           </div>
         </div>
       )}
