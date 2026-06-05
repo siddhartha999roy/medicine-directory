@@ -362,3 +362,22 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<App />);
+/* বাটনগুলোর মেইন কন্টেইনার বা রো এর জন্য */
+.tabs-container {
+  display: flex;
+  overflow-x: auto; /* মোবাইলে ডানে-বামে স্ক্রল করার জন্য */
+  white-space: nowrap;
+  gap: 8px; /* বাটনগুলোর ভেতরের দূরত্ব */
+  padding: 5px 10px;
+  scrollbar-width: none; /* ফায়ারফক্সের স্ক্রলবার হাইড করার জন্য */
+}
+
+/* ক্রোম বা সাফারিতে নিচের স্ক্রলবারটি সুন্দর/হাইড রাখার জন্য */
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* বাটনগুলোর সাইজ ঠিক রাখা যাতে চেপে ছোট না হয়ে যায় */
+.tab-item {
+  flex-shrink: 0;
+}
