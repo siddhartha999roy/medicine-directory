@@ -376,8 +376,3 @@ root.render(<App />);
 .tabs-container::-webkit-scrollbar {
   display: none;
 }
-
-/* বাটনগুলোর সাইজ ঠিক রাখা যাতে চেপে ছোট না হয়ে যায় */
-.tab-item {
-  flex-shrink: 0;
-}
